@@ -1,4 +1,5 @@
-import React from 'react'
+import HeroesSection from '../components/HeroesSection'
+import AgritechHighlight from '../components/Section5'
 import Header from '../components/Header'
 import Hero from '../assets/Hero.jpg'
 

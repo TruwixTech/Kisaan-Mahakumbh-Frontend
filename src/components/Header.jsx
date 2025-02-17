@@ -1,6 +1,5 @@
-import React from 'react'
 import { FaBars } from "react-icons/fa6";
-import Logo from '../assets/logo.svg'
+import Logo from '../assets/Logo.svg'
 import { NavLink } from 'react-router-dom'
 
 function Header() {
