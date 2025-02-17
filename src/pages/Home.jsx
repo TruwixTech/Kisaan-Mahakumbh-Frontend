@@ -1,8 +1,12 @@
-import React from 'react'
+import HeroesSection from '../components/HeroesSection'
+import AgritechHighlight from '../components/Section5'
 
 function Home() {
   return (
-    <div>Home</div>
+    <div>
+      <AgritechHighlight />
+      <HeroesSection />
+    </div>
   )
 }
 
