@@ -1,63 +1,66 @@
+import img1 from './src/assets/f1.png';
+import img2 from './src/assets/f2.png';
+import img3 from './src/assets/f3.png';
+import img4 from './src/assets/f4.png';
+import img5 from './src/assets/f5.png';
+import img6 from './src/assets/f6.png';
+import img7 from './src/assets/f7.png';
+import img8 from './src/assets/f8.png';
+import img9 from './src/assets/f9.png';
+import img10 from './src/assets/f10.png';
+
+
 export const heroesData = [
     {
-      img: "/images/img1.jpg", 
+      img: img1, 
       title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
       subtitle: "Mathadhipati, kaneri math",
     },
     {
-      img: "/images/img2.jpg",
+      img: img2,
       title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
       subtitle: "Mathadhipati, kaneri math",
     },
     {
-      img: "/images/img3.jpg",
+      img: img3,
       title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
       subtitle: "Mathadhipati, kaneri math",
     },
     {
-      img: "/images/img4.jpg",
+      img: img4,
       title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
       subtitle: "Mathadhipati, kaneri math",
     },
     {
-      img: "/images/img5.jpg",
+      img: img5,
       title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
       subtitle: "Mathadhipati, kaneri math",
     },
     {
-      img: "/images/img6.jpg",
+      img: img6,
       title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
       subtitle: "Mathadhipati, kaneri math",
     },
     {
-      img: "/images/img7.jpg",
+      img: img7,
       title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
       subtitle: "Mathadhipati, kaneri math",
     },
     {
-      img: "/images/img8.jpg",
+      img: img8,
       title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
       subtitle: "Mathadhipati, kaneri math",
     },
     {
-      img: "/images/img9.jpg",
+      img: img9,
       title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
       subtitle: "Mathadhipati, kaneri math",
     },
     {
-      img: "/images/img10.jpg",
+      img: img10,
       title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
       subtitle: "Mathadhipati, kaneri math",
     },
-    {
-      img: "/images/img11.jpg",
-      title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
-      subtitle: "Mathadhipati, kaneri math",
-    },
-    {
-      img: "/images/img12.jpg",
-      title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
-      subtitle: "Mathadhipati, kaneri math",
-    },
+   
   ];
   
