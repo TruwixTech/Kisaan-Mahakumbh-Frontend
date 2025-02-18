@@ -5,6 +5,7 @@ import App from './App.jsx'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
+import Gallery from './pages/Gallery.jsx'
 
 
 const router = createBrowserRouter(
@@ -13,6 +14,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<App />} >
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/gallery" element={<Gallery />} />
       </Route>
     </>
   )
