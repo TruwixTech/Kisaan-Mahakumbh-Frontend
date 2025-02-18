@@ -30,7 +30,7 @@ function Header() {
             <NavLink to="/news" className="text-[#01210F] text-xl font-semibold" onClick={() => setIsOpen(false)}>News</NavLink>
             <NavLink to="/contact-us" className="text-[#01210F] text-xl font-semibold" onClick={() => setIsOpen(false)}>Contact</NavLink>
             <button className='px-3 py-2 bg-[#C39337] rounded-xl text-white font-semibold' onClick={() => setIsOpen(false)}>Join Now</button>
-            <button className='px-5 py-2 bg-[#01210F] rounded-xl text-white font-semibold' onClick={() => setIsOpen(false)}>Register for Event</button>
+            <NavLink to="/registration" className='px-5 py-2 bg-[#01210F] rounded-xl text-white font-semibold cursor-pointer' >Register for Event</NavLink>
           </div>
         )}
 
@@ -46,10 +46,10 @@ function Header() {
             boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)', // Custom box shadow
           }}
           >Join Now</button>
-          <button className='px-5 py-2 bg-[#01210F] rounded-xl text-white font-semibold xl:py-2.5' style={{
+          <NavLink to="/registration" className='px-5 py-2 bg-[#01210F] rounded-xl text-white font-semibold xl:py-2.5' style={{
             boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)', // Custom box shadow
           }}
-          >Register for Event</button>
+          >Register for Event</NavLink>
         </div>
       </div>
     </div>
