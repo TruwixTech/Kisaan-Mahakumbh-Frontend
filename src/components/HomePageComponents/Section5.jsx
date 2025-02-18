@@ -7,7 +7,7 @@ import icon4 from "../../assets/icon4.svg";
 
 const AgritechHighlight = () => {
   return (
-    <div className="w-full bg-gray-100  flex flex-col gap-6 lg:flex-row items-center justify-center py-12 px-5 lg:px-20 font-roboto text-[#374836]">
+    <div className="w-full bg-gray-100  flex flex-col gap-6 lg:flex-row items-center justify-center py-12 px-5 lg:px-20 font-roboto text-[#374836] font-[Roboto]">
       <div className="w-full lg:w-1/2">
         {/* Placeholder for Image */}
         <div className=" w-full h-auto rounded-lg"></div>

@@ -2,7 +2,7 @@ import React from 'react'
 
 function Section4() {
     return (
-        <div className='w-full h-auto min-h-screen flex flex-wrap gap-6 px-5 md:px-10 lg:px-16 bg-[#01210F] py-8 lg:py-14 xl:py-20 xl:gap-8'>
+        <div className='w-full h-auto min-h-screen flex flex-wrap gap-6 px-5 md:px-10 lg:px-16 bg-[#01210F] py-8 lg:py-14 xl:py-20 xl:gap-8 font-[Roboto]'>
             <div className='w-full h-[200px] rounded-3xl overflow-hidden sm:w-[300px] lg:w-[37%] lg:h-[250px] xl:h-[300px]'>
                 <img src="" alt="" className='bg-[#D9D9D9] w-full h-full' />
             </div>

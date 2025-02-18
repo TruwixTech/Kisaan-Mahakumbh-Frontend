@@ -7,7 +7,7 @@ import Img3 from '../../assets/about3.jpg'
 
 function AboutEvent() {
     return (
-        <div className='w-full h-auto px-5 md:px-10 lg:px-16 bg-[#e7e7e7] min-h-screen py-8 flex flex-col lg:flex-row lg:gap-8 2xl:py-20'>
+        <div className='w-full h-auto px-5 md:px-10 lg:px-16 bg-[#e7e7e7] min-h-screen py-8 flex flex-col lg:flex-row lg:gap-8 2xl:py-20 font-[Roboto]'>
             <div className='w-full h-auto flex flex-col gap-2 md:gap-4 lg:w-1/2'>
                 <p className="text-[#374836] text-2xl font-semibold xl:text-3xl">| About Our Event |</p>
                 <h1 className='uppercase text-2xl font-bold text-[#374836] sm:text-3xl md:text-5xl md:leading-14 lg:text-4xl lg:leading-10 xl:text-5xl xl:leading-14 2xl:text-[55px]'>Cultivating <span className='text-[#146A3A]'>farmers</span> <br /> legecy </h1>
