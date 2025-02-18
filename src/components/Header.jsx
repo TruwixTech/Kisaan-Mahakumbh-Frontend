@@ -10,7 +10,7 @@ function Header() {
 
   return (
     <div className='w-full h-auto px-5 flex justify-between md:px-10 lg:px-14 relative'>
-      <div className='w-28 h-40 md:h-44 rounded-b-3xl bg-white md:px-6 border-x border-b border-[#146A3A]'>
+      <div className='w-28 h-40 rounded-b-3xl bg-white md:px-6 border-x border-b border-[#146A3A]'>
         <img src={Logo} alt="logo" className='w-full h-[80%]' />
       </div>
       <div className='w-auto h-20 flex justify-between items-center lg:gap-6 lg:h-28 xl:gap-10'>
