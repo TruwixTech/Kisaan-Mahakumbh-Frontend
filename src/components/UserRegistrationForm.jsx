@@ -37,7 +37,7 @@ const UserRegistrationForm = () => {
 
   const handleSendEmailOTP = async () => {
     try {
-      const response = await axios.post('http://localhost:8080/api/v1/otp/send-email-otp', { email: formData.email });
+      const response = await axios.post('https://kisaan-mahakumbh-backend.vercel.app/api/v1/otp/send-email-otp', { email: formData.email });
       alert('OTP sent successfully!');
       console.log(response.data); // Log the response from the API
     } catch (error) {
@@ -48,7 +48,7 @@ const UserRegistrationForm = () => {
 
   const handleVerifyEmailOTP = async () => {
     try {
-      const response = await axios.post('http://localhost:8080/api/v1/otp/verify-email-otp', { email: formData.email, otp: otpEmail });
+      const response = await axios.post('https://kisaan-mahakumbh-backend.vercel.app/api/v1/otp/verify-email-otp', { email: formData.email, otp: otpEmail });
       alert('Email verified successfully!');
       setEmailVerified(true);
       console.log(response.data); // Log the response from the API
@@ -61,7 +61,7 @@ const UserRegistrationForm = () => {
   const handleSubmitRegistrationForm = async () => {
     console.log(formData);
     try {
-      const response = await axios.post('http://localhost:8080/api/v1/auth/signup', formData);
+      const response = await axios.post('https://kisaan-mahakumbh-backend.vercel.app/api/v1/auth/signup', formData);
       alert('Registration successful!');
       console.log(response.data); // Log the response from the API
       setFormData({
