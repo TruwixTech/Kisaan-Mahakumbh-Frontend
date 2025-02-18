@@ -28,7 +28,7 @@ function Header() {
             <NavLink to="/about" className="text-[#01210F] text-xl font-semibold" onClick={() => setIsOpen(false)}>About Us</NavLink>
             <NavLink to="/events" className="text-[#01210F] text-xl font-semibold" onClick={() => setIsOpen(false)}>Events</NavLink>
             <NavLink to="/news" className="text-[#01210F] text-xl font-semibold" onClick={() => setIsOpen(false)}>News</NavLink>
-            <NavLink to="/contact" className="text-[#01210F] text-xl font-semibold" onClick={() => setIsOpen(false)}>Contact</NavLink>
+            <NavLink to="/contact-us" className="text-[#01210F] text-xl font-semibold" onClick={() => setIsOpen(false)}>Contact</NavLink>
             <button className='px-3 py-2 bg-[#C39337] rounded-xl text-white font-semibold' onClick={() => setIsOpen(false)}>Join Now</button>
             <button className='px-5 py-2 bg-[#01210F] rounded-xl text-white font-semibold' onClick={() => setIsOpen(false)}>Register for Event</button>
           </div>
@@ -39,7 +39,7 @@ function Header() {
           <NavLink to="/about" className="text-white text-2xl font-semibold">About Us</NavLink>
           <NavLink to="/events" className="text-white text-2xl font-semibold">Events</NavLink>
           <NavLink to="/news" className="text-white text-2xl font-semibold">News</NavLink>
-          <NavLink to="/contact" className="text-white text-2xl font-semibold">Contact</NavLink>
+          <NavLink to="/contact-us" className="text-white text-2xl font-semibold">Contact</NavLink>
         </div>
         <div className='w-auto h-auto hidden items-center gap-6 lg:flex xl:gap-8'>
           <button className='px-3 py-2 bg-[#C39337] rounded-xl text-white font-semibold xl:py-2.5' style={{
