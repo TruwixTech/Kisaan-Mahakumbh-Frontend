@@ -6,7 +6,8 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import Home from './pages/Home.jsx'
 import UserRegistrationForm from './components/UserRegistrationForm.jsx'
 import ContactForm from './pages/Contact.jsx'
-
+import About from './pages/About.jsx'
+import ContactUs from './components/ContactUs.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,6 +17,8 @@ const router = createBrowserRouter(
         <Route path='/registration' element={<UserRegistrationForm />} />
         <Route path='/contact' element={<ContactForm />} />
 
+        <Route path="/about" element={<About />} />
+        <Route path="/contact-us" element={<ContactUs />} />
       </Route>
     </>
   )

@@ -7,11 +7,13 @@ import icon4 from "../../assets/icon4.svg";
 
 const AgritechHighlight = () => {
   return (
-    <div className="w-full bg-gray-100  flex flex-col gap-6 lg:flex-row items-center justify-center py-12 px-5 lg:px-20 font-roboto text-[#374836]">
+    <div className="w-full bg-[#e7e7e7]  flex flex-col gap-6 lg:flex-row items-center justify-center py-12 px-5 lg:px-20 font-roboto text-[#374836] font-[Roboto]">
       <div className="w-full lg:w-1/2">
         {/* Placeholder for Image */}
         <div className=" w-full h-auto rounded-lg"></div>
-        <img src={kisaan} alt="kisan image" className="mx-auto" />
+        <img src={kisaan} alt="kisan image" className="mx-auto rounded-3xl" style={{
+          boxShadow: '6px 7px 12.9px 3px rgba(0, 0, 0, 0.25)', // Custom box shadow
+        }} />
         {/* Content Section */}
       </div>
       <div className="w-full lg:w-1/2">
@@ -40,49 +42,46 @@ const AgritechHighlight = () => {
             </div>
             <div>
               <p className="text-[#7F9080] text-lg lg:text-base xl:text-lg">
-                Implement advanced farming techniques that significantly boost
-                crop yields.
+                Implement advanced farming techniques that significantly boost crop yields and overall farm productivity
               </p>
             </div>
           </div>
           <div className="flex items-start gap-4 flex-col lg:gap-2 xl:gap-4">
             <div className="flex gap-4 items-center">
-              <img src={icon1} alt="" />
+              <img src={icon2} alt="" />
               <h3 className="text-2xl lg:text-xl xl:text-2xl font-semibold text-[#374836]">
                 Cost Savings
               </h3>
             </div>
             <div>
               <p className="text-[#7F9080] text-lg">
-                Lower operational costs through efficient resource management.
+                Lower your operational costs through efficient resource management and reduced dependency on expensive
               </p>
             </div>
           </div>
           <div className="flex items-start gap-4 flex-col lg:gap-2 xl:gap-4">
             <div className="flex gap-4 items-center">
-              <img src={icon1} alt="" />
+              <img src={icon3} alt="" />
               <h3 className="text-2xl lg:text-xl xl:text-2xl font-semibold text-[#374836]">
                 Sustainable Practices
               </h3>
             </div>
             <div>
               <p className="text-[#7F9080] text-lg">
-                Eco-friendly methods that promote soil health and minimize
-                chemical inputs.
+                Adopt eco-friendly methods that promote soil health, reduce water usage, and minimize chemical inputs, ensuring long-term
               </p>
             </div>
           </div>
           <div className="flex items-start gap-4 flex-col lg:gap-2 xl:gap-4">
             <div className="flex gap-4 items-center">
-              <img src={icon1} alt="" />
+              <img src={icon4} alt="" />
               <h3 className="text-2xl lg:text-xl xl:text-2xl font-semibold text-[#374836]">
                 Expert Guidance
               </h3>
             </div>
             <div>
               <p className="text-[#7F9080] text-lg">
-                Personalized support and advice from our team of agricultural
-                experts.
+                Receive personalized support and advice from our team of agricultural experts to optimize your farming operations
               </p>
             </div>
           </div>
