@@ -11,7 +11,9 @@ const AgritechHighlight = () => {
       <div className="w-full lg:w-1/2">
         {/* Placeholder for Image */}
         <div className=" w-full h-auto rounded-lg"></div>
-        <img src={kisaan} alt="kisan image" className="mx-auto" />
+        <img src={kisaan} alt="kisan image" className="mx-auto rounded-3xl" style={{
+          boxShadow: '6px 7px 12.9px 3px rgba(0, 0, 0, 0.25)', // Custom box shadow
+        }} />
         {/* Content Section */}
       </div>
       <div className="w-full lg:w-1/2">
