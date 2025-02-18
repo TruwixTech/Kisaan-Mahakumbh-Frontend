@@ -29,8 +29,9 @@ function Header() {
             <NavLink to="/events" className="text-[#01210F] text-xl font-semibold" onClick={() => setIsOpen(false)}>Events</NavLink>
             <NavLink to="/news" className="text-[#01210F] text-xl font-semibold" onClick={() => setIsOpen(false)}>News</NavLink>
             <NavLink to="/gallery" className="text-[#01210F] text-xl font-semibold" onClick={() => setIsOpen(false)}>Gallery</NavLink>
+            <NavLink to="/contact-us" className="text-[#01210F] text-xl font-semibold" onClick={() => setIsOpen(false)}>Contact</NavLink>
             <button className='px-3 py-2 bg-[#C39337] rounded-xl text-white font-semibold' onClick={() => setIsOpen(false)}>Join Now</button>
-            <button className='px-5 py-2 bg-[#01210F] rounded-xl text-white font-semibold' onClick={() => setIsOpen(false)}>Register for Event</button>
+            <NavLink to="/registration" className='px-5 py-2 bg-[#01210F] rounded-xl text-white font-semibold cursor-pointer' >Register for Event</NavLink>
           </div>
         )}
 
@@ -40,16 +41,17 @@ function Header() {
           <NavLink to="/events" className="text-white text-2xl font-semibold">Events</NavLink>
           <NavLink to="/news" className="text-white text-2xl font-semibold">News</NavLink>
           <NavLink to="/gallery" className="text-white text-2xl font-semibold">Gallery</NavLink>
+          <NavLink to="/contact-us" className="text-white text-2xl font-semibold">Contact</NavLink>
         </div>
         <div className='w-auto h-auto hidden items-center gap-6 lg:flex xl:gap-8'>
           <button className='px-3 py-2 bg-[#C39337] rounded-xl text-white font-semibold xl:py-2.5' style={{
             boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)', // Custom box shadow
           }}
           >Join Now</button>
-          <button className='px-5 py-2 bg-[#01210F] rounded-xl text-white font-semibold xl:py-2.5' style={{
+          <NavLink to="/registration" className='px-5 py-2 bg-[#01210F] rounded-xl text-white font-semibold xl:py-2.5' style={{
             boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)', // Custom box shadow
           }}
-          >Register for Event</button>
+          >Register for Event</NavLink>
         </div>
       </div>
     </div>
