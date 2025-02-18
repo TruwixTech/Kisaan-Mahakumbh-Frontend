@@ -10,6 +10,7 @@ import About from './pages/About.jsx'
 import Gallery from './pages/Gallery.jsx'
 import Sponsers from './pages/Sponsers.jsx'
  
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
