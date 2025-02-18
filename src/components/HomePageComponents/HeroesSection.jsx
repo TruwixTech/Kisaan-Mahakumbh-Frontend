@@ -2,7 +2,7 @@ import { heroesData } from "../../../data.js";
 
 const HeroesSection = () => {
   return (
-    <div className="bg-gray-100 py-10 px-5 md:px-10 lg:px-20 font-[Roboto]">
+    <div className="bg-[#e7e7e7] py-10 px-5 md:px-10 lg:px-20 font-[Roboto]">
       {/* Header Section */}
       <div className="text-center">
         <p className="text-[#374836] text-2xl font-semibold">| Heroes |</p>

@@ -9,7 +9,7 @@ function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className='w-full h-auto px-5 flex justify-between md:px-10 lg:px-14 relative'>
+    <div className='w-full h-28 px-5 flex justify-between md:px-10 lg:px-14 relative z-40'>
       <div className='w-28 h-40 rounded-b-3xl bg-white md:px-6 border-x border-b border-[#146A3A]'>
         <img src={Logo} alt="logo" className='w-full h-[80%]' />
       </div>

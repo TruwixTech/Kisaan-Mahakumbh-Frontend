@@ -60,7 +60,6 @@ function HeroSection() {
                         backgroundRepeat: 'no-repeat',
                     }}
                 >
-                    {/* Your content */}
                 </div>
                 <div className="overflow-hidden w-full z-10">
                     <div className="flex transition-transform duration-1000 ease-in-out"
