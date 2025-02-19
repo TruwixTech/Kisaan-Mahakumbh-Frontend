@@ -95,12 +95,12 @@ function Section1() {
                 <div className="bg-[#e7e7e7] py-10 font-[Roboto]">
                     {/* Header Section */}
                     <div className="text-center">
-                        <p className="text-[#374836] text-2xl font-semibold">| Heroes |</p>
-                        <h2 className="text-5xl font-bold text-[#374836]">OUR GREEN HEROES</h2>
+                        <p className="text-[#374836] text-2xl font-semibold">|  Sponsors  |</p>
+                        <h2 className="text-5xl font-bold text-[#374836]">Industry Sponsors</h2>
                     </div>
 
                     {/* Grid Section */}
-                    <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 px-6">
+                    <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 md:gap-12  gap-5 px-6">
                         {heroesData.map((hero, index) => (
                             <div key={index} className="text-center">
                                 <img
