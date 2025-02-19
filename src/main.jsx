@@ -16,7 +16,7 @@ const router = createBrowserRouter(
     <>
       <Route path="/" element={<App />} >
         <Route path="/" element={<Home />} />
-        <Route path='/registration' element={<UserRegistrationForm />} />
+        <Route path='/registration/:id?' element={<UserRegistrationForm />} />
         <Route path='/contact-us' element={<ContactForm />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/sponsers" element={<Sponsers />} />
