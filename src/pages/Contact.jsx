@@ -6,7 +6,7 @@ import Header from "../components/Header";
 const ContactForm = () => {
   return (
     <>
-      <div className="bg-[#D9D9D9] w-full h-auto">
+      <div className="bg-[#D9D9D9] w-full h-auto font-[Roboto]">
         <div
           className="relative z-40"
           style={{
@@ -41,7 +41,19 @@ const ContactForm = () => {
 
           {/* Grid Layout for Form & Contact Info */}
           <ContactComponent />
-          <div className="bg-[#d9d9d9] w-full h-[400px] rounded-3xl mt-20 "></div>
+
+          <div className=" py-20 p-5 w-full flex justify-center items-center">
+            <div className="w-full h-[500px]">
+              <iframe
+                title="Google Map"
+                className="w-full h-full rounded-xl shadow-lg"
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d839.0300177388709!2d77.16172786289376!3d28.62584064432734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDM3JzMzLjIiTiA3N8KwMDknNDEuNCJF!5e0!3m2!1sen!2sin!4v1739945782570!5m2!1sen!2sin"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
         </div>
       </div>
     </>
