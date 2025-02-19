@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Header from "./Header";
+import Hero from '../assets/Hero.jpg'
 
 const UserRegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -59,7 +61,6 @@ const UserRegistrationForm = () => {
   };
 
   const handleSubmitRegistrationForm = async () => {
-    console.log(formData);
     try {
       const response = await axios.post('https://kisaan-mahakumbh-backend.vercel.app/api/v1/auth/signup', formData);
       alert('Registration successful!');
@@ -90,211 +91,233 @@ const UserRegistrationForm = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">User Registration</h2>
+    <>
+      <div className="w-full h-auto flex flex-col">
+        <div className='relative z-40' style={{
+          backgroundImage: `url(${Hero})`,
+          backgroundSize: 'cover',  // Adjust size as per requirement
+          backgroundPosition: 'top',  // Ensures the gradient starts from the left
+          backgroundRepeat: 'no-repeat',
+        }}>
+          <div
+            className="w-full h-full flex flex-col absolute z-10"
+            style={{
+              backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(19, 19, 19, 0.49) 49%, rgba(131, 131, 131, 0) 100%)`,
+              backgroundSize: '100% 100%',  // Adjust size as per requirement
+              backgroundPosition: 'left center',  // Ensures the gradient starts from the left
+              backgroundRepeat: 'no-repeat',
+            }}
+          >
+          </div>
+          <Header />
+        </div>
+        <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg my-10">
+          <h2 className="text-2xl font-bold mb-4">User Registration</h2>
 
-      {/* Name */}
-      <label className="block">Name:</label>
-      <input
-        type="text"
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-        className="w-full border p-2 rounded mb-2"
-        required
-      />
-
-      {/* Phone */}
-      <label className="block">Phone:</label>
-      <input
-        type="number"
-        name="phone"
-        value={formData.phone}
-        onChange={handleChange}
-        className="w-full border p-2 rounded mb-2"
-        required
-        placeholder="+91"
-      />
-
-      {/* Email & OTP */}
-      <div className="flex justify-between items-end">
-        <div className="w-full flex flex-col">
-          <label className="block">Email:</label>
+          {/* Name */}
+          <label className="block">Name:</label>
           <input
-            type="email"
-            name="email"
-            value={formData.email}
+            type="text"
+            name="name"
+            value={formData.name}
             onChange={handleChange}
-            className="w-[85%] border p-2 rounded mb-2"
+            className="w-full border p-2 rounded mb-2"
             required
           />
-        </div>
-        <button 
-          onClick={handleSendEmailOTP} 
-          className="bg-green-500 w-[200px] flex justify-center items-center h-[40px] py-2 rounded text-white"
-        >
-          Send OTP
-        </button>
-      </div>
 
-      <div className="flex gap-2">
-        <input
-          type="text"
-          placeholder="Enter Email OTP"
-          value={otpEmail}
-          onChange={(e) => setOtpEmail(e.target.value)}
-          className="w-[70%] border p-2 rounded"
-        />
-        <button
-          onClick={handleVerifyEmailOTP}
-          className={`p-2 rounded ${emailVerified ? "bg-green-500" : "bg-blue-500"} text-white`}
-          disabled={emailVerified}
-        >
-          {emailVerified ? "Verified" : "Verify"}
-        </button>
-      </div>
-
-      {/* Password */}
-      <label className="block mt-2">Password:</label>
-      <input
-        type="password"
-        name="password"
-        value={formData.password}
-        onChange={handleChange}
-        className="w-full border p-2 rounded mb-2"
-        required
-      />
-
-      {/* Age */}
-      <label className="block mt-2">Age:</label>
-      <input
-        type="number"
-        name="age"
-        value={formData.age}
-        onChange={handleChange}
-        className="w-full border p-2 rounded mb-2"
-      />
-
-      {/* Address */}
-      <label className="block mt-2">Address:</label>
-      <input
-        type="text"
-        name="address"
-        value={formData.address}
-        onChange={handleChange}
-        className="w-full border p-2 rounded mb-2"
-      />
-
-      {/* Role Dropdown */}
-      <label className="block mt-2">Role:</label>
-      <select
-        name="role"
-        value={formData.role}
-        onChange={handleChange}
-        className="w-full border p-2 rounded mb-2"
-        required
-      >
-        <option value="USER">User</option>
-        <option value="SPONSOR">Sponsor</option>
-        <option value="VISITOR">Visitor</option>
-        <option value="ENTREPRENEUR">Entrepreneur</option>
-        <option value="VOLUNTEER">Volunteer</option>
-      </select>
-
-      {/* Show company details only after email verification */}
-      {emailVerified && (
-        <>
-          <h3 className="text-xl font-semibold mt-4">Company Details</h3>
-
-          <label className="block mt-2">Company Name:</label>
-          <input
-            type="text"
-            name="companyName"
-            value={formData.companyName}
-            onChange={handleChange}
-            className="w-full border p-2 rounded mb-2"
-          />
-
-          <label className="block mt-2">Company Address:</label>
-          <input
-            type="text"
-            name="companyAddress"
-            value={formData.companyAddress}
-            onChange={handleChange}
-            className="w-full border p-2 rounded mb-2"
-          />
-
-          <label className="block mt-2">Pin Code:</label>
+          {/* Phone */}
+          <label className="block">Phone:</label>
           <input
             type="number"
-            name="pin_code"
-            value={formData.pin_code}
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full border p-2 rounded mb-2"
+            required
+            placeholder="+91"
+          />
+
+          {/* Email & OTP */}
+          <div className="flex justify-between items-end">
+            <div className="w-full flex flex-col">
+              <label className="block">Email:</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-[85%] border p-2 rounded mb-2"
+                required
+              />
+            </div>
+            <button
+              onClick={handleSendEmailOTP}
+              className="bg-green-500 w-[200px] flex justify-center items-center h-[40px] py-2 rounded text-white"
+            >
+              Send OTP
+            </button>
+          </div>
+
+          <div className="flex gap-2">
+            <input
+              type="text"
+              placeholder="Enter Email OTP"
+              value={otpEmail}
+              onChange={(e) => setOtpEmail(e.target.value)}
+              className="w-[70%] border p-2 rounded"
+            />
+            <button
+              onClick={handleVerifyEmailOTP}
+              className={`p-2 rounded ${emailVerified ? "bg-green-500" : "bg-blue-500"} text-white`}
+              disabled={emailVerified}
+            >
+              {emailVerified ? "Verified" : "Verify"}
+            </button>
+          </div>
+
+          {/* Password */}
+          <label className="block mt-2">Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            className="w-full border p-2 rounded mb-2"
+            required
+          />
+
+          {/* Age */}
+          <label className="block mt-2">Age:</label>
+          <input
+            type="number"
+            name="age"
+            value={formData.age}
             onChange={handleChange}
             className="w-full border p-2 rounded mb-2"
           />
 
-          <label className="block mt-2">Specialized In:</label>
+          {/* Address */}
+          <label className="block mt-2">Address:</label>
           <input
             type="text"
-            name="specializedIn"
-            value={formData.specializedIn}
+            name="address"
+            value={formData.address}
             onChange={handleChange}
             className="w-full border p-2 rounded mb-2"
           />
 
-          <label className="block mt-2">GST:</label>
-          <input
-            type="text"
-            name="gst"
-            value={formData.gst}
+          {/* Role Dropdown */}
+          <label className="block mt-2">Role:</label>
+          <select
+            name="role"
+            value={formData.role}
             onChange={handleChange}
             className="w-full border p-2 rounded mb-2"
-          />
+            required
+          >
+            <option value="USER">User</option>
+            <option value="SPONSOR">Sponsor</option>
+            <option value="VISITOR">Visitor</option>
+            <option value="ENTREPRENEUR">Entrepreneur</option>
+            <option value="VOLUNTEER">Volunteer</option>
+          </select>
 
-          <label className="block mt-2">CIN Number:</label>
-          <input
-            type="text"
-            name="cinNumber"
-            value={formData.cinNumber}
-            onChange={handleChange}
-            className="w-full border p-2 rounded mb-2"
-          />
+          {/* Show company details only after email verification */}
+          {emailVerified && (
+            <>
+              <h3 className="text-xl font-semibold mt-4">Company Details</h3>
 
-          <label className="block mt-2">Applying for Sponsorship:</label>
-          <input
-            type="checkbox"
-            name="applyingForSponsership"
-            checked={formData.applyingForSponsership}
-            onChange={handleChange}
-          />
+              <label className="block mt-2">Company Name:</label>
+              <input
+                type="text"
+                name="companyName"
+                value={formData.companyName}
+                onChange={handleChange}
+                className="w-full border p-2 rounded mb-2"
+              />
 
-          <label className="block mt-2">Applying for Booking Stalls:</label>
-          <input
-            type="checkbox"
-            name="applyingForBookingStalls"
-            checked={formData.applyingForBookingStalls}
-            onChange={handleChange}
-          />
+              <label className="block mt-2">Company Address:</label>
+              <input
+                type="text"
+                name="companyAddress"
+                value={formData.companyAddress}
+                onChange={handleChange}
+                className="w-full border p-2 rounded mb-2"
+              />
 
-          <label className="block mt-2">Applying as Visitor:</label>
-          <input
-            type="checkbox"
-            name="applyingAsVisitor"
-            checked={formData.applyingAsVisitor}
-            onChange={handleChange}
-          />
-        </>
-      )}
+              <label className="block mt-2">Pin Code:</label>
+              <input
+                type="number"
+                name="pin_code"
+                value={formData.pin_code}
+                onChange={handleChange}
+                className="w-full border p-2 rounded mb-2"
+              />
 
-      {/* Submit Button */}
-      <button
-        className="w-full bg-blue-500 text-white p-2 mt-4 rounded disabled:bg-gray-400"
-        disabled={!emailVerified}
-        onClick={handleSubmitRegistrationForm}
-      >
-        Submit
-      </button>
-    </div>
+              <label className="block mt-2">Specialized In:</label>
+              <input
+                type="text"
+                name="specializedIn"
+                value={formData.specializedIn}
+                onChange={handleChange}
+                className="w-full border p-2 rounded mb-2"
+              />
+
+              <label className="block mt-2">GST:</label>
+              <input
+                type="text"
+                name="gst"
+                value={formData.gst}
+                onChange={handleChange}
+                className="w-full border p-2 rounded mb-2"
+              />
+
+              <label className="block mt-2">CIN Number:</label>
+              <input
+                type="text"
+                name="cinNumber"
+                value={formData.cinNumber}
+                onChange={handleChange}
+                className="w-full border p-2 rounded mb-2"
+              />
+
+              <label className="block mt-2">Applying for Sponsorship:</label>
+              <input
+                type="checkbox"
+                name="applyingForSponsership"
+                checked={formData.applyingForSponsership}
+                onChange={handleChange}
+              />
+
+              <label className="block mt-2">Applying for Booking Stalls:</label>
+              <input
+                type="checkbox"
+                name="applyingForBookingStalls"
+                checked={formData.applyingForBookingStalls}
+                onChange={handleChange}
+              />
+
+              <label className="block mt-2">Applying as Visitor:</label>
+              <input
+                type="checkbox"
+                name="applyingAsVisitor"
+                checked={formData.applyingAsVisitor}
+                onChange={handleChange}
+              />
+            </>
+          )}
+
+          {/* Submit Button */}
+          <button
+            className="w-full bg-blue-500 text-white p-2 mt-4 rounded disabled:bg-gray-400"
+            disabled={!emailVerified}
+            onClick={handleSubmitRegistrationForm}
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </>
   );
 };
 
