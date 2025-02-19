@@ -1,18 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "./Header";
 import Hero from "../assets/Hero.jpg";
+
+const backend = 'https://kisaan-mahakumbh-backend.vercel.app/api/v1'
 
 const UserRegistrationForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    age: "",
+    age: 0,
     address: "",
     password: "",
-    role: "USER", // Default role
+    role: "User", // Default role
     companyName: "",
     companyAddress: "",
     pin_code: "",
@@ -28,6 +30,114 @@ const UserRegistrationForm = () => {
 
   const [otpEmail, setOtpEmail] = useState("");
   const [emailVerified, setEmailVerified] = useState(false);
+  const { id } = useParams()
+
+  const validateForm = (formData) => {
+    const errors = {};
+
+    // Name Validation
+    if (!formData.name.trim()) {
+      errors.name = "Name is required.";
+    }
+
+    // Email Validation
+    if (!formData.email.trim()) {
+      errors.email = "Email is required.";
+    } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email)) {
+      errors.email = "Invalid email format.";
+    }
+
+    // Phone Number Validation
+    if (!formData.phone.trim()) {
+      errors.phone = "Phone number is required.";
+    } else if (!/^\d{10}$/.test(formData.phone)) {
+      errors.phone = "Phone number must be 10 digits.";
+    }
+
+    // Age Validation
+    if (formData.age <= 0) {
+      errors.age = "Age must be greater than 0.";
+    }
+
+    // Address Validation
+    if (!formData.address.trim()) {
+      errors.address = "Address is required.";
+    }
+
+    // Password Validation
+    if (!formData.password.trim()) {
+      errors.password = "Password is required.";
+    } else if (formData.password.length < 6) {
+      errors.password = "Password must be at least 6 characters long.";
+    }
+
+    // Role-based Validations
+    if (formData.role === "Entrepreneur" || formData.role === "Sponsor") {
+      if (!formData.companyName.trim()) {
+        errors.companyName = "Company name is required.";
+      }
+      if (!formData.companyAddress.trim()) {
+        errors.companyAddress = "Company address is required.";
+      }
+      if (!formData.pin_code.trim()) {
+        errors.pin_code = "Pin code is required.";
+      } else if (!/^\d{6}$/.test(formData.pin_code)) {
+        errors.pin_code = "Pin code must be 6 digits.";
+      }
+      if (!formData.specializedIn.trim()) {
+        errors.specializedIn = "Specialization field is required.";
+      }
+      if (!formData.gst.trim()) {
+        errors.gst = "GST number is required.";
+      } else if (!/^\d{15}$/.test(formData.gst)) {
+        errors.gst = "GST number must be 15 characters.";
+      }
+      if (!formData.cinNumber.trim()) {
+        errors.cinNumber = "CIN number is required.";
+      }
+    }
+
+    // Sponsorship Validation
+    if (formData.applyingForSponsership && !formData.companyName.trim()) {
+      errors.applyingForSponsership = "Company name is required for sponsorship.";
+    }
+
+    // Booking Stall Validation
+    if (formData.applyingForBookingStalls && !formData.companyAddress.trim()) {
+      errors.applyingForBookingStalls = "Company address is required for booking stalls.";
+    }
+    // Visitor Validation
+    if (formData.applyingAsVisitor && !formData.name.trim()) {
+      errors.applyingAsVisitor = "Name is required for visitor registration.";
+    }
+
+    return errors;
+  };
+
+
+  async function verifyStatus(id) {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const response = await axios.post(`${backend}/payment/verify`, {
+        transactionId: id
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      localStorage.removeItem("token");
+      alert("Payment successful!");
+      navigate("/");
+    } catch (error) {
+      console.log("Error verifying status", error);
+    }
+  }
+
+  useEffect(() => {
+    if (id) {
+      verifyStatus(id)
+    }
+  }, [id])
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -40,11 +150,10 @@ const UserRegistrationForm = () => {
   const handleSendEmailOTP = async () => {
     try {
       const response = await axios.post(
-        "https://kisaan-mahakumbh-backend.vercel.app/api/v1/otp/send-email-otp",
+        `${backend}/otp/send-email-otp`,
         { email: formData.email }
       );
       alert("OTP sent successfully!");
-      console.log(response.data); // Log the response from the API
     } catch (error) {
       alert("Failed to send OTP");
       console.error(
@@ -57,12 +166,11 @@ const UserRegistrationForm = () => {
   const handleVerifyEmailOTP = async () => {
     try {
       const response = await axios.post(
-        "https://kisaan-mahakumbh-backend.vercel.app/api/v1/otp/verify-email-otp",
+        `${backend}/otp/verify-email-otp`,
         { email: formData.email, otp: otpEmail }
       );
       alert("Email verified successfully!");
       setEmailVerified(true);
-      console.log(response.data); // Log the response from the API
     } catch (error) {
       alert("Failed to verify OTP");
       console.error(
@@ -72,22 +180,94 @@ const UserRegistrationForm = () => {
     }
   };
 
+  async function generateTicket(token) {
+    try {
+      const response = await axios.post(`${backend}/api/v1/ticket/generate`, {}, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      alert("Ticket Sent successfully to your email !");
+    } catch (error) {
+      console.log("Error generating ticket", error);
+    }
+  }
+
+  const handlePayment = async (token) => {
+    // Check mobile number before proceeding
+
+    const amount = 1
+
+    const orderDetails = {
+      amount,
+      transactionId: "T" + Date.now(),
+      role: formData.role
+    };
+
+    try {
+      // Make a POST request to create the order
+      const response = await axios.post(`${backend}/payment/process`, orderDetails, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      if (response.data.data.payment.message === 'Sponsorship interest received') {
+        alert("Sponsorship interest received successfully!");
+        return
+      } else {
+        if (response.data && response.data.data && response.data.data.payment.phonePeResponse.data.instrumentResponse) {
+          const redirectInfo = response.data.data.payment.phonePeResponse.data.instrumentResponse.redirectInfo;
+
+          if (redirectInfo && redirectInfo.url) {
+            // Redirect the user to the payment gateway URL
+            window.location.href = redirectInfo.url;
+          } else {
+            console.log("Redirect URL not found in the response");
+            // Optionally, notify the user that payment initiation failed.
+          }
+        } else {
+          console.log("Invalid response structure from payment gateway");
+          // Optionally, notify the user of an error with payment initiation.
+        }
+      }
+      // console.log(response.data);
+    } catch (error) {
+      console.error("Payment failed:", error);
+      // setError("Payment failed. Please try again later.");
+    } finally {
+      // setLoading(false);
+    }
+
+  };
+
   const handleSubmitRegistrationForm = async () => {
     try {
+      const errors = validateForm(formData);
+
+      if (Object.keys(errors).length > 0) {
+        let errorMessages = Object.values(errors).join("\n");
+        alert("Please fix the following errors:\n\n" + errorMessages);
+      }
       const response = await axios.post(
-        "https://kisaan-mahakumbh-backend.vercel.app/api/v1/auth/signup",
+        `${backend}/auth/signup`,
         formData
       );
       alert("Registration successful!");
-      console.log(response.data); // Log the response from the API
+      const token = response.data.data.token
+      localStorage.setItem("token", JSON.stringify(token));
+      if (formData.role === "User" || formData.role === "visitor") {
+        generateTicket(token)
+      } else {
+        handlePayment(token)
+      }
       setFormData({
         name: "",
         email: "",
         phone: "",
-        age: "",
+        age: 0,
         address: "",
         password: "",
-        role: "USER",
+        role: "User",
         companyName: "",
         companyAddress: "",
         pin_code: "",
@@ -98,7 +278,7 @@ const UserRegistrationForm = () => {
         applyingForBookingStalls: false,
         applyingAsVisitor: false,
       });
-      navigate("/");
+
     } catch (error) {
       alert("Failed to register");
       console.error(
@@ -107,6 +287,8 @@ const UserRegistrationForm = () => {
       );
     }
   };
+
+
 
   return (
     <>
@@ -150,6 +332,7 @@ const UserRegistrationForm = () => {
                 <input
                   type="text"
                   name="name"
+                  placeholder="Full Name"
                   value={formData.name}
                   onChange={handleChange}
                   className="w-full py-4 px-4 bg-white rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
@@ -164,6 +347,8 @@ const UserRegistrationForm = () => {
                 </label>
                 <input
                   type="number"
+                  onWheel={(e) => e.currentTarget.blur()}
+                  min={0}
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
@@ -181,6 +366,7 @@ const UserRegistrationForm = () => {
                 <input
                   type="number"
                   name="age"
+                  placeholder="Age"
                   value={formData.age}
                   onChange={handleChange}
                   className="w-full py-4 px-4 bg-white rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
@@ -199,6 +385,7 @@ const UserRegistrationForm = () => {
                   <input
                     type="email"
                     name="email"
+                    placeholder="Email"
                     value={formData.email}
                     onChange={handleChange}
                     className="w-[70%] py-4 px-4 bg-white rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
@@ -227,11 +414,10 @@ const UserRegistrationForm = () => {
                 />
                 <button
                   onClick={handleVerifyEmailOTP}
-                  className={`ml-2 px-10 py-4 rounded-full text-white cursor-pointer ${
-                    emailVerified
-                      ? "bg-green-500"
-                      : "bg-[#01210f]  hover:bg-[#01210f] "
-                  } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                  className={`ml-2 px-10 py-4 rounded-full text-white cursor-pointer ${emailVerified
+                    ? "bg-green-500"
+                    : "bg-[#01210f]  hover:bg-[#01210f] "
+                    } focus:outline-none focus:ring-2 focus:ring-blue-500`}
                   disabled={emailVerified}
                 >
                   {emailVerified ? "Verified" : "Verify"}
@@ -249,6 +435,7 @@ const UserRegistrationForm = () => {
                 <input
                   type="password"
                   name="password"
+                  placeholder="Password"
                   value={formData.password}
                   onChange={handleChange}
                   className="w-full py-4 px-4 bg-white rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
@@ -264,6 +451,7 @@ const UserRegistrationForm = () => {
                 <input
                   type="text"
                   name="address"
+                  placeholder="Address"
                   value={formData.address}
                   onChange={handleChange}
                   className="w-full py-4 px-4 bg-white rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
@@ -283,10 +471,10 @@ const UserRegistrationForm = () => {
                 className="w-full py-4 px-4 bg-white rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
                 required
               >
-                <option value="USER">User</option>
-                <option value="SPONSOR">Sponsor</option>
-                <option value="VISITOR">Visitor</option>
-                <option value="ENTREPRENEUR">Entrepreneur</option>
+                <option value="User">User</option>
+                <option value="sponsor">Sponsor</option>
+                <option value="visitor">Visitor</option>
+                <option value="entrepreneur">Entrepreneur</option>
               </select>
             </div>
 

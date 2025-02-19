@@ -9,6 +9,7 @@ import ContactForm from './pages/Contact.jsx'
 import About from './pages/About.jsx'
 import Gallery from './pages/Gallery.jsx'
 import Sponsers from './pages/Sponsers.jsx'
+import Newevent from './pages/Newevent.jsx'
  
 
 const router = createBrowserRouter(
@@ -16,11 +17,12 @@ const router = createBrowserRouter(
     <>
       <Route path="/" element={<App />} >
         <Route path="/" element={<Home />} />
-        <Route path='/registration' element={<UserRegistrationForm />} />
+        <Route path='/registration/:id?' element={<UserRegistrationForm />} />
         <Route path='/contact-us' element={<ContactForm />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/sponsers" element={<Sponsers />} />
         <Route path="/about" element={<About />} />
+        <Route path="/Newevent" element={<Newevent />} />
       </Route>
     </>
   )
