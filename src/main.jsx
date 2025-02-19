@@ -9,6 +9,7 @@ import ContactForm from './pages/Contact.jsx'
 import About from './pages/About.jsx'
 import Gallery from './pages/Gallery.jsx'
 import Sponsers from './pages/Sponsers.jsx'
+import Newevent from './pages/Newevent.jsx'
  
 
 const router = createBrowserRouter(
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/sponsers" element={<Sponsers />} />
         <Route path="/about" element={<About />} />
+        <Route path="/Newevent" element={<Newevent />} />
       </Route>
     </>
   )
