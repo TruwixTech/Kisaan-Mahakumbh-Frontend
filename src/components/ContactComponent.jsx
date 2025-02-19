@@ -46,7 +46,7 @@ const ContactComponent = () => {
       };
   return (
     <div>
-       <div className="grid md:grid-cols-2 gap-8">
+       <div className="grid md:grid-cols-2 gap-8 font-[Roboto]">
     {/* Left Section - Contact Details */}
     <div className="space-y-6 mt-8">
       <h3 className="text-[#374836] text-2xl font-bold xl:text-3xl mb-1">| Contact us |</h3>
@@ -65,7 +65,7 @@ const ContactComponent = () => {
     </div>
 
     {/* Right Section - Contact Form */}
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6 font-[Roboto]">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Name */}
         <div>
