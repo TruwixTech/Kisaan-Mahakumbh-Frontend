@@ -49,8 +49,8 @@ const ContactComponent = () => {
        <div className="grid md:grid-cols-2 gap-8">
     {/* Left Section - Contact Details */}
     <div className="space-y-6 mt-8">
-      <h3 className="text-4xl font-bold text-[#374836]">| Contact us |</h3>
-      <h3 className="text-6xl font-bold text-[#374836] leading-20">Join Us At <br /> Kisan Kumbh 2025</h3>
+      <h3 className="text-[#374836] text-2xl font-bold xl:text-3xl mb-1">| Contact us |</h3>
+      <h3 className="text-6xl font-bold text-[#374836] leading-15">Join Us At <br /> Kisan Kumbh 2025</h3>
       
       <div>
         <h4 className="font-semibold text-2xl  text-[#373f43] mb-4">Emails</h4>
@@ -145,7 +145,7 @@ const ContactComponent = () => {
         <button
           type="submit"
           disabled={loading}
-          className="bg-[#01210f] w-[300px] text-white py-3 px-6 rounded-lg hover:bg-[#203429] disabled:bg-gray-400"
+          className="bg-[#01210f] text-white p-3 px-10 rounded-2xl hover:bg-[#203429] disabled:bg-gray-400"
         >
           {loading ? "Sending..." : "Send Message"}
         </button>
