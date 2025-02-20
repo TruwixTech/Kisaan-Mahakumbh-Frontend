@@ -1,6 +1,7 @@
 import React from 'react'
 import FooterLogo from '../assets/FooterLogo.png'
 import { FiArrowUpRight } from "react-icons/fi";
+import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
@@ -35,10 +36,13 @@ function Footer() {
               <div className='w-auto h-auto flex flex-col gap-6'>
                 <h1 className='text-white font-bold'>Quick Links</h1>
                 <div className='flex flex-col text-[#FFFFFFB2] lg:gap-2'>
-                  <span>Home</span>
-                  <span>Services</span>
-                  <span>About Us</span>
-                  <span>Plans & Pricing</span>
+                  <Link to="/">Home</Link>
+                  <Link to="/about">About Us</Link>
+                  <Link to="/event">Events</Link>
+                  <Link to="/news">News</Link>
+                  <Link to="/gallery">Gallery</Link>
+                  <Link to="/contact-us">Contact</Link>
+                  <Link to="/sponsers">Sponsorship</Link>
                 </div>
               </div>
               <div className='w-auto h-auto flex flex-col gap-6'>

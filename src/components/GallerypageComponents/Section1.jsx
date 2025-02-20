@@ -25,7 +25,7 @@ function Section1() {
         </div>
         <Header />
       </div>
-      <h1 className='text-center text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-[Roboto] mt-8'>Gallery</h1>
+      <h1 className='text-center text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-[Roboto] mb-6 mt-8'>Gallery</h1>
       <div className='w-full h-auto flex items-center justify-center mt-1'>
         <span className='flex items-center justify-center text-black gap-1'>
           <FaHome size={20} />
