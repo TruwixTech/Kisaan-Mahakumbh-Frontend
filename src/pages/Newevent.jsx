@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
 import Hero from "../assets/Hero.jpg";
 import { FaHome } from "react-icons/fa";
 import Section1 from "../components/NewseventComponents/Section1";
 import Section2 from "../components/NewseventComponents/Section2";
 function Newevent() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <div
@@ -37,7 +40,10 @@ function Newevent() {
               <FaHome size={20} />
               Home
             </span>
-            <span className="text-[#0000004D]"> - Pages - News About Event</span>
+            <span className="text-[#0000004D]">
+              {" "}
+              - Pages - News About Event
+            </span>
           </div>
         </div>
 

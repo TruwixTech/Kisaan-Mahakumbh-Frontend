@@ -2,8 +2,12 @@ import ContactComponent from "../components/ContactComponent";
 import Hero from "../assets/Hero.jpg";
 import { FaHome } from "react-icons/fa";
 import Header from "../components/Header";
+import { useEffect } from "react";
 
 const ContactForm = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <div className="bg-[#D9D9D9] w-full h-auto font-[Roboto]">
