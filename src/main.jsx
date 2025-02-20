@@ -10,7 +10,7 @@ import About from './pages/About.jsx'
 import Gallery from './pages/Gallery.jsx'
 import Sponsers from './pages/Sponsers.jsx'
 import Newevent from './pages/Newevent.jsx'
- 
+import Event from './pages/Event.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +23,7 @@ const router = createBrowserRouter(
         <Route path="/sponsers" element={<Sponsers />} />
         <Route path="/about" element={<About />} />
         <Route path="/news" element={<Newevent />} />
+        <Route path="/event" element={<Event />} />
       </Route>
     </>
   )
