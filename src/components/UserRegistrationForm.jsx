@@ -182,7 +182,7 @@ const UserRegistrationForm = () => {
 
   async function generateTicket(token) {
     try {
-      const response = await axios.post(`${backend}/api/v1/ticket/generate`, {}, {
+      const response = await axios.post(`${backend}/ticket/generate`, {}, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -280,7 +280,7 @@ const UserRegistrationForm = () => {
       });
 
     } catch (error) {
-      alert("Failed to register");
+      alert(error.response?.data?.data?.message || "Failed to register");
       console.error(
         "Error registering:",
         error.response?.data || error.message
