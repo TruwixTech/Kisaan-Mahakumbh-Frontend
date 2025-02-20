@@ -22,12 +22,12 @@ function Footer() {
               sustainable and innovative farming practices.
             </p>
             <div className="w-full h-auto">
-              <button className="px-4 py-2 rounded-full text-white bg-[#146a3a] flex justify-center items-center gap-3 xl:px-8 xl:py-3 xl:text-lg">
+              <Link to="/contact-us" className="px-4 py-2 rounded-full text-white bg-[#146a3a] flex justify-center items-center gap-3 xl:px-8 xl:py-3 xl:text-lg">
                 Contact Us
                 <span className="h-6 w-6 rounded-full bg-white flex justify-center items-center">
                   <FiArrowUpRight size={25} className="text-[#146a3a]" />
                 </span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -46,7 +46,7 @@ function Footer() {
             <div className="w-full h-auto flex flex-wrap justify-between">
               <div className="w-auto h-auto flex flex-col gap-6">
                 <h1 className="text-white font-bold">Quick Links</h1>
-                <div className="flex flex-col text-[#FFFFFFB2] lg:gap-2">
+                <div className="flex flex-col text-[#FFFFFFB2] gap-2">
                   <Link to="/">Home</Link>
                   <Link to="/about">About Us</Link>
                   <Link to="/event">Events</Link>
@@ -55,7 +55,7 @@ function Footer() {
               </div>
               <div className="w-auto h-auto flex flex-col gap-6">
                 <h1 className="text-white font-bold">Resources</h1>
-                <div className="flex flex-col text-[#FFFFFFB2] lg:gap-2">
+                <div className="flex flex-col text-[#FFFFFFB2] gap-2">
                   <Link to="/gallery">Gallery</Link>
                   <Link to="/contact-us">Contact</Link>
                   <Link to="/sponsers">Sponsorship</Link>
@@ -63,7 +63,7 @@ function Footer() {
               </div>
               <div className="w-auto h-auto flex flex-col gap-6">
                 <h1 className="text-white font-bold">Company</h1>
-                <div className="flex flex-col text-[#FFFFFFB2] lg:gap-2">
+                <div className="flex flex-col text-[#FFFFFFB2] gap-2">
                   <span>About Us</span>
                   <span>Contact Us</span>
                   <span>Career Tips</span>
