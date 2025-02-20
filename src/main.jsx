@@ -16,14 +16,14 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<App />} >
-        <Route path="/" element={<Home />} />
+        <Route path="/:id?" element={<Home />} />
         <Route path='/registration/:id?' element={<UserRegistrationForm />} />
-        <Route path='/contact-us' element={<ContactForm />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/sponsers" element={<Sponsers />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/news" element={<Newevent />} />
-        <Route path="/event" element={<Event />} />
+        <Route path='/contact-us/:id?' element={<ContactForm />} />
+        <Route path="/gallery/:id?" element={<Gallery />} />
+        <Route path="/sponsers/:id?" element={<Sponsers />} />
+        <Route path="/about/:id?" element={<About />} />
+        <Route path="/news/:id?" element={<Newevent />} />
+        <Route path="/event/:id?" element={<Event />} />
       </Route>
     </>
   )

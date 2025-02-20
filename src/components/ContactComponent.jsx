@@ -29,7 +29,7 @@ const ContactComponent = () => {
         try {
           const response = await axios.post("https://kisaan-mahakumbh-backend.vercel.app/api/v1/contact", formData);
           alert("Message sent successfully!");
-          console.log(response.data); // Log the response from the API
+          // console.log(response.data); // Log the response from the API
           setFormData({
             name: "",
             email: "",
