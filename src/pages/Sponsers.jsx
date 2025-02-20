@@ -8,7 +8,6 @@ function Sponsers() {
     <div className='w-full h-auto flex flex-col'>
         <Section1 />
         <Section2 />
-        
     </div>
   )
 }
