@@ -29,7 +29,7 @@ const ContactComponent = () => {
         try {
           const response = await axios.post("https://kisaan-mahakumbh-backend.vercel.app/api/v1/contact", formData);
           alert("Message sent successfully!");
-          console.log(response.data); // Log the response from the API
+          // console.log(response.data); // Log the response from the API
           setFormData({
             name: "",
             email: "",
@@ -145,7 +145,7 @@ const ContactComponent = () => {
         <button
           type="submit"
           disabled={loading}
-          className="bg-[#01210f] text-white p-3 px-10 rounded-2xl hover:bg-[#203429] disabled:bg-gray-400"
+          className="bg-[#01210f] text-white p-3 px-10 rounded-2xl hover:bg-[#203429] cursor-pointer disabled:bg-gray-400"
         >
           {loading ? "Sending..." : "Send Message"}
         </button>
