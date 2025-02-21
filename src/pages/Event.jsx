@@ -5,6 +5,8 @@ import { FaHome } from "react-icons/fa";
 function Event() {
     const sessions = [
         {
+
+            theme: "Theme1",
             time: "12:00 - 1:30",
             title: "SUSTAINABILITY AND CLIMATE RESILIENCE",
             details: [
@@ -15,9 +17,8 @@ function Event() {
                 { topic: "Water Conservation & Efficient Irrigation Systems", speaker: "Prof. P K Singh/ Prof Vivek" },
             ],
         },
-    ];
-    const theme2 = [
         {
+            theme: "Theme2",
             time: "1:30 - 2:30",
             title: "Technology and Innovation in Agriculture",
             details: [
@@ -28,11 +29,9 @@ function Event() {
                 { topic: "Vertical Farming & Hydroponics Innovations", speaker: "" },
             ],
         },
-
-
-    ]
-    const theme3 = [
         {
+
+            theme: "Theme3",
             time: "4:00 - 5:30",
             title: "Agro Businesses & Startups",
             details: [
@@ -43,10 +42,12 @@ function Event() {
                 { topic: "Export-Oriented Agribusinesses & Global Market Access", speaker: "" },
             ],
         },
-
-    ]
-    const theme4 = [
+    ];
+   
+    const sessions2 = [
         {
+
+            theme: "Theme4",
             time: "10:00 - 11:30",
             title: "Agriculture Economics & Cooperatives",
             details: [
@@ -57,10 +58,8 @@ function Event() {
                 { topic: "Agri-Financing & Credit Accessibility for Farmers", speaker: "" },
             ],
         },
-
-    ]
-    const theme5 = [
         {
+            theme: "Theme5",
             time: "11:30 - 01:00",
             title: "Farmer & Consumer Ecosystem",
             details: [
@@ -71,10 +70,9 @@ function Event() {
                 { topic: "Traditional Knowledge & Indigenous Farming Practices", speaker: "" },
             ],
         },
-
-    ]
-    const theme6 = [
         {
+
+            theme: "Theme6",
             time: "02:00 - 03:30",
             title: "Marketing and Value Addition of Agri Produce",
             details: [
@@ -85,8 +83,13 @@ function Event() {
                 { topic: "Export Potential of Indian Agricultural Products", speaker: "" },
             ],
         },
+    ];
 
-    ]
+   
+  
+
+    
+  
 
     return (
         <div>
@@ -129,12 +132,13 @@ function Event() {
                 </div>
 
                 <div className=' w-full h-auto p-2 md:p-6 bg-white rounded-3xl mb-7 '>
-                    <div className="   px-2 md:px-12 lg:px-12 ">
-                        
-                        <h1 className="text-4xl font-bold text-gray-800 mb-6 font-[Roboto] flex flex-col justify-center items-center lg:justify-start md:items-start ">THEME 1</h1>
-                        {/* First session */}
-                        {sessions.map((session, index) => (
-                            <div key={index} className="w-full mb-6 flex flex-col items-center lg:flex-row lg:items-start  gap-5">
+                    {sessions.map((session, index) => (
+                        <div key={index} className="   px-2 md:px-12 lg:px-12 ">
+
+                            <h1 className="text-4xl font-bold text-gray-800 mb-6 font-[Roboto] flex flex-col justify-center items-center lg:justify-start md:items-start ">{session.theme}</h1>
+                            {/* First session */}
+
+                            <div className="w-full mb-6 flex flex-col items-center lg:flex-row lg:items-start  gap-5">
 
                                 <div className='w-full flex justify-center lg:justify-start md:w-[20%]'>
                                     <p className="text-4xl font-semibold text-gray-700 ">{session.time}</p>
@@ -155,33 +159,36 @@ function Event() {
                                     </div>
                                 </div>
                             </div>
-                        ))}
-
-
-
-                    </div>
-
-
+                           </div>
+                    ))}
                 </div>
-                {/* theme2 */}
 
+
+     {/* day two */}
+
+     <div className='w-full flex  flex-col   md:py-8 py-3 px-2 md:px-0'>
+                 
+                    <span className='text-[#374836] text-[52px] font-[Roboto]'>Day 2: Theme of farmer</span>
+                </div>
 
                 <div className=' w-full h-auto p-2 md:p-6 bg-white rounded-3xl mb-7 '>
-                    <div className=" px-4 md:px-12 lg:px-12 ">
-                        <h1 className="text-4xl font-bold text-gray-800 mb-6 font-[Roboto] flex flex-col justify-center items-center lg:justify-start md:items-start">THEME 2</h1>
-                        {/* First session */}
-                        {theme2.map((theme2, index) => (
-                            <div key={index} className="mb-6 flex flex-col items-center lg:flex-row lg:items-start  gap-5">
+                    {sessions2.map((session2, index) => (
+                        <div key={index} className="   px-2 md:px-12 lg:px-12 ">
+
+                            <h1 className="text-4xl font-bold text-gray-800 mb-6 font-[Roboto] flex flex-col justify-center items-center lg:justify-start md:items-start ">{session2.theme}</h1>
+                            {/* First session */}
+
+                            <div className="w-full mb-6 flex flex-col items-center lg:flex-row lg:items-start  gap-5">
 
                                 <div className='w-full flex justify-center lg:justify-start md:w-[20%]'>
-                                    <p className="text-4xl font-semibold text-gray-700 ">{theme2.time}</p>
+                                    <p className="text-4xl font-semibold text-gray-700 ">{session2.time}</p>
                                 </div>
                                 <div className='lg:hidden block border-b-2  w-full  mx-10 border-gray-800'></div>
                                 <div className='lg:block hidden border-r-2 lg:h-[300px] mx-10 border-gray-800'></div>
                                 <div className='w-full md:w-[70%] flex  flex-col gap-5'>
-                                    <h2 className="md:text-4xl text-2xl font-bold text-gray-900 items-center font-[Roboto] ">{theme2.title}</h2>
+                                    <h2 className="md:text-4xl text-2xl font-bold text-gray-900 items-center font-[Roboto] ">{session2.title}</h2>
                                     <div className="mt-2 text-gray-600">
-                                        {theme2.details.map((detail, i) => (
+                                        {session2.details.map((detail, i) => (
                                             <div key={i} className=" w-full flex flex-col lg:flex-row gap-4  justify-center lg:justify-start">
                                                 <span className=' w-full md:w-[70%] text-[20px] font-[Roboto]  '>{detail.topic}</span>
                                                 <div className='flex gap-5'>
@@ -192,155 +199,18 @@ function Event() {
                                     </div>
                                 </div>
                             </div>
-                        ))}
-
-
-
-                    </div>
-
-
+                           </div>
+                    ))}
                 </div>
 
+                
+              
 
+             
 
-                {/* theme3 */}
+              
 
-                <div className=' w-full h-auto p-2 md:p-6 bg-white rounded-3xl mb-7 '>
-                    <div className=" px-4 md:px-12 lg:px-12 ">
-                        <h1 className="text-4xl font-bold text-gray-800 mb-6 font-[Roboto] flex flex-col justify-center items-center lg:justify-start md:items-start">THEME 3</h1>
-                        {/* First session */}
-                        {theme3.map((theme3, index) => (
-                            <div key={index} className="mb-6 flex flex-col items-center lg:flex-row lg:items-start  gap-5">
-
-                                <div className='w-full flex justify-center lg:justify-start md:w-[20%]'>
-                                    <p className="text-4xl font-semibold text-gray-700 ">{theme3.time}</p>
-                                </div>
-                                <div className='lg:hidden block border-b-2  w-full  mx-10 border-gray-800'></div>
-                                <div className='lg:block hidden border-r-2 lg:h-[300px] mx-10 border-gray-800'></div>
-                                <div className=' w-full md:w-[70%] flex  flex-col gap-5'>
-                                    <h2 className="md:text-4xl text-2xl font-bold text-gray-900 items-center font-[Roboto] ">{theme3.title}</h2>
-                                    <div className="mt-2 text-gray-600">
-                                        {theme3.details.map((detail, i) => (
-                                            <div key={i} className=" w-full flex flex-col lg:flex-row gap-4  justify-center lg:justify-start">
-                                                <span className=' w-full md:w-[70%] text-[20px] font-[Roboto]  '>{detail.topic}</span>
-                                                <div className='flex gap-5'>
-                                                    <span className=" w-full text-gray-400 text-[20px] font-[Roboto]">{detail.speaker}</span>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                        </div>
-                </div>
-
-                {/* theme4 */}
-                <div className=' w-full h-auto p-2 md:p-6 bg-white rounded-3xl mb-7 '>
-                    <div className=" px-4 md:px-12 lg:px-12 ">
-                        <h1 className="text-4xl font-bold text-gray-800 mb-6 font-[Roboto] flex flex-col justify-center items-center lg:justify-start md:items-start">THEME 4</h1>
-                        {/* First session */}
-                        {theme4.map((theme4, index) => (
-                            <div key={index} className="mb-6 flex flex-col items-center lg:flex-row lg:items-start  gap-5">
-
-                                <div className='w-full flex justify-center lg:justify-start md:w-[20%]'>
-                                    <p className="text-4xl font-semibold text-gray-700 ">{theme4.time}</p>
-                                </div>
-                                <div className='lg:hidden block border-b-2  w-full  mx-10 border-gray-800'></div>
-                                <div className='lg:block hidden border-r-2 lg:h-[300px] mx-10 border-gray-800'></div>
-                                <div className=' w-full md:w-[70%] flex  flex-col gap-5'>
-                                    <h2 className="md:text-4xl text-2xl font-bold text-gray-900 items-center font-[Roboto]  ">{theme4.title}</h2>
-                                    <div className="mt-2 text-gray-600">
-                                        {theme4.details.map((detail, i) => (
-                                            <div key={i} className=" w-full flex flex-col lg:flex-row gap-4  justify-center lg:justify-start">
-                                                <span className=' w-full md:w-[70%] text-[20px] font-[Roboto]  '>{detail.topic}</span>
-                                                <div className='flex gap-5'>
-                                                    <span className=" w-full text-gray-400 text-[20px] font-[Roboto]">{detail.speaker}</span>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-
-             </div>
-          </div>
-
-                {/* theme5 */}
-
-                <div className=' w-full h-auto p-2 md:p-6 bg-white rounded-3xl mb-7 '>
-                    <div className=" px-4 md:px-12 lg:px-12 ">
-                        <h1 className="text-4xl font-bold text-gray-800 mb-6 font-[Roboto] flex flex-col justify-center items-center lg:justify-start md:items-start">THEME 5</h1>
-                        {/* First session */}
-                        {theme5.map((theme5, index) => (
-                            <div key={index} className="mb-6 flex flex-col items-center lg:flex-row lg:items-start  gap-5">
-
-                                <div className='w-full flex justify-center lg:justify-start md:w-[20%]'>
-                                    <p className="text-4xl font-semibold text-gray-700 ">{theme5.time}</p>
-                                </div>
-                                <div className='lg:hidden block border-b-2  w-full  mx-10 border-gray-800'></div>
-                                <div className='lg:block hidden border-r-2 lg:h-[300px] mx-10 border-gray-800'></div>
-                                <div className='w-full md:w-[70%] flex  flex-col gap-5'>
-                                    <h2 className="md:text-4xl text-2xl font-bold text-gray-900 items-center font-[Roboto] ">{theme5.title}</h2>
-                                    <div className="mt-2 text-gray-600">
-                                        {theme5.details.map((detail, i) => (
-                                            <div key={i} className=" w-full flex flex-col lg:flex-row gap-4  justify-center lg:justify-start">
-                                                <span className=' w-full md:w-[70%] text-[20px] font-[Roboto]  '>{detail.topic}</span>
-                                                <div className='flex gap-5'>
-                                                    <span className=" w-full text-gray-400 text-[20px] font-[Roboto]">{detail.speaker}</span>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-
-
-
-                    </div>
-
-
-                </div>
-    
-    {/* theme6 */}
-
-    <div className=' w-full h-auto p-6 bg-white rounded-3xl mb-7 '>
-                    <div className=" px-2 md:px-12 lg:px-12 ">
-                        <h1 className="text-4xl font-bold text-gray-800 mb-6 font-[Roboto] flex flex-col justify-center items-center md:justify-start md:items-start">THEME 6</h1>
-                        {/* First session */}
-                        {theme6.map((theme6, index) => (
-                            <div key={index} className="mb-6 flex flex-col items-center lg:flex-row lg:items-start  gap-5">
-
-                                <div className='w-full flex justify-center lg:justify-start md:w-[20%]'>
-                                    <p className="text-4xl font-semibold text-gray-700 ">{theme6.time}</p>
-                                </div>
-                                <div className='lg:hidden block border-b-2  w-full  mx-10 border-gray-800'></div>
-                                <div className='lg:block hidden border-r-2 lg:h-[300px] mx-10 border-gray-800'></div>
-                                <div className='w-full md:w-[70%] flex  flex-col gap-5'>
-                                    <h2 className="md:text-4xl text-2xl font-bold text-gray-900 items-center font-[Roboto] ">{theme6.title}</h2>
-                                    <div className="mt-2 text-gray-600">
-                                        {theme6.details.map((detail, i) => (
-                                            <div key={i} className=" w-full flex flex-col lg:flex-row gap-4  justify-center lg:justify-start">
-                                                <span className=' w-full md:w-[70%] text-[20px] font-[Roboto]  '>{detail.topic}</span>
-                                                <div className='flex gap-5'>
-                                                    <span className=" w-full text-gray-400 text-[20px] font-[Roboto]">{detail.speaker}</span>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-
-
-
-                    </div>
-
-
-                </div>
-
+               
             </div>
 
 
