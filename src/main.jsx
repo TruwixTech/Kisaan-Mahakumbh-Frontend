@@ -10,19 +10,20 @@ import About from './pages/About.jsx'
 import Gallery from './pages/Gallery.jsx'
 import Sponsers from './pages/Sponsers.jsx'
 import Newevent from './pages/Newevent.jsx'
- 
+import Event from './pages/Event.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<App />} >
-        <Route path="/" element={<Home />} />
+        <Route path="/:id?" element={<Home />} />
         <Route path='/registration/:id?' element={<UserRegistrationForm />} />
-        <Route path='/contact-us' element={<ContactForm />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/sponsers" element={<Sponsers />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/Newevent" element={<Newevent />} />
+        <Route path='/contact-us/:id?' element={<ContactForm />} />
+        <Route path="/gallery/:id?" element={<Gallery />} />
+        <Route path="/sponsers/:id?" element={<Sponsers />} />
+        <Route path="/about/:id?" element={<About />} />
+        <Route path="/news/:id?" element={<Newevent />} />
+        <Route path="/event/:id?" element={<Event />} />
       </Route>
     </>
   )
