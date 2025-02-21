@@ -31,7 +31,7 @@ function Footer() {
               <input type="email" placeholder='Enter Email id' className='outline-none py-3 ml-2 px-2 w-[75%]' />
               <button className='bg-[#01210F] text-white rounded-full p-2 px-9'>Submit</button>
             </div>
-            <div className='w-full h-auto flex flex-wrap justify-between'>
+            <div className='w-full h-auto flex flex-wrap gap-32'>
               <div className='w-auto h-auto flex flex-col gap-6'>
                 <h1 className='text-white font-bold'>Quick Links</h1>
                 <div className='flex flex-col text-[#FFFFFFB2] lg:gap-2'>
@@ -51,15 +51,7 @@ function Footer() {
                   <span>Enterprise</span>
                 </div>
               </div>
-              <div className='w-auto h-auto flex flex-col gap-6'>
-                <h1 className='text-white font-bold'>Company</h1>
-                <div className='flex flex-col text-[#FFFFFFB2] lg:gap-2'>
-                  <span>About Us</span>
-                  <span>Contact Us</span>
-                  <span>Career Tips</span>
-                  <span>Career</span>
-                </div>
-              </div>
+             
             </div>
           </div>
         </div>
