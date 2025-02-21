@@ -3,6 +3,7 @@ import Header from '../Header'
 import Hero from '../../assets/Hero.jpg'
 import Marquee from 'react-fast-marquee';
 import Farmer from '../../assets/farmer.svg'
+import { NavLink } from 'react-router-dom';
 
 function HeroSection() {
     const [currentIndex, setCurrentIndex] = useState(0)
@@ -72,8 +73,8 @@ function HeroSection() {
                                         <div className='w-full h-auto flex flex-col gap-6'>
                                             <h1 className='font-bold text-white text-sm md:pr-6 lg:pr-20 xl:pr-60 lg:text-lg xl:text-xl'>{item.subTitle}</h1>
                                             <div className='w-full h-auto flex gap-6'>
-                                                <button className='font-bold bg-blur text-white bg-white/10 border border-white/30 shadow-lg hover:bg-white/20 transition-all w-40 py-2 rounded-2xl xl:w-52 xl:py-3 xl:text-lg cursor-pointer'>Register for Event</button>
-                                                <button className='font-bold bg-blur bg-white text-[#297F39] border border-[#297F39] w-20 py-2 rounded-xl xl:w-28 cursor-pointer xl:text-lg'>Join us</button>
+                                                <NavLink to='/registration' className='font-bold bg-blur text-white bg-white/10 border border-white/30 shadow-lg hover:bg-white/20 transition-all w-40 py-2 rounded-2xl xl:w-52 xl:py-3 xl:text-lg flex justify-center items-center cursor-pointer'>Register for Event</NavLink>
+                                                <NavLink to='/sponsers' className='font-bold bg-blur bg-white text-[#297F39] border border-[#297F39] w-20 py-2 rounded-xl xl:w-28 cursor-pointer xl:text-lg flex justify-center items-center'>Join us</NavLink>
                                             </div>
                                         </div>
                                         <div className='w-full h-auto flex md:w-auto xl:w-[650px] 2xl:w-[700px]'>
