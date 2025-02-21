@@ -43,7 +43,7 @@ function Footer() {
                 Submit
               </button>
             </div>
-            <div className="w-full h-auto flex flex-wrap justify-between">
+            <div className="w-full h-auto flex flex-wrap justify-around">
               <div className="w-auto h-auto flex flex-col gap-6">
                 <h1 className="text-white font-bold">Quick Links</h1>
                 <div className="flex flex-col text-[#FFFFFFB2] gap-2">
@@ -61,7 +61,7 @@ function Footer() {
                   <Link to="/sponsers">Sponsorship</Link>
                 </div>
               </div>
-              <div className="w-auto h-auto flex flex-col gap-6">
+              {/* <div className="w-auto h-auto flex flex-col gap-6">
                 <h1 className="text-white font-bold">Company</h1>
                 <div className="flex flex-col text-[#FFFFFFB2] gap-2">
                   <span>About Us</span>
@@ -69,7 +69,7 @@ function Footer() {
                   <span>Career Tips</span>
                   <span>Career</span>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

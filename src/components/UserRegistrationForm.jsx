@@ -87,11 +87,12 @@ const UserRegistrationForm = () => {
       if (!formData.specializedIn.trim()) {
         errors.specializedIn = "Specialization field is required.";
       }
-      if (!formData.gst.trim()) {
-        errors.gst = "GST number is required.";
-      } else if (!/^\d{15}$/.test(formData.gst)) {
-        errors.gst = "GST number must be 15 characters.";
-      }
+      // if (!formData.gst.trim()) {
+      //   errors.gst = "GST number is required.";
+      // } else if (!/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}[Z]{1}[0-9A-Z]{1}$/.test(formData.gst)) {
+      //   errors.gst = "Invalid GST number format.";
+      // }
+
       if (!formData.cinNumber.trim()) {
         errors.cinNumber = "CIN number is required.";
       }
@@ -314,16 +315,16 @@ const UserRegistrationForm = () => {
             <div className="relative flex gap-4 items-center">
               <div
                 className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${currentStep >= 1
-                    ? "bg-black text-white"
-                    : "bg-gray-200 text-black border border-gray-600"
+                  ? "bg-black text-white"
+                  : "bg-gray-200 text-black border border-gray-600"
                   }`}
               >
                 1
               </div>
               <span
                 className={`text-sm mt-2 h-8 ${currentStep >= 1
-                    ? "text-black font-medium"
-                    : "text-gray-500 font-semibold"
+                  ? "text-black font-medium"
+                  : "text-gray-500 font-semibold"
                   }`}
               >
                 Attendee Information
@@ -342,16 +343,16 @@ const UserRegistrationForm = () => {
             <div className="relative flex gap-4 items-center">
               <div
                 className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${currentStep >= 2
-                    ? "bg-black text-white"
-                    : "bg-gray-200 text-black border border-gray-600"
+                  ? "bg-black text-white"
+                  : "bg-gray-200 text-black border border-gray-600"
                   }`}
               >
                 2
               </div>
               <span
                 className={`text-sm mt-2 h-8 ${currentStep >= 2
-                    ? "text-black font-medium"
-                    : "text-gray-500 font-medium"
+                  ? "text-black font-medium"
+                  : "text-gray-500 font-medium"
                   }`}
               >
                 Preview
@@ -372,16 +373,16 @@ const UserRegistrationForm = () => {
                 <div className="relative flex gap-4 items-center">
                   <div
                     className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${currentStep >= 3
-                        ? "bg-gray-300 text-black"
-                        : "bg-gray-200 text-black border border-gray-600"
+                      ? "bg-gray-300 text-black"
+                      : "bg-gray-200 text-black border border-gray-600"
                       }`}
                   >
                     3
                   </div>
                   <span
                     className={`text-sm mt-2 h-8 ${currentStep >= 3
-                        ? "text-black font-medium"
-                        : "text-gray-500 font-medium"
+                      ? "text-black font-medium"
+                      : "text-gray-500 font-medium"
                       }`}
                   >
                     Payment
@@ -489,8 +490,8 @@ const UserRegistrationForm = () => {
           <button
             onClick={handleVerifyEmailOTP}
             className={`ml-2 px-10 py-4 rounded-full text-white cursor-pointer ${emailVerified
-                ? "bg-green-500"
-                : "bg-[#01210f]  hover:bg-[#01210f] "
+              ? "bg-green-500"
+              : "bg-[#01210f]  hover:bg-[#01210f] "
               } focus:outline-none focus:ring-2 focus:ring-blue-500`}
             disabled={emailVerified}
           >
