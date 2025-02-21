@@ -217,7 +217,7 @@ const UserRegistrationForm = () => {
   const handlePayment = async (token) => {
     // Check mobile number before proceeding
 
-    const amount = 110
+    const amount = 3
 
     const orderDetails = {
       amount,
