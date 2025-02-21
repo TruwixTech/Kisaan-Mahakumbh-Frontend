@@ -134,6 +134,7 @@ const UserRegistrationForm = () => {
   }
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     if (id) {
       verifyStatus(id)
     }
@@ -216,7 +217,7 @@ const UserRegistrationForm = () => {
   const handlePayment = async (token) => {
     // Check mobile number before proceeding
 
-    const amount = 1
+    const amount = 3
 
     const orderDetails = {
       amount,
@@ -423,9 +424,10 @@ const UserRegistrationForm = () => {
           <input
             type="number"
             name="phone"
+            onWheel={(e) => e.target.blur()}
             value={formData.phone}
             onChange={handleChange}
-            className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
+            className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600 "
             placeholder="+91"
             required
           />
@@ -440,6 +442,7 @@ const UserRegistrationForm = () => {
             type="number"
             name="age"
             value={formData.age}
+            onWheel={(e) => e.target.blur()}
             onChange={handleChange}
             className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
           />
@@ -596,6 +599,7 @@ const UserRegistrationForm = () => {
                 <input
                   type="number"
                   name="pin_code"
+                  onWheel={(e) => e.target.blur()}
                   value={formData.pin_code}
                   onChange={handleChange}
                   className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
