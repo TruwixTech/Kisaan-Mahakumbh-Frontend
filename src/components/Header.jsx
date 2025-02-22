@@ -29,7 +29,7 @@ function Header() {
         )}
         {/* Dropdown Menu */}
         {isOpen && (
-          <div className="absolute top-20 right-5 bg-white shadow-lg rounded-xl flex flex-col gap-4 p-4 z-50 lg:hidden">
+          <div className="absolute top-20 right-5 bg-white shadow-lg rounded-xl flex flex-col gap-4 p-4 z-[100] lg:hidden">
             <NavLink
               to="/"
               className="text-[#01210F] text-xl font-semibold"

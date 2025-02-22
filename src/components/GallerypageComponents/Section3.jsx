@@ -26,7 +26,7 @@ function Section3() {
             </div>
 
             {/* Grid for Cards */}
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 py-10'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 py-10'>
                 {cards.map((card, index) => (
                     <div key={index} className="bg-[#7a7a7a]  rounded-4xl overflow-hidden w-full md:w-[300px] h-[513.15px] ">
                         {/* <img src={card.image} alt={`Card ${index + 1}`} className='w-[280px] h-[513.15px] ' /> */}
