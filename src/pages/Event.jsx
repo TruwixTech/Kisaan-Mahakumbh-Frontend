@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../components/Header'
 import Hero from '../assets/Hero.jpg'
 import { FaHome } from "react-icons/fa";
@@ -86,7 +86,9 @@ function Event() {
   ];
 
 
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
 
 
@@ -140,8 +142,8 @@ function Event() {
 
               <div className="w-full mb-6 flex flex-col items-center lg:flex-row lg:items-start  gap-5">
 
-                <div className='w-full flex justify-center lg:justify-start md:w-[20%]'>
-                  <p className="text-2xl md:text-4xl font-semibold text-gray-700 ">{session.time}</p>
+                <div className='w-full flex justify-center lg:justify-start md:w-[30%] lg:w-[20%]'>
+                  <p className="text-2xl md:text-3xl xl:text-4xl font-semibold text-gray-700 ">{session.time}</p>
                 </div>
                 <div className='lg:hidden block border-b-2  w-full  mx-10 border-gray-800'></div>
                 <div className='lg:block hidden border-r-2 lg:h-[300px] mx-10 border-gray-800'></div>
@@ -180,8 +182,8 @@ function Event() {
 
               <div className="w-full mb-3 md:mb-6 flex flex-col items-center lg:flex-row lg:items-start  gap-5">
 
-                <div className='w-full flex justify-center lg:justify-start md:w-[20%]'>
-                  <p className="text-2xl md:text-4xl font-semibold text-gray-700 ">{session2.time}</p>
+                <div className='w-full flex justify-center lg:justify-start md:w-[30%] lg:w-[20%]'>
+                  <p className="text-2xl md:text-3xl xl:text-4xl font-semibold text-gray-700 ">{session2.time}</p>
                 </div>
                 <div className='lg:hidden block border-b-2  w-full  mx-10 border-gray-800'></div>
                 <div className='lg:block hidden border-r-2 lg:h-[300px] mx-10 border-gray-800'></div>

@@ -11,6 +11,10 @@ import Gallery from './pages/Gallery.jsx'
 import Sponsers from './pages/Sponsers.jsx'
 import Newevent from './pages/Newevent.jsx'
 import Event from './pages/Event.jsx'
+import { ToastContainer } from "react-toastify";
+import Termscondition from './pages/Termscondition.jsx'
+import Refundspage from './pages/Refundspage.jsx'
+import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +28,9 @@ const router = createBrowserRouter(
         <Route path="/about/:id?" element={<About />} />
         <Route path="/news/:id?" element={<Newevent />} />
         <Route path="/event/:id?" element={<Event />} />
+        <Route path="/termscondition/:id?" element={<Termscondition />} />
+        <Route path="/refundspage/:id?" element={<Refundspage />} />
+        <Route path="/privacy-policy/:id?" element={<PrivacyPolicy />} />
       </Route>
     </>
   )
@@ -31,6 +38,7 @@ const router = createBrowserRouter(
  
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <ToastContainer />
     <RouterProvider router={router} />
   </StrictMode>,
 )
