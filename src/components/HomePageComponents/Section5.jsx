@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import kisaan from "../../assets/kisaan.png";
 import icon1 from "../../assets/icon1.svg";
 import icon2 from "../../assets/icon2.svg";
 import icon3 from "../../assets/icon3.svg";
 import icon4 from "../../assets/icon4.svg";
-import Flipped from '../../assets/Flipped.jpg';
 
 const AgritechHighlight = () => {
   const [isFlipped, setIsFlipped] = useState(false);
