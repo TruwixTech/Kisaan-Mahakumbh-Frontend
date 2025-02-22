@@ -45,7 +45,7 @@
 }
 
 .flip-card-back {
-  background: url("./assets/Flipped.jpg") no-repeat left/cover;
+  background: url("./assets/flipped.jpg") no-repeat left/cover;
   transform: rotateY(180deg);
 }
 
