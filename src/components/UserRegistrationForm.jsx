@@ -286,7 +286,7 @@ const UserRegistrationForm = () => {
       toast.success("Registration successful!");
       const token = response.data.data.token
       localStorage.setItem("token", JSON.stringify(token));
-      if (formData.role === "User" || formData.role === "visitor") {
+      if (formData.role === "User" || formData.role === "visitor" || formData.role === "delegate") {
         generateTicket(token)
       } else {
         handlePayment(token)
@@ -483,7 +483,7 @@ const UserRegistrationForm = () => {
       </div>
 
       {/* Email, Send OTP, Verify in one row */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+      <div className={`${formData.role === "entrepreneur" || formData.role === "sponsor" || formData.role === "User" ? "md:grid-cols-2" : ""} grid grid-cols-1 gap-4 mb-4`}>
         {/* Email */}
         <div>
           <label className="block text-base  font-bold text-gray-700 mb-1">
@@ -496,47 +496,57 @@ const UserRegistrationForm = () => {
               placeholder="Enter your email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full md:w-[70%] py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
+              className={`${ formData.role === "entrepreneur" || formData.role === "sponsor" || formData.role === "User" ? "md:w-[70%]" : "" } w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600`}
               required
               disabled={emailVerified}
             />
-            <div className="flex w-full md:w-[40%] lg:w-[30%] md:items-end">
-              <button
-                onClick={handleSendEmailOTP}
-                className="w-full bg-[#01210f] text-white px-6 py-4 cursor-pointer rounded-full hover:bg-[#01210f] focus:outline-none"
-              >
-                Send OTP
-              </button>
-            </div>
+            {
+              formData.role === "entrepreneur" || formData.role === "sponsor" || formData.role === "User"
+                ? <div className="flex w-full md:w-[40%] lg:w-[30%] md:items-end">
+                  <button
+                    onClick={handleSendEmailOTP}
+                    className="w-full bg-[#01210f] text-white px-6 py-4 cursor-pointer rounded-full hover:bg-[#01210f] focus:outline-none"
+                  >
+                    Send OTP
+                  </button>
+                </div>
+                : null
+            }
           </div>
         </div>
 
-        {/* Verify OTP */}
-        <div className="w-full flex flex-col md:flex-row md:gap-0 gap-4 md:items-end">
-          <input
-            type="text"
-            placeholder="Enter Email OTP"
-            value={otpEmail}
-            onChange={(e) => setOtpEmail(e.target.value)}
-            className="w-full md:w-[70%] py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
-          />
-          <button
-            onClick={handleVerifyEmailOTP}
-            className={`md:ml-2 px-10 py-4 rounded-full text-white cursor-pointer ${emailVerified
-              ? "bg-green-500"
-              : "bg-[#01210f]  hover:bg-[#01210f] "
-              } focus:outline-none focus:ring-2 focus:ring-blue-500`}
-            disabled={emailVerified}
-          >
-            {emailVerified ? "Verified" : "Verify"}
-          </button>
-        </div>
+        {
+          formData.role === "entrepreneur" || formData.role === "sponsor" || formData.role === "User"
+            ? (
+              < div className="w-full flex flex-col md:flex-row md:gap-0 gap-4 md:items-end">
+                <input
+                  type="text"
+                  placeholder="Enter Email OTP"
+                  value={otpEmail}
+                  onChange={(e) => setOtpEmail(e.target.value)}
+                  className="w-full md:w-[70%] py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
+                />
+                <button
+                  onClick={handleVerifyEmailOTP}
+                  className={`md:ml-2 px-10 py-4 rounded-full text-white cursor-pointer ${emailVerified
+                    ? "bg-green-500"
+                    : "bg-[#01210f]  hover:bg-[#01210f] "
+                    } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                  disabled={emailVerified}
+                >
+                  {emailVerified ? "Verified" : "Verify"}
+                </button>
+              </div>
+            )
+            : null
+        }
+
       </div>
 
       {/* Password and Address in one row */}
-      <div className="grid grid-cols-1 gap-4 mb-4">
+      < div className="grid grid-cols-1 gap-4 mb-4" >
         {/* Address */}
-        <div>
+        < div >
           <label className="block text-base  font-bold text-gray-700 mb-1">
             Address:
           </label>
@@ -548,11 +558,11 @@ const UserRegistrationForm = () => {
             onChange={handleChange}
             className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
           />
-        </div>
-      </div>
+        </div >
+      </div >
 
       {/* Role Dropdown */}
-      <div className="mb-4">
+      < div className="mb-4" >
         <label className="block text-base  font-bold text-gray-700 mb-1">
           Role:
         </label>
@@ -567,11 +577,13 @@ const UserRegistrationForm = () => {
           <option value="sponsor">Sponsor</option>
           <option value="visitor">Visitor</option>
           <option value="entrepreneur">Entrepreneur</option>
+          <option value="delegate">Delegate</option>
         </select>
-      </div>
+      </div >
 
       {/* Company Details (Visible after email verification) */}
-      {emailVerified &&
+      {
+        emailVerified &&
         (formData.role === "entrepreneur" || formData.role === "sponsor") && (
           <>
             <h3 className="text-2xl font-semibold text-[#374836] mt-6 mb-4">
@@ -716,12 +728,13 @@ const UserRegistrationForm = () => {
               </label>
             </div>
           </>
-        )}
+        )
+      }
 
       {/* Submit Button */}
       <button
         className="w-full bg-[#01210f] cursor-pointer text-white px-6 mt-6 rounded-full py-3 hover:bg-[#01210f] focus:outline-none focus:ring-2  disabled:bg-gray-500"
-        disabled={!emailVerified}
+        disabled={formData.role === "User" || formData.role === "sponsor" || formData.role === "entrepreneur" ? !emailVerified : formData.name === "" || formData.email === "" || formData.phone === "" || formData.age === 0 || formData.address === "" || formData.password === ""}
         onClick={() => setCurrentStep(2)}
       >
         Next
