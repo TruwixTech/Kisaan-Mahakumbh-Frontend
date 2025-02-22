@@ -22,8 +22,8 @@ function Partners() {
         {
             id: 3,
             img: Partner3,
-            title: 'Pujyashri Adrishya Kadsiddheshwar Swamiji',
-            subtitle: 'Mathadhipati, kaneri math'
+            title: 'Dr Navindu Gupta',
+            subtitle: '(Former Principal Scientist ICAR-IARI, New Delhi)'
         },
         {
             id: 4,
@@ -34,8 +34,8 @@ function Partners() {
         {
             id: 5,
             img: Partner1,
-            title: 'Pujyashri Adrishya Kadsiddheshwar Swamiji',
-            subtitle: 'Mathadhipati, kaneri math'
+            title: 'SP Single',
+            subtitle: 'Ex- GM GAIL'
         },
     ]
     return (

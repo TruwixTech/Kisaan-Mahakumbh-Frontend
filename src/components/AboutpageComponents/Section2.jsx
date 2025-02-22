@@ -9,20 +9,20 @@ function Section2() {
         {
             id: 1,
             icon: Icon1,
-            title: 'Agriculture Products',
-            subtitle: 'Discover our eco-friendly farming tools and resources designed to boost productivity while preserving the environment. Our products ensure efficient farming practices with minimal ecological impact.'
+            title: 'Empower Farmers',
+            subtitle: 'Equip them with knowledge, skills, and resources to adopt modern farming techniques and agritech solutions.'
         },
         {
             id: 2,
             icon: Icon2,
-            title: 'Smart Dairy Solutions',
-            subtitle: 'Revolutionize your dairy farming with our innovative solutions. From healthier livestock management to efficient production, we help you achieve higher yield and better quality dairy products.'
+            title: 'Foster Innovation',
+            subtitle: 'Connect agritech startups, researchers, and policymakers to drive sustainable agricultural innovations.'
         },
         {
             id: 3,
             icon: Icon3,
-            title: 'Organic Solutions',
-            subtitle: 'Embrace natural farming with our range of organic products that enhance soil health and promote sustainable crop growth, free from harmful chemicals. Cultivate a healthier tomorrow with EcoCrop.'
+            title: 'Enhance Productivity',
+            subtitle: 'Promote climate-smart farming practices, precision agriculture, and resource-efficient solutions for higher farm yields.'
         },
     ]
 
