@@ -9,20 +9,19 @@ function Section2() {
   // Go to the next slide
   const goNext = () => {
     if (carousalRef.current) {
-        const totalSlides = data.length;
-        const slideWidth = carousalRef.current.offsetWidth;
-        carousalRef.current.scrollLeft += (carousalRef.current.scrollLeft + slideWidth) % (slideWidth * totalSlides);
+      const slideWidth = carousalRef.current.offsetWidth;
+      carousalRef.current.scrollLeft += slideWidth;
     }
   };
 
   // Go to the previous slide
   const goPrev = () => {
     if (carousalRef.current) {
-        const totalSlides = data.length;
-        const slideWidth = carousalRef.current.offsetWidth;
-        carousalRef.current.scrollLeft -= (carousalRef.current.scrollLeft - slideWidth + (slideWidth * totalSlides)) % (slideWidth * totalSlides);
+      const slideWidth = carousalRef.current.offsetWidth;
+      carousalRef.current.scrollLeft -= slideWidth;
     }
   };
+
   const data = [
     {
       id: 1,
@@ -94,19 +93,22 @@ function Section2() {
         <div className="h-full w-auto flex justify-center items-center">
           <FaChevronLeft onClick={goPrev} size={35} className="cursor-pointer" />
         </div>
-        <div ref={carousalRef} className="w-full flex-1 gap-6 h-full flex overflow-x-scroll px-1 scroll-smooth" style={{
-          scrollbarWidth: "none",
-        }}>
-          {
-            data.map((item) => (
-              <div key={item.id} className="min-w-full h-full bg-[#c7c7c7] rounded-3xl sm:min-w-80 lg:min-w-[410px] ">
-                {/* <img src={item.img} alt="" className="w-full h-full" /> */}
-              </div>
-            ))
-          }
+        <div
+          ref={carousalRef}
+          className="w-full flex-1 h-full flex overflow-x-scroll scroll-smooth snap-x gap-1 md:gap-5 snap-mandatory px-1"
+          style={{ scrollbarWidth: "none", scrollBehavior: "smooth" }}
+        >
+          {data.map((item) => (
+            <div
+              key={item.id}
+              className="min-w-full sm:min-w-80 lg:min-w-[410px] h-full bg-[#c7c7c7] rounded-3xl snap-center"
+            >
+              {/* <img src={item.img} alt="" className="w-full h-full" /> */}
+            </div>
+          ))}
         </div>
         <div className="h-full w-auto flex justify-center items-center">
-          <FaChevronRight onClick={goNext} size={35} className="cursor-pointer"  />
+          <FaChevronRight onClick={goNext} size={35} className="cursor-pointer" />
         </div>
       </div>
     </div>

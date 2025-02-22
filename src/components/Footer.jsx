@@ -77,10 +77,9 @@ function Footer() {
       <div className="w-[90%] h-[1px] bg-[#1a3727] mx-auto"></div>
       <div className="my-4 w-[90%] h-auto flex flex-col mx-auto gap-8 md:flex-row md:justify-between md:items-center lg:my-8">
         <div className="flex flex-wrap text-[#FFFFFFB2] gap-4 justify-center items-center lg:text-lg">
-          <span>Terms of Service</span>
-          <span>Privacy Policy</span>
-          <span>Legal Notice</span>
-          <span>Cookie Setting</span>
+          <Link to='/termscondition'>Terms & Conditions</Link>
+          <Link to='/privacy-policy'>Privacy Policy</Link>
+          <Link to='/refundspage'>Refund Policy</Link>
         </div>
         <div className="text-[#FFFFFFB2] flex justify-center items-center lg:text-lg">
           © 2024, Truwix.
