@@ -3,59 +3,25 @@ import Sponser1 from '../../assets/sponser1.png'
 import Sponser2 from '../../assets/sponser2.png'
 import Sponser3 from '../../assets/sponser3.png'
 import Sponser4 from '../../assets/sponser4.png'
+import Sponser5 from '../../assets/sponsor5.png'
+import Sponser6 from '../../assets/sponsor6.png'
+import Sponser7 from '../../assets/sponsor7.png'
+import Sponser8 from '../../assets/sponsor8.png'
+import Sponser9 from '../../assets/sponsor9.png'
+import Sponser10 from '../../assets/sponsor10.png'
 
 function Section1() {
-    const heroesData = [
-        {
-            img: Sponser1,
-            title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
-            subtitle: "Mathadhipati, kaneri math",
-        },
-        {
-            img: Sponser2,
-            title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
-            subtitle: "Mathadhipati, kaneri math",
-        },
-        {
-            img: Sponser3,
-            title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
-            subtitle: "Mathadhipati, kaneri math",
-        },
-        {
-            img: Sponser4,
-            title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
-            subtitle: "Mathadhipati, kaneri math",
-        },
-        {
-            img: Sponser4,
-            title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
-            subtitle: "Mathadhipati, kaneri math",
-        },
-        {
-            img: Sponser1,
-            title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
-            subtitle: "Mathadhipati, kaneri math",
-        },
-        {
-            img: Sponser2,
-            title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
-            subtitle: "Mathadhipati, kaneri math",
-        },
-        {
-            img: Sponser3,
-            title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
-            subtitle: "Mathadhipati, kaneri math",
-        },
-        {
-            img: Sponser4,
-            title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
-            subtitle: "Mathadhipati, kaneri math",
-        },
-        {
-            img: Sponser4,
-            title: "PUJYASHRI ADRISHYA KADSIDDHESHWAR SWAMIJI",
-            subtitle: "Mathadhipati, kaneri math",
-        },
+    const sponsors = [
+        Sponser1,
+        Sponser2,
+        Sponser3,
+        Sponser4,
+        Sponser5,
+        Sponser6,
+        Sponser7,
+        Sponser8,
+        Sponser9,
+        Sponser10
     ];
 
     return (
@@ -70,15 +36,13 @@ function Section1() {
 
                     {/* Grid Section */}
                     <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 md:gap-12  gap-5 px-6">
-                        {heroesData.map((hero, index) => (
-                            <div key={index} className="text-center">
+                        {sponsors.map((item, index) => (
+                            <div key={index} className="text-center w-56 h-56">
                                 <img
-                                    src={hero.img}
-                                    alt={hero.title}
-                                    className="w-full object-cover rounded-3xl shadow-md"
+                                    src={item}
+                                    alt='sponsor'
+                                    className="w-full h-full object-cover rounded-3xl shadow-md"
                                 />
-                                <h3 className="mt-4 text-lg font-bold text-[#374836] xl:text-xl">{hero.title}</h3>
-                                <p className="text-[#374836]">{hero.subtitle}</p>
                             </div>
                         ))}
                     </div>
