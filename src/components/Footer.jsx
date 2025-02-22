@@ -8,7 +8,7 @@ function Footer() {
     <div className="w-full h-auto flex flex-col bg-[#01210f]">
       <div className="w-full h-auto flex flex-col lg:flex-row xl:justify-between">
         <div className="w-full h-auto flex flex-col sm:flex-row lg:w-1/2">
-          <div className="relative w-full h-80 flex justify-center bg-white items-center sm:w-1/2">
+          <div className="relative w-full h-80 flex justify-center bg-[#e7e7e7] items-center sm:w-1/2">
             <div className="w-[50%] h-full rounded-tr-[40px] bg-[#01210f]"></div>
             <div className="w-[50%] h-full rounded-tl-[40px] bg-[#01210f]"></div>
             <img src={FooterLogo} alt="Logo" className="w-36 absolute" />
@@ -82,7 +82,7 @@ function Footer() {
           <Link to='/refundspage'>Refund Policy</Link>
         </div>
         <div className="text-[#FFFFFFB2] flex justify-center items-center lg:text-lg">
-          © 2024, Truwix.
+          © 2024, Campaigning Source.
         </div>
       </div>
     </div>
