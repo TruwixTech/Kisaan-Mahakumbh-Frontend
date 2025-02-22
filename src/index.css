@@ -3,7 +3,58 @@
 @import "tailwindcss";
 
 @keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
   }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+.flip-container {
+  perspective: 1000px;
+  width: 100%;
+}
+
+.flip-card {
+  width: 100%;
+  height: 550px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s ease-in-out;
+}
+
+.flip-card-front,
+.flip-card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  box-shadow: 6px 7px 12.9px 3px rgba(0, 0, 0, 0.25);
+}
+
+.flip-card-front {
+  background: url("./assets/kisaan.png") no-repeat center/cover;
+}
+
+.flip-card-back {
+  background: url("./assets/Flipped.jpg") no-repeat left/cover;
+  transform: rotateY(180deg);
+}
+
+/* Initially no flip */
+.flip-card:not(.flipped) {
+  transform: rotateY(0);
+}
+
+/* When in view, apply the flip */
+.flip-card.flipped {
+  transform: rotateY(180deg);
+}

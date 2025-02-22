@@ -39,23 +39,23 @@ function Section1() {
                     <div className='w-full h-auto flex flex-col gap-2 md:gap-4 lg:w-1/2'>
                         <p className="text-[#374836] text-2xl font-semibold xl:text-3xl">| Our Vision |</p>
                         <h1 className='uppercase text-2xl font-bold text-[#374836] sm:text-3xl md:text-5xl md:leading-14 lg:text-4xl lg:leading-10 xl:text-5xl xl:leading-14 2xl:text-[55px]'>Cultivating <span className='text-[#146A3A]'>farmers</span> <br /> legecy </h1>
-                        <p className='text-[#7F9080] text-sm md:text-base lg:text-sm xl:text-base'>vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur numquam eius modi tempora incidunt ut labore et dolore magnam aliquam consequuntur magni dolores eos qui ratione v</p>
+                        <p className='text-[#7F9080] text-sm md:text-base lg:text-sm xl:text-base'>Revolutionizing agriculture through innovation, technology, and collaboration for a sustainable and prosperous farming community.</p>
                         <div className='w-full h-auto grid grid-cols-1 md:grid-cols-2 gap-6 my-6'>
                             <div className='w-full h-auto flex flex-col lg:gap-2 2xl:gap-4'>
-                                <h1 className='text-[#374836] uppercase font-semibold text-xl lg:text-base xl:text-xl 2xl:text-2xl'>Neque porro quisquam</h1>
-                                <p className='text-[#7F9080] font-semibold text-sm'>vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur</p>
+                                <h1 className='text-[#374836] uppercase font-semibold text-xl lg:text-base xl:text-xl 2xl:text-2xl'>Empowering Farmers</h1>
+                                <p className='text-[#7F9080] font-semibold text-sm'>Providing modern agricultural knowledge, technology, and financial support to enhance productivity and profitability.</p>
                             </div>
                             <div className='w-full h-auto flex flex-col lg:gap-2 2xl:gap-4'>
-                                <h1 className='text-[#374836] uppercase font-semibold text-xl lg:text-base xl:text-xl 2xl:text-2xl'>Neque porro quisquam</h1>
-                                <p className='text-[#7F9080] font-semibold text-sm'>vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur</p>
+                                <h1 className='text-[#374836] uppercase font-semibold text-xl lg:text-base xl:text-xl 2xl:text-2xl'>Driving Innovation</h1>
+                                <p className='text-[#7F9080] font-semibold text-sm'>Creating a collaborative platform for agritech startups, researchers, and policymakers to revolutionize farming.</p>
                             </div>
                             <div className='w-full h-auto flex flex-col lg:gap-2 2xl:gap-4'>
-                                <h1 className='text-[#374836] uppercase font-semibold text-xl lg:text-base xl:text-xl 2xl:text-2xl'>Neque porro quisquam</h1>
-                                <p className='text-[#7F9080] font-semibold text-sm'>vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur</p>
+                                <h1 className='text-[#374836] uppercase font-semibold text-xl lg:text-base xl:text-xl 2xl:text-2xl'>Sustainable & Climate-Resilient Agriculture</h1>
+                                <p className='text-[#7F9080] font-semibold text-sm'>Kisan Kumbh 2025 is committed to promoting eco-friendly, water-efficient, and climate-smart farming practices to ensure a sustainable future for Indian agriculture.</p>
                             </div>
                             <div className='w-full h-auto flex flex-col lg:gap-2 2xl:gap-4'>
-                                <h1 className='text-[#374836] uppercase font-semibold text-xl lg:text-base xl:text-xl 2xl:text-2xl'>Neque porro quisquam</h1>
-                                <p className='text-[#7F9080] font-semibold text-sm'>vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur</p>
+                                <h1 className='text-[#374836] uppercase font-semibold text-xl lg:text-base xl:text-xl 2xl:text-2xl'>Market-Driven & Inclusive Growth</h1>
+                                <p className='text-[#7F9080] font-semibold text-sm'>Strengthening farm-to-market linkages, ensuring fair trade, and uplifting small-scale farmers for a self-reliant agricultural future.</p>
                             </div>
                         </div>
                     </div>
