@@ -24,7 +24,7 @@ const RegisterPopup = () => {
     isOpen && (
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 font-[Roboto]">
         {/* Popup Box */}
-        <div className="bg-[#01210f] text-white p-8 rounded-2xl shadow-lg w-[350px] md:w-[400px] h-[480px] relative border-3 border-white">
+        <div className="bg-[#01210f] text-white p-8 rounded-2xl shadow-lg w-[350px] md:w-[400px] h-[510px] relative border-3 border-white">
           {/* Close Button */}
           <button
             className="absolute top-4 right-4 text-white cursor-pointer hover:text-gray-300 transition"
@@ -52,10 +52,13 @@ const RegisterPopup = () => {
             <button onClick={() => handleClick('entrepreneur')} className="w-[55%] md:w-[60%] cursor-pointer bg-white flex justify-center items-center text-[#01210f] font-bold py-3 rounded-xl shadow-lg">
               I am a Startup
             </button>
+            <button onClick={() => handleClick('delegate')} className="w-[55%] md:w-[60%] cursor-pointer bg-white flex justify-center items-center text-[#01210f] font-bold py-3 rounded-xl shadow-lg">
+              I am a Delegate
+            </button>
           </div>
 
           {/* Bottom Border Line */}
-          <div className="border-t border-gray-200 mt-6"></div>
+          <div className="border-t border-gray-200 mt-12"></div>
         </div>
       </div>
     )
