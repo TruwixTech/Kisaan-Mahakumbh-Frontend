@@ -15,8 +15,8 @@ const RegisterPopup = () => {
     setIsOpen(true);
   }, []);
 
-  const handleClick = () => {
-    navigate('/registration');
+  const handleClick = (data) => {
+    navigate('/registration', { state: data });
     setIsOpen(false);
   }
 
@@ -33,7 +33,7 @@ const RegisterPopup = () => {
             <IoClose size={36} />
           </button>
           <div className="absolute top-20 right-0 h-1/2">
-          <img src={mask} alt=""/>
+            <img src={mask} alt="" />
 
           </div>
 
@@ -43,13 +43,13 @@ const RegisterPopup = () => {
 
           {/* Buttons */}
           <div className="mt-6 flex flex-col gap-4 ">
-            <button onClick={handleClick} className="w-[55%] md:w-[60%] cursor-pointer bg-white flex justify-center items-center text-[#01210f] font-bold py-3 rounded-xl shadow-lg">
+            <button onClick={() => handleClick('visitor')} className="w-[55%] md:w-[60%] cursor-pointer bg-white flex justify-center items-center text-[#01210f] font-bold py-3 rounded-xl shadow-lg">
               I am a visitor
             </button>
-            <button onClick={handleClick} className="w-[55%] md:w-[60%] cursor-pointer bg-white flex justify-center items-center text-[#01210f] font-bold py-3 rounded-xl shadow-lg">
-              I am an Investor
+            <button onClick={() => handleClick('sponsor')} className="w-[55%] md:w-[60%] cursor-pointer bg-white flex justify-center items-center text-[#01210f] font-bold py-3 rounded-xl shadow-lg">
+              I am a Sponsor
             </button>
-            <button onClick={handleClick} className="w-[55%] md:w-[60%] cursor-pointer bg-white flex justify-center items-center text-[#01210f] font-bold py-3 rounded-xl shadow-lg">
+            <button onClick={() => handleClick('entrepreneur')} className="w-[55%] md:w-[60%] cursor-pointer bg-white flex justify-center items-center text-[#01210f] font-bold py-3 rounded-xl shadow-lg">
               I am a Startup
             </button>
           </div>

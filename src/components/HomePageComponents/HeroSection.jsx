@@ -3,6 +3,7 @@ import Header from "../Header";
 import Hero from "../../assets/Hero.jpg";
 import Marquee from "react-fast-marquee";
 import Farmer from "../../assets/farmer.svg";
+import { Link } from "react-router-dom";
 
 function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -105,8 +106,9 @@ function HeroSection() {
                       {item.subTitle}
                     </h1>
                     <div className="w-full h-auto flex gap-6">
-                      <button
-                        className="font-bold text-white border border-white/30 shadow-lg transition-all w-40 py-2 rounded-2xl xl:w-52 xl:py-3 xl:text-lg cursor-pointer"
+                      <Link
+                        to="/registration"
+                        className="font-bold text-white border flex items-center justify-center border-white/30 shadow-lg transition-all w-40 py-2 rounded-2xl xl:w-52 xl:py-3 xl:text-lg cursor-pointer"
                         style={{
                           background:
                             "linear-gradient(270deg,rgb(12, 84, 21),rgb(25, 159, 112), #ff9900)",
@@ -115,10 +117,10 @@ function HeroSection() {
                         }}
                       >
                         Register for Event
-                      </button>
-                      <button className="font-bold bg-blur bg-white text-[#297F39] border border-[#297F39] w-20 py-2 rounded-xl xl:w-28 cursor-pointer xl:text-lg">
+                      </Link>
+                      <Link to='/sponsers' className="font-bold flex items-center justify-center bg-blur bg-white text-[#297F39] border border-[#297F39] w-20 py-2 rounded-xl xl:w-28 cursor-pointer xl:text-lg">
                         Join us
-                      </button>
+                      </Link>
                     </div>
                   </div>
                   <div className="w-full h-auto flex md:w-auto xl:w-[650px] 2xl:w-[700px]">
