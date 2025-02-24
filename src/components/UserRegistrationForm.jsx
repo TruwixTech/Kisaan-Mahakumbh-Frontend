@@ -5,26 +5,25 @@ import Header from "./Header";
 import Hero from "../assets/Hero.jpg";
 import { toast } from "react-toastify";
 
-const backend = 'https://kisaan-mahakumbh-backend.vercel.app/api/v1'
+const backend = 'http://localhost:8080/api/v1'
 
 const UserRegistrationForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    age: 0,
+    designation: '',
+    city: "",
     address: "",
     password: "",
     role: "User", // Default role
+    companyType: "",
+    accommodationRoom: "no",
     companyName: "",
-    companyAddress: "",
-    pin_code: "",
-    specializedIn: "",
-    gst: "",
-    cinNumber: "",
-    applyingForSponsership: false,
-    applyingForBookingStalls: false,
-    applyingAsVisitor: false,
+    industry: "",
+    customIndustry: "",
+    sponsorshipType: "",
+    stallSize: ""
   });
 
   const navigate = useNavigate();
@@ -42,7 +41,10 @@ const UserRegistrationForm = () => {
     // Name Validation
     if (!formData.name.trim()) {
       errors.name = "Name is required.";
+    } else if (!/^[A-Za-z\s]+$/.test(formData.name)) {
+      errors.name = "Name should contain only letters.";
     }
+
 
     // Email Validation
     if (!formData.email.trim()) {
@@ -58,14 +60,25 @@ const UserRegistrationForm = () => {
       errors.phone = "Phone number must be 10 digits.";
     }
 
-    // Age Validation
-    if (formData.age <= 0) {
-      errors.age = "Age must be greater than 0.";
+    // Designation Validation
+    if (!formData.designation.trim()) {
+      errors.designation = "Designation is required.";
+    } else if (!/^[A-Za-z\s]+$/.test(formData.designation)) {
+      errors.designation = "Designation should contain only letters.";
     }
 
-    // Address Validation
+    // City Validation
+    if (!formData.city.trim()) {
+      errors.city = "City is required.";
+    } else if (!/^[A-Za-z\s]+$/.test(formData.city)) {
+      errors.city = "City name should contain only letters.";
+    }
+
+    // Address Validation (Allowing numbers, as addresses may contain them)
     if (!formData.address.trim()) {
       errors.address = "Address is required.";
+    } else if (!/^[A-Za-z0-9\s,.-]+$/.test(formData.address)) {
+      errors.address = "Address contains invalid characters.";
     }
 
     // Password Validation
@@ -75,45 +88,50 @@ const UserRegistrationForm = () => {
       errors.password = "Password must be at least 6 characters long.";
     }
 
-    // Role-based Validations
-    if (formData.role === "entrepreneur" || formData.role === "sponsor") {
-      if (!formData.companyName.trim()) {
-        errors.companyName = "Company name is required.";
-      }
-      if (!formData.companyAddress.trim()) {
-        errors.companyAddress = "Company address is required.";
-      }
-      if (!formData.pin_code.trim()) {
-        errors.pin_code = "Pin code is required.";
-      } else if (!/^\d{6}$/.test(formData.pin_code)) {
-        errors.pin_code = "Pin code must be 6 digits.";
-      }
-      if (!formData.specializedIn.trim()) {
-        errors.specializedIn = "Specialization field is required.";
-      }
-      // if (!formData.gst.trim()) {
-      //   errors.gst = "GST number is required.";
-      // } else if (!/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}[Z]{1}[0-9A-Z]{1}$/.test(formData.gst)) {
-      //   errors.gst = "Invalid GST number format.";
-      // }
+    // Company Type Validation
+    if (!formData.companyType.trim()) {
+      errors.companyType = "Company type is required.";
+    } else if (!/^[A-Za-z\s]+$/.test(formData.companyType)) {
+      errors.companyType = "Company type should contain only letters.";
+    }
 
-      if (!formData.cinNumber.trim()) {
-        errors.cinNumber = "CIN number is required.";
+    // Company Name Validation
+    if (!formData.companyName.trim()) {
+      errors.companyName = "Company name is required.";
+    } else if (!/^[A-Za-z0-9\s&.,'-]+$/.test(formData.companyName)) {
+      errors.companyName = "Company name contains invalid characters.";
+    }
+
+    // Industry Validation
+    if (!formData.industry.trim()) {
+      errors.industry = "Industry is required.";
+    } else if (!/^[A-Za-z\s]+$/.test(formData.industry)) {
+      errors.industry = "Industry should contain only letters.";
+    }
+
+
+    // Custom Industry Validation (if "Other" is selected)
+    if (formData.industry === "Other" && !formData.customIndustry.trim()) {
+      errors.customIndustry = "Please specify your industry.";
+    }
+
+    // Company Type Validation (if applicable)
+    if (formData.role === "entrepreneur") {
+      if (!formData.stallSize.trim()) {
+        errors.stallSize = "Stall size is required.";
       }
     }
 
-    // Sponsorship Validation
-    if (formData.applyingForSponsership && !formData.companyName.trim()) {
-      errors.applyingForSponsership = "Company name is required for sponsorship.";
+    // Sponsorship & Stall Size Validation (if sponsor)
+    if (formData.role === "sponsor") {
+      if (!formData.sponsorshipType.trim()) {
+        errors.sponsorshipType = "Sponsorship type is required.";
+      }
     }
 
-    // Booking Stall Validation
-    if (formData.applyingForBookingStalls && !formData.companyAddress.trim()) {
-      errors.applyingForBookingStalls = "Company address is required for booking stalls.";
-    }
-    // Visitor Validation
-    if (formData.applyingAsVisitor && !formData.name.trim()) {
-      errors.applyingAsVisitor = "Name is required for visitor registration.";
+    // Accommodation Validation
+    if (!["yes", "no"].includes(formData.accommodationRoom)) {
+      errors.accommodationRoom = "Please select accommodation option.";
     }
 
     return errors;
@@ -152,14 +170,6 @@ const UserRegistrationForm = () => {
     }
   }, [])
   const [currentStep, setCurrentStep] = useState(1);
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === "checkbox" ? checked : value,
-    });
-  };
 
   const handleSendEmailOTP = async () => {
     try {
@@ -209,19 +219,17 @@ const UserRegistrationForm = () => {
         name: "",
         email: "",
         phone: "",
-        age: 0,
+        designation: '',
+        city: "",
         address: "",
         password: "",
-        role: "User",
+        role: "User", // Default role
+        companyType: "",
+        accommodationRoom: "No",
         companyName: "",
-        companyAddress: "",
-        pin_code: "",
-        specializedIn: "",
-        gst: "",
-        cinNumber: "",
-        applyingForSponsership: false,
-        applyingForBookingStalls: false,
-        applyingAsVisitor: false,
+        industry: "",
+        customIndustry: "",
+        sponsorshipType: ""
       });
       navigate("/");
     } catch (error) {
@@ -285,6 +293,7 @@ const UserRegistrationForm = () => {
       );
       toast.success("Registration successful!");
       const token = response.data.data.token
+      console.log(token)
       localStorage.setItem("token", JSON.stringify(token));
       if (formData.role === "User" || formData.role === "visitor" || formData.role === "delegate") {
         generateTicket(token)
@@ -295,19 +304,17 @@ const UserRegistrationForm = () => {
         name: "",
         email: "",
         phone: "",
-        age: 0,
+        designation: '',
+        city: "",
         address: "",
         password: "",
-        role: "User",
+        role: "User", // Default role
+        companyType: "",
+        accommodationRoom: "No",
         companyName: "",
-        companyAddress: "",
-        pin_code: "",
-        specializedIn: "",
-        gst: "",
-        cinNumber: "",
-        applyingForSponsership: false,
-        applyingForBookingStalls: false,
-        applyingAsVisitor: false,
+        industry: "",
+        customIndustry: "",
+        sponsorshipType: ""
       });
     } catch (error) {
       toast.error(error.response?.data?.data?.message || "Failed to register");
@@ -317,6 +324,8 @@ const UserRegistrationForm = () => {
       );
     }
   };
+
+  console.log(formData)
 
   const renderStepper = () => {
     return (
@@ -427,7 +436,7 @@ const UserRegistrationForm = () => {
             name="name"
             placeholder="Enter your name"
             value={formData.name}
-            onChange={handleChange}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
             required
           />
@@ -443,25 +452,24 @@ const UserRegistrationForm = () => {
             name="phone"
             onWheel={(e) => e.target.blur()}
             value={formData.phone}
-            onChange={handleChange}
+            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600 "
             placeholder="+91"
             required
           />
         </div>
 
-        {/* Age */}
+        {/* Designation */}
         <div>
           <label className="block text-base  font-bold text-gray-700 mb-1">
-            Age:
+            Designation:
           </label>
           <input
-            type="number"
-            name="age"
-            placeholder="Enter your age"
-            value={formData.age}
-            onWheel={(e) => e.target.blur()}
-            onChange={handleChange}
+            type="text"
+            name="designation"
+            placeholder="Enter your Designation"
+            value={formData.designation}
+            onChange={(e) => setFormData({ ...formData, designation: e.target.value })}
             className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
           />
         </div>
@@ -475,7 +483,7 @@ const UserRegistrationForm = () => {
             name="password"
             placeholder="Enter your password"
             value={formData.password}
-            onChange={handleChange}
+            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
             className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
             required
           />
@@ -495,8 +503,8 @@ const UserRegistrationForm = () => {
               name="email"
               placeholder="Enter your email"
               value={formData.email}
-              onChange={handleChange}
-              className={`${ formData.role === "entrepreneur" || formData.role === "sponsor" || formData.role === "User" ? "md:w-[70%]" : "" } w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600`}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className={`${formData.role === "entrepreneur" || formData.role === "sponsor" || formData.role === "User" ? "md:w-[70%]" : ""} w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600`}
               required
               disabled={emailVerified}
             />
@@ -555,186 +563,208 @@ const UserRegistrationForm = () => {
             name="address"
             placeholder="Enter your address"
             value={formData.address}
-            onChange={handleChange}
+            onChange={(e) => setFormData({ ...formData, address: e.target.value })}
             className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
           />
         </div >
       </div >
 
       {/* Role Dropdown */}
-      < div className="mb-4" >
-        <label className="block text-base  font-bold text-gray-700 mb-1">
-          Role:
-        </label>
-        <select
-          name="role"
-          value={formData.role}
-          onChange={handleChange}
-          className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
-          required
-        >
-          <option value="User">User</option>
-          <option value="sponsor">Sponsor</option>
-          <option value="visitor">Visitor</option>
-          <option value="entrepreneur">Entrepreneur</option>
-          <option value="delegate">Delegate</option>
-        </select>
+      < div className="grid grid-cols-1 gap-4 md:grid-cols-2 mb-4" >
+        <div>
+          <label className="block text-base  font-bold text-gray-700 mb-1">
+            Role:
+          </label>
+          <select
+            name="role"
+            value={formData.role}
+            onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+            className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
+            required
+          >
+            <option value="User">User</option>
+            <option value="sponsor">Sponsor</option>
+            <option value="visitor">Visitor</option>
+            <option value="entrepreneur">Entrepreneur</option>
+            <option value="delegate">Delegate</option>
+          </select>
+        </div>
+        {/* city */}
+        <div>
+          <label className="block text-base  font-bold text-gray-700 mb-1">
+            City:
+          </label>
+          <input
+            type="text"
+            name="city"
+            placeholder="Enter your city"
+            value={formData.city}
+            onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+            className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
+            required
+          />
+        </div>
       </div >
 
-      {/* Company Details (Visible after email verification) */}
+      {/* Company Name and Company Address in one row */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        {/* Company Name */}
+        <div>
+          <label className="block text-base  font-bold text-gray-700 mb-1">
+            Company Name:
+          </label>
+          <input
+            type="text"
+            placeholder="Enter your company name"
+            name="companyName"
+            value={formData.companyName}
+            onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
+            className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
+          />
+        </div>
+
+        {/* Company Type */}
+        <div>
+          <label className="block text-base font-bold text-gray-700 mb-1">
+            Company Type:
+          </label>
+          <select
+            name="companyStartupInstitution"
+            value={formData.companyType}
+            onChange={(e) => setFormData({ ...formData, companyType: e.target.value })}
+            className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
+            required
+          >
+            <option value="" disabled>Select an option</option>
+            <option value="company">Company</option>
+            <option value="startup">Startup</option>
+            <option value="institution">Institution</option>
+          </select>
+        </div>
+
+      </div>
+
+      {/* Industry and Accomodation in one row */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div>
+          <label className="block text-base font-bold text-gray-700 mb-1">
+            Industry:
+          </label>
+          <select
+            name="industry"
+            value={formData.industry}
+            onChange={(e) => setFormData({ ...formData, industry: e.target.value, customIndustry: "" })}
+            className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
+            required
+          >
+            <option value="" disabled>Select Industry</option>
+            <option value="agritech">Agritech</option>
+            <option value="iot">IOT</option>
+            <option value="edutech">Edutech</option>
+            <option value="ai_ml_blockchain">AI ML Blockchain</option>
+            <option value="health_tech">Health tech</option>
+            <option value="ecom">ECOM</option>
+            <option value="custom">Others (Specify)</option>
+          </select>
+
+          {/* Show text input when "Others" is selected */}
+          {formData.industry === "custom" && (
+            <input
+              type="text"
+              name="customIndustry"
+              placeholder="Specify your industry"
+              value={formData.customIndustry}
+              onChange={(e) => setFormData({ ...formData, customIndustry: e.target.value })}
+              className="w-full mt-4 py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
+              required
+            />
+          )}
+        </div>
+        <div >
+          <label className="block text-base font-bold text-gray-700 mb-1">
+            Accommodation Room :
+          </label>
+          <div className="flex gap-4 items-center pt-4">
+            <label className="flex items-center">
+              <input
+                type="radio"
+                value="yes"
+                name="accommodationRoom"
+                onChange={(e) => setFormData({ ...formData, accommodationRoom: e.target.value })}
+                className="w-5 h-5 mr-2"
+              />
+              Yes
+            </label>
+
+            <label className="flex items-center">
+              <input
+                type="radio"
+                value="no"
+                name="accommodationRoom"
+                onChange={(e) => setFormData({ ...formData, accommodationRoom: e.target.value })}
+                className="w-5 h-5 mr-2"
+              />
+              No
+            </label>
+          </div>
+        </div>
+      </div>
       {
-        emailVerified &&
-        (formData.role === "entrepreneur" || formData.role === "sponsor") && (
-          <>
-            <h3 className="text-2xl font-semibold text-[#374836] mt-6 mb-4">
-              Company Details
-            </h3>
+        formData.role === 'sponsor' && (
+          <div className="w-full">
+            <label className="block text-base font-bold text-gray-700 mb-1">
+              Type of Sponsorship:
+            </label>
+            <select
+              name="sponsorshipType"
+              value={formData.sponsorshipType}
+              onChange={(e) => setFormData({ ...formData, sponsorshipType: e.target.value })}
+              className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
+              required
+            >
+              <option value="" disabled>Select Sponsorship Type</option>
+              <option value="title_sponsor">Title Sponsor</option>
+              <option value="platinum_sponsor">Platinum Sponsor</option>
+              <option value="gold_sponsor">Gold Sponsor</option>
+              <option value="silver_sponsor">Silver Sponsor</option>
+              <option value="co_powered_by">Co-Powered By</option>
+              <option value="shipping_partner">Shipping Partner</option>
+              <option value="marketing_partner">Marketing Partner</option>
+              <option value="media_partner">Media Partner</option>
+              <option value="hotel_partner">Hotel Partner</option>
+              <option value="food_partner">Food Partner</option>
+              <option value="technology_partner">Technology Partner</option>
+              <option value="csr_partner">CSR Partner</option>
+            </select>
+          </div>
 
-            {/* Company Name and Company Address in one row */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              {/* Company Name */}
-              <div>
-                <label className="block text-base  font-bold text-gray-700 mb-1">
-                  Company Name:
-                </label>
-                <input
-                  type="text"
-                  placeholder="Enter your company name"
-                  name="companyName"
-                  value={formData.companyName}
-                  onChange={handleChange}
-                  className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
-                />
-              </div>
+        )
+      }
 
-              {/* Company Address */}
-              <div>
-                <label className="block text-base  font-bold text-gray-700 mb-1">
-                  Company Address:
-                </label>
-                <input
-                  type="text"
-                  name="companyAddress"
-                  placeholder="Enter your company address"
-                  value={formData.companyAddress}
-                  onChange={handleChange}
-                  className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
-                />
-              </div>
-            </div>
+      {
+        formData.role === 'entrepreneur' && (
+          <div className="w-full">
+            <label className="block text-base font-bold text-gray-700">
+              Stall Size:
+            </label>
+            <input
+              type="text"
+              name="stallSize"
+              placeholder="Enter Your Stall Size eg. 5x2"
+              value={formData.stallSize}
+              onChange={(e) => setFormData({ ...formData, stallSize: e.target.value })}
+              className="w-full mt-4 py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
+              required
+            />
+          </div>
 
-            {/* Pin Code and Specialized In in one row */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              {/* Pin Code */}
-              <div>
-                <label className="block text-base  font-bold text-gray-700 mb-1">
-                  Pin Code:
-                </label>
-                <input
-                  type="number"
-                  placeholder="Enter your pin code"
-                  name="pin_code"
-                  onWheel={(e) => e.target.blur()}
-                  value={formData.pin_code}
-                  onChange={handleChange}
-                  className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
-                />
-              </div>
-
-              {/* Specialized In */}
-              <div>
-                <label className="block text-base  font-bold text-gray-700 mb-1">
-                  Specialized In:
-                </label>
-                <input
-                  type="text"
-                  placeholder="Enter your specialization"
-                  name="specializedIn"
-                  value={formData.specializedIn}
-                  onChange={handleChange}
-                  className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
-                />
-              </div>
-            </div>
-
-            {/* GST and CIN Number in one row */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              {/* GST */}
-              <div>
-                <label className="block text-base  font-bold text-gray-700 mb-1">
-                  GST:
-                </label>
-                <input
-                  type="text"
-                  name="gst"
-                  placeholder="Enter your GST number"
-                  value={formData.gst}
-                  onChange={handleChange}
-                  className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
-                />
-              </div>
-
-              {/* CIN Number */}
-              <div>
-                <label className="block text-base  font-bold text-gray-700 mb-1">
-                  CIN Number:
-                </label>
-                <input
-                  type="text"
-                  name="cinNumber"
-                  placeholder="Enter your CIN number"
-                  value={formData.cinNumber}
-                  onChange={handleChange}
-                  className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
-                />
-              </div>
-            </div>
-
-            {/* Checkboxes */}
-            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-              <label className="flex items-center">
-                <input
-                  type="checkbox"
-                  name="applyingForSponsership"
-                  checked={formData.applyingForSponsership}
-                  onChange={handleChange}
-                  className="w-6 h-6 mr-6"
-                />
-                <span className="text-lg  text-bold">
-                  Applying for Sponsorship
-                </span>
-              </label>
-              <label className="flex items-center">
-                <input
-                  type="checkbox"
-                  name="applyingForBookingStalls"
-                  checked={formData.applyingForBookingStalls}
-                  onChange={handleChange}
-                  className="w-6 h-6 mr-6"
-                />
-                <span className="text-lg  text-bold">
-                  Applying for Booking Stalls
-                </span>
-              </label>
-              <label className="flex items-center">
-                <input
-                  type="checkbox"
-                  name="applyingAsVisitor"
-                  checked={formData.applyingAsVisitor}
-                  onChange={handleChange}
-                  className="w-6 h-6 mr-6 rounded "
-                />
-                <span className="text-lg  text-bold">Applying as Visitor</span>
-              </label>
-            </div>
-          </>
         )
       }
 
       {/* Submit Button */}
       <button
         className="w-full bg-[#01210f] cursor-pointer text-white px-6 mt-6 rounded-full py-3 hover:bg-[#01210f] focus:outline-none focus:ring-2  disabled:bg-gray-500"
-        disabled={formData.role === "User" || formData.role === "sponsor" || formData.role === "entrepreneur" ? !emailVerified : formData.name === "" || formData.email === "" || formData.phone === "" || formData.age === 0 || formData.address === "" || formData.password === ""}
+        disabled={formData.role === "User" || formData.role === "sponsor" || formData.role === "entrepreneur" ? !emailVerified : formData.name === "" || formData.email === "" || formData.phone === "" || formData.designation === 0 || formData.address === "" || formData.password === "" || formData.city === "" || formData.companyName === "" || formData.companyType === "" || formData.industry === ""}
         onClick={() => setCurrentStep(2)}
       >
         Next
@@ -755,7 +785,7 @@ const UserRegistrationForm = () => {
           <strong>Phone:</strong> {formData.phone}
         </div>
         <div>
-          <strong>Age:</strong> {formData.age}
+          <strong>Designation:</strong> {formData.designation}
         </div>
 
         <div>
@@ -764,38 +794,28 @@ const UserRegistrationForm = () => {
         {(formData.role === "entrepreneur" || formData.role === "sponsor") && (
           <>
             <div>
-              <strong>Address:</strong> {formData.companyAddress}
+              <strong>Address:</strong> {formData.address}
             </div>
             <div>
               <strong>Company Name:</strong> {formData.companyName}
             </div>
             <div>
-              <strong>Company Address:</strong> {formData.companyAddress}
+              <strong>Industry:</strong> {formData.industry}
             </div>
-            <div>
-              <strong>Pin Code:</strong> {formData.pin_code}
-            </div>
-            <div>
-              <strong>Specialized In:</strong> {formData.specializedIn}
-            </div>
-            <div>
-              <strong>GST:</strong> {formData.gst}
-            </div>
-            <div>
-              <strong>CIN Number:</strong> {formData.cinNumber}
-            </div>
-            <div>
-              <strong>Applying for Sponsorship:</strong>{" "}
-              {formData.applyingForSponsership ? "Yes" : "No"}
-            </div>
-            <div>
-              <strong>Applying for Booking Stalls:</strong>{" "}
-              {formData.applyingForBookingStalls ? "Yes" : "No"}
-            </div>
-            <div>
-              <strong>Applying as Visitor:</strong>{" "}
-              {formData.applyingAsVisitor ? "Yes" : "No"}
-            </div>
+            {
+              formData.role === "sponsor" && (
+                <div>
+                  <strong>Sponsorship Type:</strong> {formData.sponsorshipType}
+                </div>
+              )
+            }
+            {
+              formData.role === "entrepreneur" && (
+                <div>
+                  <strong>Stall Size:</strong> {formData.stallSize}
+                </div>
+              )
+            }
           </>
         )}
       </div>
