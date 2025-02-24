@@ -2,24 +2,30 @@ import React from 'react'
 import Icon1 from '../../assets/aboutPageIcon1.svg'
 import Icon2 from '../../assets/aboutPageIcon2.svg'
 import Icon3 from '../../assets/aboutPageIcon3.svg'
+import img1 from '../../assets/Empowerimg.jpg'
+import img2 from '../../assets/Empowerimg1.jpg'
+import img3 from '../../assets/Empowerimg2.jpg'
 
 function Section2() {
 
     const data = [
         {
             id: 1,
+            img: img3,
             icon: Icon1,
             title: 'Empower Farmers',
             subtitle: 'Equip them with knowledge, skills, and resources to adopt modern farming techniques and agritech solutions.'
         },
         {
             id: 2,
+            img: img1,
             icon: Icon2,
             title: 'Foster Innovation',
             subtitle: 'Connect agritech startups, researchers, and policymakers to drive sustainable agricultural innovations.'
         },
         {
             id: 3,
+            img: img2,
             icon: Icon3,
             title: 'Enhance Productivity',
             subtitle: 'Promote climate-smart farming practices, precision agriculture, and resource-efficient solutions for higher farm yields.'
@@ -35,7 +41,7 @@ function Section2() {
                     data.map((item, index) => (
                         <div className='w-full h-auto flex flex-col rounded-3xl overflow-hidden shadow-xl md:hover:shadow-2xl duration-500 ease-in-out transition-all cursor-pointer' key={index}>
                             <div className='w-full h-40 relative lg:h-48'>
-                                <img src="" alt="" className='bg-[#C4C4C4] w-full h-full' />
+                                <img src={item.img} alt="" className='bg-[#C4C4C4] w-full h-full object-cover' />
                                 <span className='w-16 h-16 border border-white p-1 rounded-full bg-[#146A3A] flex justify-center items-center absolute -bottom-8 left-3'>
                                     <img src={item.icon} alt="icon" className='' />
                                 </span>

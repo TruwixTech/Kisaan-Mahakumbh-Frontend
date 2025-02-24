@@ -9,6 +9,7 @@ import Sponser7 from '../../assets/sponsor7.png'
 import Sponser8 from '../../assets/sponsor8.png'
 import Sponser9 from '../../assets/sponsor9.png'
 import Sponser10 from '../../assets/sponsor10.png'
+import Marquee from 'react-fast-marquee'
 
 function Section1() {
     const sponsors = [
@@ -35,17 +36,13 @@ function Section1() {
                     </div>
 
                     {/* Grid Section */}
-                    <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 md:gap-12  gap-5 px-6">
+                    <Marquee gradient={false} speed={80} pauseOnHover={true}>
                         {sponsors.map((item, index) => (
-                            <div key={index} className="text-center w-56 h-56">
-                                <img
-                                    src={item}
-                                    alt='sponsor'
-                                    className="w-full h-full object-cover rounded-3xl shadow-md"
-                                />
+                            <div key={index} className="mx-4 my-14 w-48 h-48 flex items-center justify-center">
+                                <img src={item} alt='sponsor' className="w-full h-full object-cover rounded-3xl shadow-md" />
                             </div>
                         ))}
-                    </div>
+                    </Marquee>
                 </div>
             </div>
         </div>
