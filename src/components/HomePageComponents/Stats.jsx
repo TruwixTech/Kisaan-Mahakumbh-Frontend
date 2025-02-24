@@ -36,7 +36,7 @@ const StatsSection = () => {
   }, []);
 
   return (
-    <section ref={ref} className="py-20 bg-gradient-to-br from-green-50 to-green-100">
+    <section ref={ref} className="py-20 bg-gradient-to-br from-green-200 to-green-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <motion.h2 
@@ -45,7 +45,7 @@ const StatsSection = () => {
             transition={{ duration: 0.6 }}
             className="text-4xl font-extrabold text-gray-900 sm:text-5xl md:text-6xl relative"
           >
-            <span className="bg-clip-text font-[Roboto] font-bold text-transparent bg-gradient-to-r from-blue-600 to-emerald-600">
+            <span className="bg-clip-text font-[Roboto] font-bold text-transparent bg-gradient-to-r from-green-600 to-[#01210f]">
               Event Highlights
             </span>
           </motion.h2>
