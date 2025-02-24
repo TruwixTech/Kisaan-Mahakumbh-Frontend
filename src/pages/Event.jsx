@@ -133,6 +133,10 @@ function Event() {
           <span className='text-[#374836] text-3xl md:text-[52px] font-[Roboto]'>Day 1: Theme of farmer</span>
         </div>
 
+        <div className='w-full h-auto flex flex-col mb-6'>
+          <p className='md:text-lg font-bold'> 🕙 10:00 AM - 12:00 PM: Inaugural Session Topic: Role of Agriculture in a 5 Trillion Dollar Economy</p>
+        </div>
+
         <div className=' w-full h-auto p-2 md:p-6 bg-white rounded-3xl mb-7 '>
           {sessions.map((session, index) => (
             <div key={index} className="px-2 md:px-12 lg:px-12 ">
@@ -153,9 +157,9 @@ function Event() {
                     {session.details.map((detail, i) => (
                       <div key={i} className=" w-full flex flex-col lg:flex-row gap-4  justify-center lg:justify-start">
                         <span className=' w-full md:w-[70%] text-[20px] font-[Roboto]  '>{detail.topic}</span>
-                        <div className='flex gap-5'>
+                        {/* <div className='flex gap-5'>
                           <span className=" w-full text-gray-400 text-[20px] font-[Roboto]">{detail.speaker}</span>
-                        </div>
+                        </div> */}
                       </div>
                     ))}
                   </div>
@@ -173,7 +177,7 @@ function Event() {
           <span className='text-[#374836] text-3xl md:text-[52px] font-[Roboto]'>Day 2: Theme of farmer</span>
         </div>
 
-        <div className=' w-full h-auto p-2 md:p-6 bg-white rounded-3xl mb-7 '>
+        <div className=' w-full h-auto p-2 md:p-6 bg-white rounded-3xl '>
           {sessions2.map((session2, index) => (
             <div key={index} className="   px-2 md:px-12 lg:px-12 ">
 
@@ -193,9 +197,9 @@ function Event() {
                     {session2.details.map((detail, i) => (
                       <div key={i} className=" w-full flex flex-col lg:flex-row gap-4  justify-center lg:justify-start">
                         <span className=' w-full md:w-[70%] text-[20px] font-[Roboto]  '>{detail.topic}</span>
-                        <div className='flex gap-5'>
+                        {/* <div className='flex gap-5'>
                           <span className=" w-full text-gray-400 text-[20px] font-[Roboto]">{detail.speaker}</span>
-                        </div>
+                        </div> */}
                       </div>
                     ))}
                   </div>
@@ -203,6 +207,9 @@ function Event() {
               </div>
             </div>
           ))}
+        </div>
+        <div className='w-full h-auto flex flex-col my-6'>
+          <p className='md:text-lg font-bold'>🕞 03:30 PM - 05:30 PM: Valedictory Session Topic: Cooperative Practices in Agriculture</p>
         </div>
       </div>
     </div>
