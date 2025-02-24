@@ -5,8 +5,8 @@ import Header from "./Header";
 import Hero from "../assets/Hero.jpg";
 import { toast } from "react-toastify";
 
-// const backend = 'https://kisaan-mahakumbh-backend.vercel.app/api/v1'
-const backend = 'http://localhost:8000/api/v1'
+const backend = 'https://kisaan-mahakumbh-backend.vercel.app/api/v1'
+// const backend = 'http://localhost:8000/api/v1'
 
 const UserRegistrationForm = () => {
   const [formData, setFormData] = useState({
