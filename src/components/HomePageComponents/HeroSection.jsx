@@ -3,9 +3,6 @@ import Header from "../Header";
 import Hero from "../../assets/Hero.jpg";
 import Marquee from "react-fast-marquee";
 import Farmer from "../../assets/farmer.svg";
-import Yojna1 from "../../assets/Yojna1.avif";
-import Yojna2 from "../../assets/Yojna2.jpeg";
-import Yojna3 from "../../assets/Yojna3.jpeg";
 import { Link } from "react-router-dom";
 
 function HeroSection() {
@@ -15,13 +12,13 @@ function HeroSection() {
     {
       id: 1,
       mainTitle:
-        "Kisan Kumbh 2025 – <br /> The Grand Convergence of <br /> Agriculture & Innovation.",
+        "Cultivating a Greener<br /> Future, One Farm at a <br /> Time",
       subTitle:
-        "Welcome to kisan Kumbh 2025, a landmark event where agriculture meets technology, tradition meets innovation, and farmers meet the future.",
-      boxImg: Yojna3,
-      boxTitle: "Drone Didi Yojana (2024)",
+        "We combines sustainability with technology to empower farms and protect the planet. Discover the future of eco-friendly Kisan Kumbh today.",
+      boxImg: "",
+      boxTitle: "Growing Together for a Kisan Kumbh World",
       boxSubTitle:
-        "Empowering women-led FPOs with agricultural drones for precision farming. 50-80% subsidy for adopting drone technology in crop monitoring & pesticide spraying.",
+        "Together, let's cultivate a sustainable future with practices that support robust farm yields and a healthier planet",
     },
     {
       id: 2,
@@ -29,30 +26,30 @@ function HeroSection() {
         "Cultivating a Greener<br /> Future, One Farm at a <br /> Time",
       subTitle:
         "We combines sustainability with technology to empower farms and protect the planet. Discover the future of eco-friendly Kisan Kumbh today.",
-      boxImg: Yojna2,
-      boxTitle: "Krishi Udan 2.0",
+      boxImg: "",
+      boxTitle: "Growing Together for a Kisan Kumbh World",
       boxSubTitle:
-        "Boosting Agri-exports by providing air cargo subsidies for perishable farm produce. Helps farmers sell directly in global markets with reduced logistics costs.",
+        "Together, let's cultivate a sustainable future with practices that support robust farm yields and a healthier planet",
     },
     {
       id: 3,
       mainTitle:
-        "Revolutionizing <br /> Agriculture with<br /> Innovation & Technology.",
+        "Cultivating a Greener<br /> Future, One Farm at a <br /> Time",
       subTitle:
-        "Experience the future of farming with cutting-edge AgriTech solutions, groundbreaking innovations, and insightful discussions",
-      boxImg: Yojna1,
-      boxTitle: "Jal Jeevan Mission – Har Khet Ko Pani",
+        "We combines sustainability with technology to empower farms and protect the planet. Discover the future of eco-friendly Kisan Kumbh today.",
+      boxImg: "",
+      boxTitle: "Growing Together for a Kisan Kumbh World",
       boxSubTitle:
-        "Ensuring irrigation for every farm using smart water conservation techniques. Promotes drip & sprinkler irrigation, IoT-based water tracking for better efficiency.",
+        "Together, let's cultivate a sustainable future with practices that support robust farm yields and a healthier planet",
     },
   ];
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
-  //   }, 5000);
-  //   return () => clearInterval(interval);
-  // }, [data.length]);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [data.length]);
 
   return (
     <>
@@ -130,15 +127,15 @@ function HeroSection() {
                     <div className="w-full h-auto flex gap-3 rounded-xl p-3 xl:p-5 2xl:p-8 backdrop-blur-xsm text-white bg-white/10 border border-white/30 shadow-lg hover:bg-white/20 transition-all">
                       <img
                         src={item.boxImg}
-                        alt="Yojna"
-                        className="w-32 h-32 bg-white rounded-xl object-cover"
+                        alt=""
+                        className="w-32 h-32 bg-white rounded-xl"
                       />
                       <div className="flex flex-1 h-auto flex-col text-white justify-around">
                         <h1 className="text-sm sm:text-xl md:text-sm">
                           {item.boxTitle}
                         </h1>
                         <p className="h-[1px] w-full bg-white"></p>
-                        <p className="text-xs sm:text-lg md:text-xs">
+                        <p className="text-xs sm:text-lg md:text-sm">
                           {item.boxSubTitle}
                         </p>
                       </div>
@@ -154,10 +151,11 @@ function HeroSection() {
             <div
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-6 h-6 rounded-full shadow-md duration-500 ease-in-out transition-all cursor-pointer ${index === currentIndex
-                ? "bg-white w-10"
-                : "bg-white/10 bg-blur border-white/30 border"
-                }`}
+              className={`w-6 h-6 rounded-full shadow-md duration-500 ease-in-out transition-all cursor-pointer ${
+                index === currentIndex
+                  ? "bg-white w-10"
+                  : "bg-white/10 bg-blur border-white/30 border"
+              }`}
             ></div>
           ))}
         </div>
@@ -196,13 +194,40 @@ function HeroSection() {
           className="text-xl text-white font-bold"
         >
           <div className="flex items-center gap-2 mx-3">
-            <span>Kisan Kumbh 2025 – Cultivating Innovation, Harvesting the Future!</span>
+            <img src={Farmer} alt="farmer logo" />
+            <span>Kisan Kumbh</span>
           </div>
           <div className="flex items-center gap-2 mx-3">
-            <span>Kisan Kumbh 2025 – Cultivating Innovation, Harvesting the Future!</span>
+            <img src={Farmer} alt="farmer logo" />
+            <span>Kisan Kumbh</span>
           </div>
           <div className="flex items-center gap-2 mx-3">
-            <span>Kisan Kumbh 2025 – Cultivating Innovation, Harvesting the Future!</span>
+            <img src={Farmer} alt="farmer logo" />
+            <span>Kisan Kumbh</span>
+          </div>
+          <div className="flex items-center gap-2 mx-3">
+            <img src={Farmer} alt="farmer logo" />
+            <span>Kisan Kumbh</span>
+          </div>
+          <div className="flex items-center gap-2 mx-3">
+            <img src={Farmer} alt="farmer logo" />
+            <span>Kisan Kumbh</span>
+          </div>
+          <div className="flex items-center gap-2 mx-3">
+            <img src={Farmer} alt="farmer logo" />
+            <span>Kisan Kumbh</span>
+          </div>
+          <div className="flex items-center gap-2 mx-3">
+            <img src={Farmer} alt="farmer logo" />
+            <span>Kisan Kumbh</span>
+          </div>
+          <div className="flex items-center gap-2 mx-3">
+            <img src={Farmer} alt="farmer logo" />
+            <span>Kisan Kumbh</span>
+          </div>
+          <div className="flex items-center gap-2 mx-3">
+            <img src={Farmer} alt="farmer logo" />
+            <span>Kisan Kumbh</span>
           </div>
         </Marquee>
       </div>
