@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Header from "../Header";
-import Hero from "../../assets/Hero.jpg";
 import Marquee from "react-fast-marquee";
-import Farmer from "../../assets/farmer.svg";
+import Yojna1 from "../../assets/yojna1.avif";
+import Yojna2 from "../../assets/yojna2.jpeg";
+import Yojna3 from "../../assets/yojna3.jpeg";
 import { Link } from "react-router-dom";
 
 function HeroSection() {
