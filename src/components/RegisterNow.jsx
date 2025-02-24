@@ -26,7 +26,7 @@ const RegisterNow = () => {
                 isVisible && (
                     <Link to='/registration' className="fixed -right-20 top-1/2 -translate-y-1/2 z-30">
                         <button
-                            className="w-[200px] py-2 bg-[#01210f] rounded-xl text-white font-semibold -rotate-90 shadow-lg cursor-pointer"
+                            className="w-[200px] py-2 bg-[#C39337] rounded-xl text-white font-semibold -rotate-90 shadow-lg cursor-pointer"
                         >
                             Register Now
                         </button>
