@@ -67,10 +67,19 @@ function Section2() {
           </div>
           <div className="flex flex-col gap-4 text-[#7F9080]">
             <p className="text-sm lg:text-xs xl:text-sm">
-              Farmers have come forward with a renewed zeal to enhance their farm income, igniting a wave of innovation in agriculture. This new generation of "farmepreneurs" is pioneering agritech startups and revolutionizing traditional farming methods. However, around 86% of Indian farmers, especially small and remote landholders, remain disconnected from these innovations due to limited access to policy awareness, training, funding, and market insights.
+              vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+              aspernatur aut odit aut fugit, sed quia consequuntur numquam eius modi
+              tempora incidunt ut labore et dolore magnam aliquam consequuntur magni
+              dolores eos qui ratione v
             </p>
             <p className="text-sm lg:text-xs xl:text-sm">
-              Kisan Kumbh 2025 aims to bridge this gap by bringing together all stakeholders—including small and large farmers, model farmers, consumers, financial institutions, NGOs, policymakers, and agriculture experts—on a single platform. This event will serve as a catalyst for knowledge-sharing, networking, and technological advancements, fostering a sustainable, profitable, and resilient agricultural ecosystem in India.
+              vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+              aspernatur aut odit aut fugit, sed quia consequuntur numquam eius modi
+              tempora incidunt ut labore et dolore magnam aliquam consequuntur magni
+              dolores eos qui ratione v vitae dicta sunt explicabo. Nemo enim ipsam
+              voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+              consequuntur numquam eius modi tempora incidunt ut labore et dolore magnam
+              aliquam consequuntur magni dolores eos qui ratione v
             </p>
           </div>
         </div>
