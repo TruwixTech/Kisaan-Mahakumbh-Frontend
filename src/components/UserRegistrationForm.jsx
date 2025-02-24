@@ -18,7 +18,7 @@ const UserRegistrationForm = () => {
     password: "",
     role: "User", // Default role
     companyType: "",
-    accommodationRoom: "No",
+    accommodationRoom: "no",
     companyName: "",
     industry: "",
     customIndustry: "",
@@ -41,7 +41,10 @@ const UserRegistrationForm = () => {
     // Name Validation
     if (!formData.name.trim()) {
       errors.name = "Name is required.";
+    } else if (!/^[A-Za-z\s]+$/.test(formData.name)) {
+      errors.name = "Name should contain only letters.";
     }
+
 
     // Email Validation
     if (!formData.email.trim()) {
@@ -59,17 +62,23 @@ const UserRegistrationForm = () => {
 
     // Designation Validation
     if (!formData.designation.trim()) {
-      errors.name = "Name is required.";
+      errors.designation = "Designation is required.";
+    } else if (!/^[A-Za-z\s]+$/.test(formData.designation)) {
+      errors.designation = "Designation should contain only letters.";
     }
 
-    // city designation
+    // City Validation
     if (!formData.city.trim()) {
-      errors.name = "city is required.";
+      errors.city = "City is required.";
+    } else if (!/^[A-Za-z\s]+$/.test(formData.city)) {
+      errors.city = "City name should contain only letters.";
     }
 
-    // Address Validation
+    // Address Validation (Allowing numbers, as addresses may contain them)
     if (!formData.address.trim()) {
       errors.address = "Address is required.";
+    } else if (!/^[A-Za-z0-9\s,.-]+$/.test(formData.address)) {
+      errors.address = "Address contains invalid characters.";
     }
 
     // Password Validation
@@ -79,11 +88,50 @@ const UserRegistrationForm = () => {
       errors.password = "Password must be at least 6 characters long.";
     }
 
-    // Role-based Validations
-    if (formData.role === "entrepreneur" || formData.role === "sponsor") {
-      if (!formData.companyName.trim()) {
-        errors.companyName = "Company name is required.";
+    // Company Type Validation
+    if (!formData.companyType.trim()) {
+      errors.companyType = "Company type is required.";
+    } else if (!/^[A-Za-z\s]+$/.test(formData.companyType)) {
+      errors.companyType = "Company type should contain only letters.";
+    }
+
+    // Company Name Validation
+    if (!formData.companyName.trim()) {
+      errors.companyName = "Company name is required.";
+    } else if (!/^[A-Za-z0-9\s&.,'-]+$/.test(formData.companyName)) {
+      errors.companyName = "Company name contains invalid characters.";
+    }
+
+    // Industry Validation
+    if (!formData.industry.trim()) {
+      errors.industry = "Industry is required.";
+    } else if (!/^[A-Za-z\s]+$/.test(formData.industry)) {
+      errors.industry = "Industry should contain only letters.";
+    }
+
+
+    // Custom Industry Validation (if "Other" is selected)
+    if (formData.industry === "Other" && !formData.customIndustry.trim()) {
+      errors.customIndustry = "Please specify your industry.";
+    }
+
+    // Company Type Validation (if applicable)
+    if (formData.role === "entrepreneur") {
+      if (!formData.stallSize.trim()) {
+        errors.stallSize = "Stall size is required.";
       }
+    }
+
+    // Sponsorship & Stall Size Validation (if sponsor)
+    if (formData.role === "sponsor") {
+      if (!formData.sponsorshipType.trim()) {
+        errors.sponsorshipType = "Sponsorship type is required.";
+      }
+    }
+
+    // Accommodation Validation
+    if (!["yes", "no"].includes(formData.accommodationRoom)) {
+      errors.accommodationRoom = "Please select accommodation option.";
     }
 
     return errors;
@@ -640,9 +688,9 @@ const UserRegistrationForm = () => {
             <label className="flex items-center">
               <input
                 type="radio"
-                value="Yes"
+                value="yes"
                 name="accommodationRoom"
-                onChange={() => setFormData({ ...formData, accommodationRoom: "No" })}
+                onChange={(e) => setFormData({ ...formData, accommodationRoom: e.target.value })}
                 className="w-5 h-5 mr-2"
               />
               Yes
@@ -651,9 +699,9 @@ const UserRegistrationForm = () => {
             <label className="flex items-center">
               <input
                 type="radio"
-                value="No"
+                value="no"
                 name="accommodationRoom"
-                onChange={() => setFormData({ ...formData, accommodationRoom: "No" })}
+                onChange={(e) => setFormData({ ...formData, accommodationRoom: e.target.value })}
                 className="w-5 h-5 mr-2"
               />
               No

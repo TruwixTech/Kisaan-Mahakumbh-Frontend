@@ -16,9 +16,9 @@ const images = [
     { id: 4, src: Exhibition4 },
     { id: 5, src: Exhibition5 },
     { id: 6, src: Exhibition6 },
-    { id: 7, src: Exhibition7 },
-    { id: 8, src: Exhibition8 },
-    { id: 9, src: Exhibition9 }
+    // { id: 7, src: Exhibition7 },
+    // { id: 8, src: Exhibition8 },
+    // { id: 9, src: Exhibition9 }
 ];
 
 const Exhibition = () => {

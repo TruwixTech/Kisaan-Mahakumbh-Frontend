@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import Section6 from "../components/HomePageComponents/Section6";
 import ContactComponent from "../components/ContactComponent";
 import Exhibition from "../components/HomePageComponents/Exhibition";
+import Stats from "../components/HomePageComponents/Stats";
 
 function Home() {
   useEffect(() => {
@@ -17,6 +18,7 @@ function Home() {
     <>
       <HeroSection />
       <AboutEvent />
+      <Stats />
       <Exhibition />
       <Partners />
       <Section4 />
