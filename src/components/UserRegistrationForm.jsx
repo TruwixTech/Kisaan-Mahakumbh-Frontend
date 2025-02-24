@@ -5,7 +5,8 @@ import Header from "./Header";
 import Hero from "../assets/Hero.jpg";
 import { toast } from "react-toastify";
 
-const backend = 'http://localhost:8080/api/v1'
+// const backend = 'https://kisaan-mahakumbh-backend.vercel.app/api/v1'
+const backend = 'http://localhost:8000/api/v1'
 
 const UserRegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -15,7 +16,6 @@ const UserRegistrationForm = () => {
     designation: '',
     city: "",
     address: "",
-    password: "",
     role: "User", // Default role
     companyType: "",
     accommodationRoom: "no",
@@ -31,8 +31,6 @@ const UserRegistrationForm = () => {
 
   // console.log(location.state);
 
-  const [otpEmail, setOtpEmail] = useState("");
-  const [emailVerified, setEmailVerified] = useState(false);
   const { id } = useParams()
 
   const validateForm = (formData) => {
@@ -81,13 +79,6 @@ const UserRegistrationForm = () => {
       errors.address = "Address contains invalid characters.";
     }
 
-    // Password Validation
-    if (!formData.password.trim()) {
-      errors.password = "Password is required.";
-    } else if (formData.password.length < 6) {
-      errors.password = "Password must be at least 6 characters long.";
-    }
-
     // Company Type Validation
     if (!formData.companyType.trim()) {
       errors.companyType = "Company type is required.";
@@ -105,8 +96,6 @@ const UserRegistrationForm = () => {
     // Industry Validation
     if (!formData.industry.trim()) {
       errors.industry = "Industry is required.";
-    } else if (!/^[A-Za-z\s]+$/.test(formData.industry)) {
-      errors.industry = "Industry should contain only letters.";
     }
 
 
@@ -171,40 +160,6 @@ const UserRegistrationForm = () => {
   }, [])
   const [currentStep, setCurrentStep] = useState(1);
 
-  const handleSendEmailOTP = async () => {
-    try {
-      toast.dismiss()
-      const response = await axios.post(
-        `${backend}/otp/send-email-otp`,
-        { email: formData.email }
-      );
-      toast.success("OTP sent successfully!");
-    } catch (error) {
-      toast.error("Failed to send OTP");
-      console.error(
-        "Error sending OTP:",
-        error.response?.data || error.message
-      );
-    }
-  };
-
-  const handleVerifyEmailOTP = async () => {
-    try {
-      toast.dismiss()
-      const response = await axios.post(
-        `${backend}/otp/verify-email-otp`,
-        { email: formData.email, otp: otpEmail }
-      );
-      toast.success("Email verified successfully!");
-      setEmailVerified(true);
-    } catch (error) {
-      toast.error("Failed to verify OTP");
-      console.error(
-        "Error verifying OTP:",
-        error.response?.data || error.message
-      );
-    }
-  };
 
   async function generateTicket(token) {
     try {
@@ -222,7 +177,6 @@ const UserRegistrationForm = () => {
         designation: '',
         city: "",
         address: "",
-        password: "",
         role: "User", // Default role
         companyType: "",
         accommodationRoom: "No",
@@ -300,22 +254,6 @@ const UserRegistrationForm = () => {
       } else {
         handlePayment(token)
       }
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        designation: '',
-        city: "",
-        address: "",
-        password: "",
-        role: "User", // Default role
-        companyType: "",
-        accommodationRoom: "No",
-        companyName: "",
-        industry: "",
-        customIndustry: "",
-        sponsorshipType: ""
-      });
     } catch (error) {
       toast.error(error.response?.data?.data?.message || "Failed to register");
       console.error(
@@ -325,7 +263,47 @@ const UserRegistrationForm = () => {
     }
   };
 
-  console.log(formData)
+  // console.log(formData)
+
+  const validateFormData = () => {
+    const {
+      name,
+      email,
+      phone,
+      designation,
+      city,
+      address,
+      companyType,
+      accommodationRoom,
+      companyName,
+      industry,
+      customIndustry,
+      sponsorshipType,
+      stallSize,
+      role,
+    } = formData;
+
+    // Check if all common fields are filled
+    const commonFieldsFilled = [
+      name,
+      email,
+      phone,
+      designation,
+      city,
+      address,
+      companyType,
+      accommodationRoom,
+      companyName,
+      industry,
+    ].every((field) => field.trim() !== "");
+
+    // Additional validation based on role
+    if (role === "entrepreneur" && stallSize.trim() === "") return false;
+    if (role === "sponsor" && sponsorshipType.trim() === "") return false;
+
+    return commonFieldsFilled;
+  };
+
 
   const renderStepper = () => {
     return (
@@ -473,26 +451,6 @@ const UserRegistrationForm = () => {
             className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
           />
         </div>
-        {/* Password */}
-        <div>
-          <label className="block text-base  font-bold text-gray-700 mb-1">
-            Password:
-          </label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter your password"
-            value={formData.password}
-            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-            className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
-            required
-          />
-        </div>
-      </div>
-
-      {/* Email, Send OTP, Verify in one row */}
-      <div className={`${formData.role === "entrepreneur" || formData.role === "sponsor" || formData.role === "User" ? "md:grid-cols-2" : ""} grid grid-cols-1 gap-4 mb-4`}>
-        {/* Email */}
         <div>
           <label className="block text-base  font-bold text-gray-700 mb-1">
             Email:
@@ -504,53 +462,12 @@ const UserRegistrationForm = () => {
               placeholder="Enter your email"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className={`${formData.role === "entrepreneur" || formData.role === "sponsor" || formData.role === "User" ? "md:w-[70%]" : ""} w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600`}
+              className={`w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600`}
               required
-              disabled={emailVerified}
             />
-            {
-              formData.role === "entrepreneur" || formData.role === "sponsor" || formData.role === "User"
-                ? <div className="flex w-full md:w-[40%] lg:w-[30%] md:items-end">
-                  <button
-                    onClick={handleSendEmailOTP}
-                    className="w-full bg-[#01210f] text-white px-6 py-4 cursor-pointer rounded-full hover:bg-[#01210f] focus:outline-none"
-                  >
-                    Send OTP
-                  </button>
-                </div>
-                : null
-            }
           </div>
         </div>
-
-        {
-          formData.role === "entrepreneur" || formData.role === "sponsor" || formData.role === "User"
-            ? (
-              < div className="w-full flex flex-col md:flex-row md:gap-0 gap-4 md:items-end">
-                <input
-                  type="text"
-                  placeholder="Enter Email OTP"
-                  value={otpEmail}
-                  onChange={(e) => setOtpEmail(e.target.value)}
-                  className="w-full md:w-[70%] py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
-                />
-                <button
-                  onClick={handleVerifyEmailOTP}
-                  className={`md:ml-2 px-10 py-4 rounded-full text-white cursor-pointer ${emailVerified
-                    ? "bg-green-500"
-                    : "bg-[#01210f]  hover:bg-[#01210f] "
-                    } focus:outline-none focus:ring-2 focus:ring-blue-500`}
-                  disabled={emailVerified}
-                >
-                  {emailVerified ? "Verified" : "Verify"}
-                </button>
-              </div>
-            )
-            : null
-        }
-
       </div>
-
       {/* Password and Address in one row */}
       < div className="grid grid-cols-1 gap-4 mb-4" >
         {/* Address */}
@@ -764,7 +681,7 @@ const UserRegistrationForm = () => {
       {/* Submit Button */}
       <button
         className="w-full bg-[#01210f] cursor-pointer text-white px-6 mt-6 rounded-full py-3 hover:bg-[#01210f] focus:outline-none focus:ring-2  disabled:bg-gray-500"
-        disabled={formData.role === "User" || formData.role === "sponsor" || formData.role === "entrepreneur" ? !emailVerified : formData.name === "" || formData.email === "" || formData.phone === "" || formData.designation === 0 || formData.address === "" || formData.password === "" || formData.city === "" || formData.companyName === "" || formData.companyType === "" || formData.industry === ""}
+        disabled={!validateFormData()}
         onClick={() => setCurrentStep(2)}
       >
         Next
