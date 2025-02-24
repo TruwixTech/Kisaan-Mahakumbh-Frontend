@@ -15,6 +15,7 @@ import Sponser9 from '../../assets/sponsor9.png'
 import Sponser10 from '../../assets/sponsor10.png'
 
 
+
 function Section1() {
     const sponsors = [
         Sponser1,
