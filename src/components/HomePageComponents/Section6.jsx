@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaHome } from "react-icons/fa";
+import Marquee from 'react-fast-marquee';
 import Sponser1 from '../../assets/sponser1.png'
 import Sponser2 from '../../assets/sponser2.png'
 import Sponser3 from '../../assets/sponser3.png'
@@ -37,17 +38,13 @@ function Section6() {
                     </div>
 
                     {/* Grid Section */}
-                    <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 md:gap-12  gap-5 px-6">
+                    <Marquee gradient={false} speed={80} pauseOnHover={true}>
                         {sponsors.map((item, index) => (
-                            <div key={index} className="text-center w-56 h-56">
-                                <img
-                                    src={item}
-                                    alt='sponsor'
-                                    className="w-full h-full object-cover rounded-3xl shadow-md"
-                                />
+                            <div key={index} className="mx-4 my-14 w-48 h-48 flex items-center justify-center">
+                                <img src={item} alt='sponsor' className="w-full h-full object-cover rounded-3xl shadow-md" />
                             </div>
                         ))}
-                    </div>
+                    </Marquee>
                 </div>
             </div>
             <Section2 />

@@ -7,6 +7,7 @@ import AgritechHighlight from "../components/HomePageComponents/Section5";
 import { useEffect } from "react";
 import Section6 from "../components/HomePageComponents/Section6";
 import ContactComponent from "../components/ContactComponent";
+import Exhibition from "../components/HomePageComponents/Exhibition";
 
 function Home() {
   useEffect(() => {
@@ -16,6 +17,7 @@ function Home() {
     <>
       <HeroSection />
       <AboutEvent />
+      <Exhibition />
       <Partners />
       <Section4 />
       <AgritechHighlight />

@@ -4,7 +4,7 @@ import Partner2 from '../../assets/partner2.png'
 import Partner3 from '../../assets/partner3.png'
 import Partner4 from '../../assets/partner4.png'
 import Partner5 from '../../assets/partner5.png'
-
+import Partner6 from '../../assets/partner6.jpg'
 function Partners() {
     const data = [
         {
@@ -16,8 +16,8 @@ function Partners() {
         {
             id: 2,
             img: Partner2,
-            title: 'Pujyashri Adrishya Kadsiddheshwar Swamiji',
-            subtitle: 'Mathadhipati, kaneri math'
+            title: 'Dr. B. R. Kamboj',
+            subtitle: 'Vice- Chancellor HAU, Haryana'
         },
         {
             id: 3,
@@ -28,8 +28,8 @@ function Partners() {
         {
             id: 4,
             img: Partner4,
-            title: 'Pujyashri Adrishya Kadsiddheshwar Swamiji',
-            subtitle: 'Mathadhipati, kaneri math'
+            title: 'Swami Amritanand',
+            subtitle: 'Krishnayan Gaushala, Haridwar'
         },
         {
             id: 5,
@@ -37,7 +37,14 @@ function Partners() {
             title: 'SP Single',
             subtitle: 'Ex- GM GAIL'
         },
+        {
+            id: 6,
+            img: Partner6,
+            title: 'Prof. VK Vijay',
+            subtitle: 'National Coordinator- Unnat Bharat Abhiyan, IITD'
+        },
     ]
+   
     return (
         <div className='w-full h-auto flex flex-col px-5 md:px-10 lg:px-20  gap-3 bg-[#e7e7e7] py-10  lg:pb-20 xl:pb-16 lg:gap-6 font-[Roboto]'>
             <h1 className='text-[#374836] font-semibold text-lg text-center md:text-xl'>|  Partners and Patrons  |</h1>
@@ -46,7 +53,7 @@ function Partners() {
                 {
                     data.map((item,index) => (
                         <div key={index} className='w-full h-auto flex flex-col gap-2'>
-                            <img src={item.img} alt="img logo" className='w-full h-auto object-cover rounded-3xl mx-auto' />
+                            <img src={item.img} alt="img logo" className='w-full h-64 object-cover rounded-3xl mx-auto' />
                             <h1 className='font-semibold text-center text-xl text-[#374836] xl:text-[22px]'>{item.title}</h1>
                             <p className='text-[#7F9080] text-sm text-center'>{item.subtitle}</p>
                         </div>
@@ -56,5 +63,6 @@ function Partners() {
         </div>
     )
 }
-
+ 
 export default Partners
+ 
