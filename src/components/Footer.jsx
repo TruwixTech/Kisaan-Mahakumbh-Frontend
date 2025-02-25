@@ -6,6 +6,16 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <div className="w-full h-auto flex flex-col bg-[#01210f]">
+      <a
+        href="https://wa.link/7vl2u8"
+        class="whatsapp-float"
+        target="_blank"
+      >
+        <img
+          src="https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/kgtfjtgqkaian3inh1sz"
+          alt="WhatsApp"
+        />
+      </a>
       <div className="w-full h-auto flex flex-col lg:flex-row xl:justify-between">
         <div className="w-full h-auto flex flex-col sm:flex-row lg:w-1/2">
           <div className="relative w-full h-80 flex justify-center bg-[#e7e7e7] items-center sm:w-1/2">
@@ -22,7 +32,10 @@ function Footer() {
               sustainable and innovative farming practices.
             </p>
             <div className="w-full h-auto">
-              <Link to="/contact-us" className="px-4 py-2 rounded-full text-white bg-[#146a3a] flex justify-center items-center gap-3 xl:px-8 xl:py-3 xl:text-lg">
+              <Link
+                to="/contact-us"
+                className="px-4 py-2 rounded-full text-white bg-[#146a3a] flex justify-center items-center gap-3 xl:px-8 xl:py-3 xl:text-lg"
+              >
                 Contact Us
                 <span className="h-6 w-6 rounded-full bg-white flex justify-center items-center">
                   <FiArrowUpRight size={25} className="text-[#146a3a]" />
@@ -77,9 +90,9 @@ function Footer() {
       <div className="w-[90%] h-[1px] bg-[#1a3727] mx-auto"></div>
       <div className="my-4 w-[90%] h-auto flex flex-col mx-auto gap-8 md:flex-row md:justify-between md:items-center lg:my-8">
         <div className="flex flex-wrap text-[#FFFFFFB2] gap-4 justify-center items-center lg:text-lg">
-          <Link to='/termscondition'>Terms & Conditions</Link>
-          <Link to='/privacy-policy'>Privacy Policy</Link>
-          <Link to='/refundspage'>Refund Policy</Link>
+          <Link to="/termscondition">Terms & Conditions</Link>
+          <Link to="/privacy-policy">Privacy Policy</Link>
+          <Link to="/refundspage">Refund Policy</Link>
         </div>
         <div className="text-[#FFFFFFB2] flex justify-center items-center lg:text-lg">
           © 2024, Campaigning Source.
