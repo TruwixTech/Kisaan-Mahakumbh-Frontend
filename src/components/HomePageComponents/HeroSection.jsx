@@ -15,7 +15,7 @@ function HeroSection() {
       mainTitle:
         "Kisan Kumbh 2025 – <br /> The Grand Convergence of <br /> Agriculture & Innovation.",
       subTitle:
-        "Welcome to kisan Kumbh 2025, a landmark event where agriculture meets technology, tradition meets innovation, and farmers meet the future.",
+        "9th & 10th April, 2025 <br /> A.P. Shinde Symposium Hall, NASC Complex, Delhi 110012",
       boxImg: Yojna3,
       boxTitle: "Drone Didi Yojana (2024)",
       boxSubTitle:
@@ -24,9 +24,9 @@ function HeroSection() {
     {
       id: 2,
       mainTitle:
-        "Cultivating a Greener<br /> Future, One Farm at a <br /> Time",
+        "India’s Ultimate Expo on <br/>Agriculture, Cutting-Edge<br/>Machinery & Agri-Processing Technologies!",
       subTitle:
-        "We combines sustainability with technology to empower farms and protect the planet. Discover the future of eco-friendly Kisan Kumbh today.",
+        "9th & 10th April, 2025 <br />  A.P. Shinde Symposium Hall, NASC Complex, Delhi 110012",
       boxImg: Yojna2,
       boxTitle: "Krishi Udan 2.0",
       boxSubTitle:
@@ -37,7 +37,7 @@ function HeroSection() {
       mainTitle:
         "Revolutionizing <br /> Agriculture with<br /> Innovation & Technology.",
       subTitle:
-        "Experience the future of farming with cutting-edge AgriTech solutions, groundbreaking innovations, and insightful discussions",
+        "9th & 10th April, 2025 <br />  A.P. Shinde Symposium Hall, NASC Complex, Delhi 110012",
       boxImg: Yojna1,
       boxTitle: "Jal Jeevan Mission – Har Khet Ko Pani",
       boxSubTitle:
@@ -103,9 +103,10 @@ function HeroSection() {
                 ></h1>
                 <div className="w-full h-auto flex flex-col gap-6 md:flex-row">
                   <div className="w-full h-auto flex flex-col gap-6">
-                    <h1 className="font-bold text-white text-sm md:pr-6 lg:pr-20 xl:pr-60 lg:text-lg xl:text-xl">
-                      {item.subTitle}
-                    </h1>
+                    <h1
+                      className="font-bold text-white text-sm md:pr-6 lg:pr-20 xl:pr-60 lg:text-lg xl:text-xl"
+                      dangerouslySetInnerHTML={{ __html: item.subTitle }}
+                    ></h1>
                     <div className="w-full h-auto flex gap-6">
                       <Link
                         to="/registration"
@@ -119,7 +120,10 @@ function HeroSection() {
                       >
                         Register for Event
                       </Link>
-                      <Link to='/sponsers' className="font-bold flex items-center justify-center bg-blur bg-white text-[#297F39] border border-[#297F39] w-20 py-2 rounded-xl xl:w-28 cursor-pointer xl:text-lg">
+                      <Link
+                        to="/sponsers"
+                        className="font-bold flex items-center justify-center bg-blur bg-white text-[#297F39] border border-[#297F39] w-20 py-2 rounded-xl xl:w-28 cursor-pointer xl:text-lg"
+                      >
                         Join us
                       </Link>
                     </div>
@@ -152,10 +156,11 @@ function HeroSection() {
             <div
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-6 h-6 rounded-full shadow-md duration-500 ease-in-out transition-all cursor-pointer ${index === currentIndex
-                ? "bg-white w-10"
-                : "bg-white/10 bg-blur border-white/30 border"
-                }`}
+              className={`w-6 h-6 rounded-full shadow-md duration-500 ease-in-out transition-all cursor-pointer ${
+                index === currentIndex
+                  ? "bg-white w-10"
+                  : "bg-white/10 bg-blur border-white/30 border"
+              }`}
             ></div>
           ))}
         </div>
@@ -194,13 +199,19 @@ function HeroSection() {
           className="text-xl text-white font-bold"
         >
           <div className="flex items-center gap-2 mx-3">
-            <span>Kisan Kumbh 2025 – Cultivating Innovation, Harvesting the Future!</span>
+            <span>
+              Kisan Kumbh 2025 – Cultivating Innovation, Harvesting the Future!
+            </span>
           </div>
           <div className="flex items-center gap-2 mx-3">
-            <span>Kisan Kumbh 2025 – Cultivating Innovation, Harvesting the Future!</span>
+            <span>
+              Kisan Kumbh 2025 – Cultivating Innovation, Harvesting the Future!
+            </span>
           </div>
           <div className="flex items-center gap-2 mx-3">
-            <span>Kisan Kumbh 2025 – Cultivating Innovation, Harvesting the Future!</span>
+            <span>
+              Kisan Kumbh 2025 – Cultivating Innovation, Harvesting the Future!
+            </span>
           </div>
         </Marquee>
       </div>

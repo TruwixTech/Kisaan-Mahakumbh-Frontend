@@ -49,11 +49,15 @@ const ContactComponent = () => {
 
     // Phone validation (10-digit number)
     const phonePattern = /^[0-9]{10}$/;
+    const alphabetPattern = /[a-zA-Z]/; // Check if the phone contains alphabets
     if (!phone.trim()) {
       toast.error("Phone number is required.");
       return false;
+    } else if (alphabetPattern.test(phone)) {
+      toast.error("Alphabets are not allowed in phone number.");
+      return false;
     } else if (!phonePattern.test(phone)) {
-      toast.error("Phone number must be 10 digits.");
+      toast.error("Phone number must be exactly 10 digits.");
       return false;
     }
 
@@ -89,7 +93,10 @@ const ContactComponent = () => {
     setLoading(true);
 
     try {
-      await axios.post("https://kisaan-mahakumbh-backend.vercel.app/api/v1/contact", formData);
+      await axios.post(
+        "https://kisaan-mahakumbh-backend.vercel.app/api/v1/contact",
+        formData
+      );
       toast.success("Message sent successfully!");
       setFormData({
         name: "",
@@ -100,7 +107,10 @@ const ContactComponent = () => {
       });
     } catch (error) {
       toast.error("Failed to send message. Please try again.");
-      console.error("Error sending message:", error.response?.data || error.message);
+      console.error(
+        "Error sending message:",
+        error.response?.data || error.message
+      );
     } finally {
       setLoading(false);
     }
@@ -111,25 +121,40 @@ const ContactComponent = () => {
       <div className="grid md:grid-cols-2 gap-8 font-[Roboto]">
         {/* Left Section - Contact Details */}
         <div className="space-y-6 mt-8">
-          <h3 className="text-[#374836] text-2xl font-bold xl:text-3xl mb-1">| Contact us |</h3>
+          <h3 className="text-[#374836] text-2xl font-bold xl:text-3xl mb-1">
+            | Contact us |
+          </h3>
           <h3 className="text-6xl font-bold text-[#374836] leading-15">
             Join Us At <br /> Kisan Kumbh 2025
           </h3>
 
           <div>
-            <h4 className="font-semibold text-2xl text-[#373f43] mb-4">Emails</h4>
+            <h4 className="font-semibold text-2xl text-[#373f43] mb-4">
+              Emails
+            </h4>
             <p className="text-[#8c959f] flex gap-4 items-center">
-              <span><img src={mailicon} alt="" /></span> Cowtrition2019@gmail.com
+              <span>
+                <img src={mailicon} alt="" />
+              </span>{" "}
+              Cowtrition2019@gmail.com
             </p>
             <p className="text-[#8c959f] flex gap-4 items-center">
-              <span><img src={mailicon} alt="" /></span> agritechinnovation24@gmail.com
+              <span>
+                <img src={mailicon} alt="" />
+              </span>{" "}
+              agritechinnovation24@gmail.com
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold text-2xl text-[#373f43] mb-4">Reach out to us at</h4>
+            <h4 className="font-semibold text-2xl text-[#373f43] mb-4">
+              Reach out to us at
+            </h4>
             <p className="text-[#8c959f] flex gap-4 items-center">
-              <span><img src={phone} alt="" /></span> 9540845510, 9582057533
+              <span>
+                <img src={phone} alt="" />
+              </span>{" "}
+              9540845510, 9582057533
             </p>
           </div>
         </div>
@@ -139,7 +164,9 @@ const ContactComponent = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Name */}
             <div>
-              <label className="block text-lg font-bold mb-2 text-gray-700">Name</label>
+              <label className="block text-lg font-bold mb-2 text-gray-700">
+                Name
+              </label>
               <input
                 type="text"
                 name="name"
@@ -152,7 +179,9 @@ const ContactComponent = () => {
 
             {/* Email */}
             <div>
-              <label className="block text-lg font-bold mb-2 text-gray-700">E-mail</label>
+              <label className="block text-lg font-bold mb-2 text-gray-700">
+                E-mail
+              </label>
               <input
                 type="email"
                 name="email"
@@ -167,7 +196,9 @@ const ContactComponent = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Phone */}
             <div>
-              <label className="block text-lg font-bold mb-2 text-gray-700">Phone Number</label>
+              <label className="block text-lg font-bold mb-2 text-gray-700">
+                Phone Number
+              </label>
               <input
                 type="tel"
                 name="phone"
@@ -180,7 +211,9 @@ const ContactComponent = () => {
 
             {/* Subject */}
             <div>
-              <label className="block text-lg font-bold mb-2 text-gray-700">Subject</label>
+              <label className="block text-lg font-bold mb-2 text-gray-700">
+                Subject
+              </label>
               <input
                 type="text"
                 name="subject"
@@ -194,7 +227,9 @@ const ContactComponent = () => {
 
           {/* Message */}
           <div>
-            <label className="block text-lg font-bold mb-2 text-gray-700">Message</label>
+            <label className="block text-lg font-bold mb-2 text-gray-700">
+              Message
+            </label>
             <textarea
               name="message"
               value={formData.message}
