@@ -2,15 +2,14 @@ import React from "react";
 import FooterLogo from "../assets/FooterLogo.png";
 import { FiArrowUpRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { FaFacebookF } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa6";
 
 function Footer() {
   return (
     <div className="w-full h-auto flex flex-col bg-[#01210f]">
-      <a
-        href="https://wa.link/7vl2u8"
-        class="whatsapp-float"
-        target="_blank"
-      >
+      <a href="https://wa.link/7vl2u8" className="whatsapp-float" target="_blank">
         <img
           src="https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/kgtfjtgqkaian3inh1sz"
           alt="WhatsApp"
@@ -93,6 +92,30 @@ function Footer() {
           <Link to="/termscondition">Terms & Conditions</Link>
           <Link to="/privacy-policy">Privacy Policy</Link>
           <Link to="/refundspage">Refund Policy</Link>
+          <a
+            href="https://www.facebook.com/profile.php?id=61573747164794"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 bg-[#146a3a] rounded-full flex justify-center items-center"
+          >
+            <FaFacebookF size={20} className="text-white" />
+          </a>
+          <a
+            href="https://www.instagram.com/kisankumbh2025/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 bg-[#146a3a] rounded-full flex justify-center items-center"
+          >
+            <FaInstagram size={20} className="text-white" />
+          </a>
+          <a
+            href="https://x.com/Kisankumbh2025"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 bg-[#146a3a] rounded-full flex justify-center items-center"
+          >
+            <FaXTwitter size={20} className="text-white" />
+          </a>
         </div>
         <div className="text-[#FFFFFFB2] flex justify-center items-center lg:text-lg">
           © 2024, Campaigning Source.

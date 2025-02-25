@@ -43,7 +43,7 @@ function Sponsers() {
         <ContactComponent />
       </div>
       <Section1 />
-      <Section2 />
+      {/* <Section2 /> */}
     </div>
   )
 }

@@ -5,6 +5,12 @@ import Partner3 from '../../assets/partner3.png'
 import Partner4 from '../../assets/partner4.png'
 import Partner5 from '../../assets/partner5.png'
 import Partner6 from '../../assets/partner6.jpg'
+import Partner7 from '../../assets/partner7.png'
+import Partner8 from '../../assets/partner8.png'
+import Partner9 from '../../assets/partner9.png'
+import Partner10 from '../../assets/partner10.png'
+import Partner11 from '../../assets/partner11.png'
+
 function Partners() {
     const data = [
         {
@@ -37,11 +43,41 @@ function Partners() {
             title: 'SP Single',
             subtitle: 'Ex- GM GAIL'
         },
+        // {
+        //     id: 6,
+        //     img: Partner6,
+        //     title: 'Prof. VK Vijay',
+        //     subtitle: 'National Coordinator- Unnat Bharat Abhiyan, IITD'
+        // },
         {
-            id: 6,
-            img: Partner6,
-            title: 'Prof. VK Vijay',
-            subtitle: 'National Coordinator- Unnat Bharat Abhiyan, IITD'
+            id: 7,
+            img: Partner7,
+            title: 'Chaudhary Arun Jalidar',
+            subtitle: '52 paal/Khaap President'
+        },
+        {
+            id: 8,
+            img: Partner8,
+            title: 'Rajesh kumar',
+            subtitle: 'Industrialist & Social Thinker'
+        },
+        {
+            id: 9,
+            img: Partner9,
+            title: 'Padma Bhushan Shri Ram Bahadur Rai',
+            subtitle: 'Renowned Journalist, President of  IGNCA'
+        },
+        {
+            id: 10,
+            img: Partner10,
+            title: 'Mansukh Bhai Patel',
+            subtitle: 'Founder, Sagar King'
+        },
+        {
+            id: 11,
+            img: Partner11,
+            title: 'Dr. Krishan Bir Chaudhary',
+            subtitle: 'Bhartiya Krishak Samaj, President'
         },
     ]
    
