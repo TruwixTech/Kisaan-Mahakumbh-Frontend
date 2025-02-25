@@ -139,13 +139,7 @@ const ContactComponent = () => {
               <span>
                 <img src={mailicon} alt="" />
               </span>{" "}
-              Cowtrition2019@gmail.com
-            </p>
-            <p className="text-[#8c959f] flex gap-4 items-center">
-              <span>
-                <img src={mailicon} alt="" />
-              </span>{" "}
-              agritechinnovation24@gmail.com
+              kisankumbh@gmail.com
             </p>
           </div>
 
@@ -157,7 +151,7 @@ const ContactComponent = () => {
               <span>
                 <img src={phone} alt="" />
               </span>{" "}
-              9540845510, 9582057533
+              9911182095
             </p>
           </div>
 

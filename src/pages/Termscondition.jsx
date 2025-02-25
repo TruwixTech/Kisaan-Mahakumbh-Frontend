@@ -80,7 +80,7 @@ function Termscondition() {
                         <li> The event organizers shall not be liable for  <strong> injuries, theft, or damages  </strong>  occurring during occurring  the event. </li>
                     </ul>
                     <p className="mt-1 text-[16px] p-4">
-                        📧For queries regarding these Terms & Conditions, contact :<a href="mailto:cowtrition2019@gmail.com" className="text-green-600">cowtrition2019@gmail.com</a>,
+                        📧For queries regarding these Terms & Conditions, contact :<a href="mailto:kisankumbh@gmail.com" className="text-green-600">kisankumbh@gmail.com</a>,
                         <a href="mailto:agritechinnovation24@gmail.com" className="text-green-600"> agritechinnovation24@gmail.com</a>
                     </p>
                 </section>

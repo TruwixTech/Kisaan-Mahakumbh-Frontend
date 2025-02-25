@@ -79,7 +79,7 @@ function Refundspage() {
                         For any concerns or disputes regarding payments, you may contact:
                     </p>
                     <p className="mt-1 text-[16px]">
-                        📧 Email: <a href="mailto:cowtrition2019@gmail.com" className="text-green-600">cowtrition2019@gmail.com</a>,
+                        📧 Email: <a href="mailto:kisankumbh@gmail.com" className="text-green-600">kisankumbh@gmail.com</a>,
                         <a href="mailto:agritechinnovation24@gmail.com" className="text-green-600"> agritechinnovation24@gmail.com</a>
                     </p>
                 </section>
