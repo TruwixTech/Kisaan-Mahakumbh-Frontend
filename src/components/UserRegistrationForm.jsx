@@ -6,7 +6,7 @@ import Hero from "../assets/Hero.jpg";
 import { toast } from "react-toastify";
 
 const backend = "https://kisaan-mahakumbh-backend.vercel.app/api/v1";
-// const backend = 'http://localhost:8000/api/v1'
+// const backend = 'http://localhost:8080/api/v1'
 
 const UserRegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -24,6 +24,7 @@ const UserRegistrationForm = () => {
     customIndustry: "",
     sponsorshipType: "",
     stallSize: "",
+    customStallSize: ""
   });
 
   const navigate = useNavigate();
@@ -188,6 +189,7 @@ const UserRegistrationForm = () => {
         industry: "",
         customIndustry: "",
         sponsorshipType: "",
+        customStallSize: "",
       });
       navigate("/");
     } catch (error) {
@@ -198,10 +200,18 @@ const UserRegistrationForm = () => {
   const handlePayment = async (token) => {
     // Check mobile number before proceeding
     toast.dismiss();
-    const amount = 3;
+
+    let price = 0;
+    if (formData.stallSize === "2x3") {
+      price = 30000;
+    } else if (formData.stallSize === "3x4") {
+      price = 50000;
+    } else {
+      price = 50000;
+    }
 
     const orderDetails = {
-      amount,
+      amount: price,
       transactionId: "T" + Date.now(),
       role: formData.role,
     };
@@ -243,17 +253,10 @@ const UserRegistrationForm = () => {
   const handleSubmitRegistrationForm = async () => {
     try {
       toast.dismiss();
-      const errors = validateForm(formData);
-
-      if (Object.keys(errors).length > 0) {
-        let errorMessages = Object.values(errors).join("\n");
-        toast.error("Please fix the following errors:\n\n" + errorMessages);
-        return;
-      }
       const response = await axios.post(`${backend}/auth/signup`, formData);
       toast.success("Registration successful!");
       const token = response.data.data.token;
-      console.log(token);
+      // console.log(token);
       localStorage.setItem("token", JSON.stringify(token));
       if (
         formData.role === "User" ||
@@ -272,6 +275,17 @@ const UserRegistrationForm = () => {
       );
     }
   };
+
+  function nextStep() {
+    const errors = validateForm(formData);
+
+    if (Object.keys(errors).length > 0) {
+      let errorMessages = Object.values(errors).join("\n");
+      toast.error("Please fix the following errors:\n\n" + errorMessages);
+      return;
+    }
+    setCurrentStep(2)
+  }
 
   // console.log(formData)
 
@@ -318,30 +332,27 @@ const UserRegistrationForm = () => {
     return (
       <div className="w-full flex justify-center">
         <div
-          className={`${
-            formData.role === "entrepreneur"
-              ? "w-full md:w-full xl:w-[80%]"
-              : "w-full md:w-[50%]"
-          } flex flex-col md:flex-row gap-2 justify-between items-center mb-8`}
+          className={`${formData.role === "entrepreneur"
+            ? "w-full md:w-full xl:w-[80%]"
+            : "w-full md:w-[50%]"
+            } flex flex-col md:flex-row gap-2 justify-between items-center mb-8`}
         >
           {/* Step 1 */}
           <div className="flex items-center">
             <div className="relative flex gap-4 items-center">
               <div
-                className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${
-                  currentStep >= 1
-                    ? "bg-black text-white"
-                    : "bg-gray-200 text-black border border-gray-600"
-                }`}
+                className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${currentStep >= 1
+                  ? "bg-black text-white"
+                  : "bg-gray-200 text-black border border-gray-600"
+                  }`}
               >
                 1
               </div>
               <span
-                className={`text-sm mt-2 h-8 ${
-                  currentStep >= 1
-                    ? "text-black font-medium"
-                    : "text-gray-500 font-semibold"
-                }`}
+                className={`text-sm mt-2 h-8 ${currentStep >= 1
+                  ? "text-black font-medium"
+                  : "text-gray-500 font-semibold"
+                  }`}
               >
                 Attendee Information
               </span>
@@ -350,29 +361,26 @@ const UserRegistrationForm = () => {
 
           {/* Stepper Line */}
           <div
-            className={`md:w-40 h-[3px] w-6 rotate-90 md:rotate-0 ${
-              currentStep > 1 ? "bg-black" : "bg-gray-300"
-            }`}
+            className={`md:w-40 h-[3px] w-6 rotate-90 md:rotate-0 ${currentStep > 1 ? "bg-black" : "bg-gray-300"
+              }`}
           ></div>
 
           {/* Step 2 */}
           <div className="flex items-center">
             <div className="relative flex gap-4 items-center">
               <div
-                className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${
-                  currentStep >= 2
-                    ? "bg-black text-white"
-                    : "bg-gray-200 text-black border border-gray-600"
-                }`}
+                className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${currentStep >= 2
+                  ? "bg-black text-white"
+                  : "bg-gray-200 text-black border border-gray-600"
+                  }`}
               >
                 2
               </div>
               <span
-                className={`text-sm mt-2 h-8 ${
-                  currentStep >= 2
-                    ? "text-black font-medium"
-                    : "text-gray-500 font-medium"
-                }`}
+                className={`text-sm mt-2 h-8 ${currentStep >= 2
+                  ? "text-black font-medium"
+                  : "text-gray-500 font-medium"
+                  }`}
               >
                 Preview
               </span>
@@ -383,29 +391,26 @@ const UserRegistrationForm = () => {
             <>
               {/* Stepper Line */}
               <div
-                className={`md:w-40 h-[3px] w-6 rotate-90 md:rotate-0 ${
-                  currentStep > 2 ? "bg-black" : "bg-gray-300"
-                }`}
+                className={`md:w-40 h-[3px] w-6 rotate-90 md:rotate-0 ${currentStep > 2 ? "bg-black" : "bg-gray-300"
+                  }`}
               ></div>
 
               {/* Step 3 */}
               <div className="flex items-center">
                 <div className="relative flex gap-4 items-center">
                   <div
-                    className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${
-                      currentStep >= 3
-                        ? "bg-gray-300 text-black"
-                        : "bg-gray-200 text-black border border-gray-600"
-                    }`}
+                    className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${currentStep >= 3
+                      ? "bg-gray-300 text-black"
+                      : "bg-gray-200 text-black border border-gray-600"
+                      }`}
                   >
                     3
                   </div>
                   <span
-                    className={`text-sm mt-2 h-8 ${
-                      currentStep >= 3
-                        ? "text-black font-medium"
-                        : "text-gray-500 font-medium"
-                    }`}
+                    className={`text-sm mt-2 h-8 ${currentStep >= 3
+                      ? "text-black font-medium"
+                      : "text-gray-500 font-medium"
+                      }`}
                   >
                     Payment
                   </span>
@@ -759,7 +764,7 @@ const UserRegistrationForm = () => {
       <button
         className="w-full bg-[#01210f] cursor-pointer text-white px-6 mt-6 rounded-full py-3 hover:bg-[#01210f] focus:outline-none focus:ring-2  disabled:bg-gray-500"
         disabled={!validateFormData()}
-        onClick={() => setCurrentStep(2)}
+        onClick={nextStep}
       >
         Next
       </button>
