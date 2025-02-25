@@ -3,6 +3,9 @@ import { useState } from "react";
 import mailicon from "../assets/mailicon.svg";
 import phone from "../assets/phone.svg";
 import { toast } from "react-toastify";
+import { FaFacebookF } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa6";
 
 const ContactComponent = () => {
   const [formData, setFormData] = useState({
@@ -136,13 +139,7 @@ const ContactComponent = () => {
               <span>
                 <img src={mailicon} alt="" />
               </span>{" "}
-              Cowtrition2019@gmail.com
-            </p>
-            <p className="text-[#8c959f] flex gap-4 items-center">
-              <span>
-                <img src={mailicon} alt="" />
-              </span>{" "}
-              agritechinnovation24@gmail.com
+              kisankumbh@gmail.com
             </p>
           </div>
 
@@ -154,8 +151,40 @@ const ContactComponent = () => {
               <span>
                 <img src={phone} alt="" />
               </span>{" "}
-              9540845510, 9582057533
+              9911182095
             </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-2xl text-[#373f43] mb-4">
+              Social Links
+            </h4>
+            <div className="flex gap-4">
+            <a
+              href="https://www.facebook.com/profile.php?id=61573747164794"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 bg-[#146a3a] rounded-full flex justify-center items-center"
+            >
+              <FaFacebookF size={20} className="text-white" />
+            </a>
+            <a
+              href="https://www.instagram.com/kisankumbh2025/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 bg-[#146a3a] rounded-full flex justify-center items-center"
+            >
+              <FaInstagram size={20} className="text-white" />
+            </a>
+            <a
+              href="https://x.com/Kisankumbh2025"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 bg-[#146a3a] rounded-full flex justify-center items-center"
+            >
+              <FaXTwitter size={20} className="text-white" />
+            </a>
+            </div>
           </div>
         </div>
 
