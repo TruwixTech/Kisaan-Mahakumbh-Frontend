@@ -5,7 +5,7 @@ import Header from "./Header";
 import Hero from "../assets/Hero.jpg";
 import { toast } from "react-toastify";
 
-const backend = "https://kisaan-mahakumbh-backend.vercel.app/api/v1";
+const backend = 'https://kisaan-mahakumbh-backend.vercel.app/api/v1'
 // const backend = 'http://localhost:8000/api/v1'
 
 const UserRegistrationForm = () => {
@@ -13,7 +13,7 @@ const UserRegistrationForm = () => {
     name: "",
     email: "",
     phone: "",
-    designation: "",
+    designation: '',
     city: "",
     address: "",
     role: "User", // Default role
@@ -23,15 +23,15 @@ const UserRegistrationForm = () => {
     industry: "",
     customIndustry: "",
     sponsorshipType: "",
-    stallSize: "",
+    stallSize: ""
   });
 
   const navigate = useNavigate();
-  const location = useLocation();
+  const location = useLocation()
 
   // console.log(location.state);
 
-  const { id } = useParams();
+  const { id } = useParams()
 
   const validateForm = (formData) => {
     const errors = {};
@@ -42,6 +42,7 @@ const UserRegistrationForm = () => {
     } else if (!/^[A-Za-z\s]+$/.test(formData.name)) {
       errors.name = "Name should contain only letters.";
     }
+
 
     // Email Validation
     if (!formData.email.trim()) {
@@ -97,6 +98,7 @@ const UserRegistrationForm = () => {
       errors.industry = "Industry is required.";
     }
 
+
     // Custom Industry Validation (if "Other" is selected)
     if (formData.industry === "Other" && !formData.customIndustry.trim()) {
       errors.customIndustry = "Please specify your industry.";
@@ -124,21 +126,18 @@ const UserRegistrationForm = () => {
     return errors;
   };
 
+
   async function verifyStatus(id) {
     try {
-      toast.dismiss();
+      toast.dismiss()
       const token = JSON.parse(localStorage.getItem("token"));
-      const response = await axios.post(
-        `${backend}/payment/verify`,
-        {
-          transactionId: id,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+      const response = await axios.post(`${backend}/payment/verify`, {
+        transactionId: id
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
         }
-      );
+      })
       localStorage.removeItem("token");
       toast.success("Payment successful!");
       navigate("/");
@@ -148,37 +147,34 @@ const UserRegistrationForm = () => {
   }
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0)
     if (location.state) {
       setFormData((prevFormData) => ({
         ...prevFormData,
-        role: location.state,
-      }));
+        role: location.state
+      }))
     }
     if (id) {
-      verifyStatus(id);
+      verifyStatus(id)
     }
-  }, []);
+  }, [])
   const [currentStep, setCurrentStep] = useState(1);
+
 
   async function generateTicket(token) {
     try {
-      toast.dismiss();
-      const response = await axios.post(
-        `${backend}/ticket/generate`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+      toast.dismiss()
+      const response = await axios.post(`${backend}/ticket/generate`, {}, {
+        headers: {
+          Authorization: `Bearer ${token}`
         }
-      );
+      })
       toast.success("Ticket Sent successfully to your email !");
       setFormData({
         name: "",
         email: "",
         phone: "",
-        designation: "",
+        designation: '',
         city: "",
         address: "",
         role: "User", // Default role
@@ -187,7 +183,7 @@ const UserRegistrationForm = () => {
         companyName: "",
         industry: "",
         customIndustry: "",
-        sponsorshipType: "",
+        sponsorshipType: ""
       });
       navigate("/");
     } catch (error) {
@@ -197,32 +193,26 @@ const UserRegistrationForm = () => {
 
   const handlePayment = async (token) => {
     // Check mobile number before proceeding
-    toast.dismiss();
-    const amount = 3;
+    toast.dismiss()
+    const amount = 3
 
     const orderDetails = {
       amount,
       transactionId: "T" + Date.now(),
-      role: formData.role,
+      role: formData.role
     };
 
     try {
       // Make a POST request to create the order
-      const response = await axios.post(
-        `${backend}/payment/process`,
-        orderDetails,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+      const response = await axios.post(`${backend}/payment/process`, orderDetails, {
+        headers: {
+          Authorization: `Bearer ${token}`
         }
-      );
-      if (
-        response.data.data.payment.message === "Sponsorship interest received"
-      ) {
+      });
+      if (response.data.data.payment.message === 'Sponsorship interest received') {
         toast.success("Sponsorship interest received successfully!");
-        navigate("/");
-        return;
+        navigate('/')
+        return
       } else {
         if (response.data.data.payment.redirectUrl) {
           window.location.href = response.data.data.payment.redirectUrl;
@@ -238,31 +228,31 @@ const UserRegistrationForm = () => {
     } finally {
       // setLoading(false);
     }
+
   };
 
   const handleSubmitRegistrationForm = async () => {
     try {
-      toast.dismiss();
+      toast.dismiss()
       const errors = validateForm(formData);
 
       if (Object.keys(errors).length > 0) {
         let errorMessages = Object.values(errors).join("\n");
         toast.error("Please fix the following errors:\n\n" + errorMessages);
-        return;
+        return
       }
-      const response = await axios.post(`${backend}/auth/signup`, formData);
+      const response = await axios.post(
+        `${backend}/auth/signup`,
+        formData
+      );
       toast.success("Registration successful!");
-      const token = response.data.data.token;
-      console.log(token);
+      const token = response.data.data.token
+      console.log(token)
       localStorage.setItem("token", JSON.stringify(token));
-      if (
-        formData.role === "User" ||
-        formData.role === "visitor" ||
-        formData.role === "delegate"
-      ) {
-        generateTicket(token);
+      if (formData.role === "User" || formData.role === "visitor" || formData.role === "delegate") {
+        generateTicket(token)
       } else {
-        handlePayment(token);
+        handlePayment(token)
       }
     } catch (error) {
       toast.error(error.response?.data?.data?.message || "Failed to register");
@@ -314,34 +304,30 @@ const UserRegistrationForm = () => {
     return commonFieldsFilled;
   };
 
+
   const renderStepper = () => {
     return (
       <div className="w-full flex justify-center">
         <div
-          className={`${
-            formData.role === "entrepreneur"
-              ? "w-full md:w-full xl:w-[80%]"
-              : "w-full md:w-[50%]"
-          } flex flex-col md:flex-row gap-2 justify-between items-center mb-8`}
+          className={`${formData.role === "entrepreneur" ? "w-full md:w-full xl:w-[80%]" : "w-full md:w-[50%]"
+            } flex flex-col md:flex-row gap-2 justify-between items-center mb-8`}
         >
           {/* Step 1 */}
           <div className="flex items-center">
             <div className="relative flex gap-4 items-center">
               <div
-                className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${
-                  currentStep >= 1
-                    ? "bg-black text-white"
-                    : "bg-gray-200 text-black border border-gray-600"
-                }`}
+                className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${currentStep >= 1
+                  ? "bg-black text-white"
+                  : "bg-gray-200 text-black border border-gray-600"
+                  }`}
               >
                 1
               </div>
               <span
-                className={`text-sm mt-2 h-8 ${
-                  currentStep >= 1
-                    ? "text-black font-medium"
-                    : "text-gray-500 font-semibold"
-                }`}
+                className={`text-sm mt-2 h-8 ${currentStep >= 1
+                  ? "text-black font-medium"
+                  : "text-gray-500 font-semibold"
+                  }`}
               >
                 Attendee Information
               </span>
@@ -350,29 +336,26 @@ const UserRegistrationForm = () => {
 
           {/* Stepper Line */}
           <div
-            className={`md:w-40 h-[3px] w-6 rotate-90 md:rotate-0 ${
-              currentStep > 1 ? "bg-black" : "bg-gray-300"
-            }`}
+            className={`md:w-40 h-[3px] w-6 rotate-90 md:rotate-0 ${currentStep > 1 ? "bg-black" : "bg-gray-300"
+              }`}
           ></div>
 
           {/* Step 2 */}
           <div className="flex items-center">
             <div className="relative flex gap-4 items-center">
               <div
-                className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${
-                  currentStep >= 2
-                    ? "bg-black text-white"
-                    : "bg-gray-200 text-black border border-gray-600"
-                }`}
+                className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${currentStep >= 2
+                  ? "bg-black text-white"
+                  : "bg-gray-200 text-black border border-gray-600"
+                  }`}
               >
                 2
               </div>
               <span
-                className={`text-sm mt-2 h-8 ${
-                  currentStep >= 2
-                    ? "text-black font-medium"
-                    : "text-gray-500 font-medium"
-                }`}
+                className={`text-sm mt-2 h-8 ${currentStep >= 2
+                  ? "text-black font-medium"
+                  : "text-gray-500 font-medium"
+                  }`}
               >
                 Preview
               </span>
@@ -383,29 +366,26 @@ const UserRegistrationForm = () => {
             <>
               {/* Stepper Line */}
               <div
-                className={`md:w-40 h-[3px] w-6 rotate-90 md:rotate-0 ${
-                  currentStep > 2 ? "bg-black" : "bg-gray-300"
-                }`}
+                className={`md:w-40 h-[3px] w-6 rotate-90 md:rotate-0 ${currentStep > 2 ? "bg-black" : "bg-gray-300"
+                  }`}
               ></div>
 
               {/* Step 3 */}
               <div className="flex items-center">
                 <div className="relative flex gap-4 items-center">
                   <div
-                    className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${
-                      currentStep >= 3
-                        ? "bg-gray-300 text-black"
-                        : "bg-gray-200 text-black border border-gray-600"
-                    }`}
+                    className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${currentStep >= 3
+                      ? "bg-gray-300 text-black"
+                      : "bg-gray-200 text-black border border-gray-600"
+                      }`}
                   >
                     3
                   </div>
                   <span
-                    className={`text-sm mt-2 h-8 ${
-                      currentStep >= 3
-                        ? "text-black font-medium"
-                        : "text-gray-500 font-medium"
-                    }`}
+                    className={`text-sm mt-2 h-8 ${currentStep >= 3
+                      ? "text-black font-medium"
+                      : "text-gray-500 font-medium"
+                      }`}
                   >
                     Payment
                   </span>
@@ -450,9 +430,7 @@ const UserRegistrationForm = () => {
             name="phone"
             onWheel={(e) => e.target.blur()}
             value={formData.phone}
-            onChange={(e) =>
-              setFormData({ ...formData, phone: e.target.value })
-            }
+            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600 "
             placeholder="+91"
             required
@@ -469,9 +447,7 @@ const UserRegistrationForm = () => {
             name="designation"
             placeholder="Enter your Designation"
             value={formData.designation}
-            onChange={(e) =>
-              setFormData({ ...formData, designation: e.target.value })
-            }
+            onChange={(e) => setFormData({ ...formData, designation: e.target.value })}
             className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
           />
         </div>
@@ -485,9 +461,7 @@ const UserRegistrationForm = () => {
               name="email"
               placeholder="Enter your email"
               value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               className={`w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600`}
               required
             />
@@ -495,9 +469,9 @@ const UserRegistrationForm = () => {
         </div>
       </div>
       {/* Password and Address in one row */}
-      <div className="grid grid-cols-1 gap-4 mb-4">
+      < div className="grid grid-cols-1 gap-4 mb-4" >
         {/* Address */}
-        <div>
+        < div >
           <label className="block text-base  font-bold text-gray-700 mb-1">
             Address:
           </label>
@@ -506,16 +480,14 @@ const UserRegistrationForm = () => {
             name="address"
             placeholder="Enter your address"
             value={formData.address}
-            onChange={(e) =>
-              setFormData({ ...formData, address: e.target.value })
-            }
+            onChange={(e) => setFormData({ ...formData, address: e.target.value })}
             className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
           />
-        </div>
-      </div>
+        </div >
+      </div >
 
       {/* Role Dropdown */}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 mb-4">
+      < div className="grid grid-cols-1 gap-4 md:grid-cols-2 mb-4" >
         <div>
           <label className="block text-base  font-bold text-gray-700 mb-1">
             Role:
@@ -549,7 +521,7 @@ const UserRegistrationForm = () => {
             required
           />
         </div>
-      </div>
+      </div >
 
       {/* Company Name and Company Address in one row */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -563,9 +535,7 @@ const UserRegistrationForm = () => {
             placeholder="Enter your company name"
             name="companyName"
             value={formData.companyName}
-            onChange={(e) =>
-              setFormData({ ...formData, companyName: e.target.value })
-            }
+            onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
             className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
           />
         </div>
@@ -578,20 +548,17 @@ const UserRegistrationForm = () => {
           <select
             name="companyStartupInstitution"
             value={formData.companyType}
-            onChange={(e) =>
-              setFormData({ ...formData, companyType: e.target.value })
-            }
+            onChange={(e) => setFormData({ ...formData, companyType: e.target.value })}
             className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
             required
           >
-            <option value="" disabled>
-              Select an option
-            </option>
+            <option value="" disabled>Select an option</option>
             <option value="company">Company</option>
             <option value="startup">Startup</option>
             <option value="institution">Institution</option>
           </select>
         </div>
+
       </div>
 
       {/* Industry and Accomodation in one row */}
@@ -603,19 +570,11 @@ const UserRegistrationForm = () => {
           <select
             name="industry"
             value={formData.industry}
-            onChange={(e) =>
-              setFormData({
-                ...formData,
-                industry: e.target.value,
-                customIndustry: "",
-              })
-            }
+            onChange={(e) => setFormData({ ...formData, industry: e.target.value, customIndustry: "" })}
             className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
             required
           >
-            <option value="" disabled>
-              Select Industry
-            </option>
+            <option value="" disabled>Select Industry</option>
             <option value="agritech">Agritech</option>
             <option value="iot">IOT</option>
             <option value="edutech">Edutech</option>
@@ -632,15 +591,13 @@ const UserRegistrationForm = () => {
               name="customIndustry"
               placeholder="Specify your industry"
               value={formData.customIndustry}
-              onChange={(e) =>
-                setFormData({ ...formData, customIndustry: e.target.value })
-              }
+              onChange={(e) => setFormData({ ...formData, customIndustry: e.target.value })}
               className="w-full mt-4 py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
               required
             />
           )}
         </div>
-        <div>
+        <div >
           <label className="block text-base font-bold text-gray-700 mb-1">
             Accommodation Room :
           </label>
@@ -650,12 +607,7 @@ const UserRegistrationForm = () => {
                 type="radio"
                 value="yes"
                 name="accommodationRoom"
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    accommodationRoom: e.target.value,
-                  })
-                }
+                onChange={(e) => setFormData({ ...formData, accommodationRoom: e.target.value })}
                 className="w-5 h-5 mr-2"
               />
               Yes
@@ -666,12 +618,7 @@ const UserRegistrationForm = () => {
                 type="radio"
                 value="no"
                 name="accommodationRoom"
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    accommodationRoom: e.target.value,
-                  })
-                }
+                onChange={(e) => setFormData({ ...formData, accommodationRoom: e.target.value })}
                 className="w-5 h-5 mr-2"
               />
               No
@@ -679,81 +626,57 @@ const UserRegistrationForm = () => {
           </div>
         </div>
       </div>
-      {formData.role === "sponsor" && (
-        <div className="w-full">
-          <label className="block text-base font-bold text-gray-700 mb-1">
-            Type of Sponsorship:
-          </label>
-          <select
-            name="sponsorshipType"
-            value={formData.sponsorshipType}
-            onChange={(e) =>
-              setFormData({ ...formData, sponsorshipType: e.target.value })
-            }
-            className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
-            required
-          >
-            <option value="" disabled>
-              Select Sponsorship Type
-            </option>
-            <option value="title_sponsor">Title Sponsor</option>
-            <option value="platinum_sponsor">Platinum Sponsor</option>
-            <option value="gold_sponsor">Gold Sponsor</option>
-            <option value="silver_sponsor">Silver Sponsor</option>
-            <option value="co_powered_by">Co-Powered By</option>
-            <option value="shipping_partner">Shipping Partner</option>
-            <option value="marketing_partner">Marketing Partner</option>
-            <option value="media_partner">Media Partner</option>
-            <option value="hotel_partner">Hotel Partner</option>
-            <option value="food_partner">Food Partner</option>
-            <option value="technology_partner">Technology Partner</option>
-            <option value="csr_partner">CSR Partner</option>
-          </select>
-        </div>
-      )}
+      {
+        formData.role === 'sponsor' && (
+          <div className="w-full">
+            <label className="block text-base font-bold text-gray-700 mb-1">
+              Type of Sponsorship:
+            </label>
+            <select
+              name="sponsorshipType"
+              value={formData.sponsorshipType}
+              onChange={(e) => setFormData({ ...formData, sponsorshipType: e.target.value })}
+              className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
+              required
+            >
+              <option value="" disabled>Select Sponsorship Type</option>
+              <option value="title_sponsor">Title Sponsor</option>
+              <option value="platinum_sponsor">Platinum Sponsor</option>
+              <option value="gold_sponsor">Gold Sponsor</option>
+              <option value="silver_sponsor">Silver Sponsor</option>
+              <option value="co_powered_by">Co-Powered By</option>
+              <option value="shipping_partner">Shipping Partner</option>
+              <option value="marketing_partner">Marketing Partner</option>
+              <option value="media_partner">Media Partner</option>
+              <option value="hotel_partner">Hotel Partner</option>
+              <option value="food_partner">Food Partner</option>
+              <option value="technology_partner">Technology Partner</option>
+              <option value="csr_partner">CSR Partner</option>
+            </select>
+          </div>
 
-      {formData.role === "entrepreneur" && (
-        <div className="w-full">
-          <label className="block text-base font-bold text-gray-700">
-            Stall Size:
-          </label>
-          <select
-            name="stallsize"
-            value={formData.stallSize}
-            onChange={(e) =>
-              setFormData({
-                ...formData,
-                stallSize: e.target.value,
-                customStallSize: "",
-              })
-            }
-            className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
-            required
-          >
-            <option value="" disabled>
-              Select Stall Size
-            </option>
-            <option value="2x3">2x3 m</option>
-            <option value="3x4">3x4 m</option>
-            <option value="custom">Custom</option>
-          </select>
+        )
+      }
 
-          {/* Show text input when "Others" is selected */}
-          {formData.stallSize === "custom" && (
+      {
+        formData.role === 'entrepreneur' && (
+          <div className="w-full">
+            <label className="block text-base font-bold text-gray-700">
+              Stall Size:
+            </label>
             <input
               type="text"
-              name="customStallSize"
-              placeholder="Specify your Stall Size (3x4 m)"
-              value={formData.customStallSize}
-              onChange={(e) =>
-                setFormData({ ...formData, customStallSize: e.target.value })
-              }
+              name="stallSize"
+              placeholder="Enter Your Stall Size eg. 5x2"
+              value={formData.stallSize}
+              onChange={(e) => setFormData({ ...formData, stallSize: e.target.value })}
               className="w-full mt-4 py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
               required
             />
-          )}
-        </div>
-      )}
+          </div>
+
+        )
+      }
 
       {/* Submit Button */}
       <button
@@ -796,16 +719,20 @@ const UserRegistrationForm = () => {
             <div>
               <strong>Industry:</strong> {formData.industry}
             </div>
-            {formData.role === "sponsor" && (
-              <div>
-                <strong>Sponsorship Type:</strong> {formData.sponsorshipType}
-              </div>
-            )}
-            {formData.role === "entrepreneur" && (
-              <div>
-                <strong>Stall Size:</strong> {formData.stallSize}
-              </div>
-            )}
+            {
+              formData.role === "sponsor" && (
+                <div>
+                  <strong>Sponsorship Type:</strong> {formData.sponsorshipType}
+                </div>
+              )
+            }
+            {
+              formData.role === "entrepreneur" && (
+                <div>
+                  <strong>Stall Size:</strong> {formData.stallSize}
+                </div>
+              )
+            }
           </>
         )}
       </div>
@@ -835,41 +762,33 @@ const UserRegistrationForm = () => {
       </div>
     </div>
   );
-  const renderPaymentStep = () => {
-    const getTotalAmount = () => {
-      if (formData.stallSize === "2x3") return 30000;
-      if (formData.stallSize === "3x4" || formData.stallSize === "custom")
-        return 50000;
-      return 0; // Default case (optional)
-    };
-
-    return (
-      <div className="space-y-4">
-        <h3 className="text-2xl font-bold mb-4">Payment Details</h3>
-        <div className="bg-[#f0eeee] p-6 rounded-lg shadow-md">
-          <p className="text-lg mb-4">Total Amount: ₹ {getTotalAmount()}</p>
-          <button
-            className="w-full bg-[#01210f] text-white px-6 py-3 rounded-full hover:bg-[#01210f] cursor-pointer"
-            onClick={handleSubmitRegistrationForm}
-          >
-            Proceed to Payment
-          </button>
-        </div>
-        <div className="flex gap-4 mt-6">
-          <button
-            className="w-1/2 bg-gray-500 text-white px-6 py-3 rounded-full cursor-pointer hover:bg-gray-600"
-            onClick={() => setCurrentStep(2)}
-          >
-            Previous
-          </button>
-        </div>
+  const renderPaymentStep = () => (
+    <div className="space-y-4">
+      <h3 className="text-2xl font-bold mb-4">Payment Details</h3>
+      <div className="bg-[#f0eeee] p-6 rounded-lg shadow-md">
+        <p className="text-lg mb-4">Total Amount: ₹ 30,000</p>
+        <button
+          className="w-full bg-[#01210f] text-white px-6 py-3 rounded-full hover:bg-[#01210f] cursor-pointer"
+          onClick={handleSubmitRegistrationForm}
+        >
+          Proceed to Payment
+        </button>
       </div>
-    );
-  };
-
+      <div className="flex gap-4 mt-6">
+        <button
+          className="w-1/2 bg-gray-500 text-white px-6 py-3 rounded-full cursor-pointer hover:bg-gray-600"
+          onClick={() => setCurrentStep(2)}
+        >
+          Previous
+        </button>
+      </div>
+    </div>
+  );
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentStep]);
+
 
   return (
     <>
@@ -893,7 +812,8 @@ const UserRegistrationForm = () => {
             backgroundPosition: "left center", // Ensures the gradient starts from the left
             backgroundRepeat: "no-repeat",
           }}
-        ></div>
+        >
+        </div>
         <div className="w-full h-auto flex items-center justify-center font-[Roboto] py-20  relative z-30">
           <div className="w-[95%] lg:w-[75%] p-4 md:p-8 bg-white shadow-lg rounded-3xl my-10 border-4 border-[#969696]">
             {renderStepper()}
