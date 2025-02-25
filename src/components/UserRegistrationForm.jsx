@@ -784,6 +784,12 @@ const UserRegistrationForm = () => {
       </div>
     </div>
   );
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentStep]);
+
+
   return (
     <>
       <div className="w-full h-auto flex flex-col min-h-screen relative pb-8 font-[Roboto]">
