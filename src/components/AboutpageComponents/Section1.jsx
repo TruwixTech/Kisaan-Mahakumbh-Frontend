@@ -38,7 +38,7 @@ function Section1() {
                 <div className='w-full h-auto bg-[#e7e7e7] py-8 flex flex-col lg:flex-row lg:gap-8 2xl:py-20 font-[Roboto]'>
                     <div className='w-full h-auto flex flex-col gap-2 md:gap-4 lg:w-1/2'>
                         <p className="text-[#374836] text-2xl font-semibold xl:text-3xl">| Our Vision |</p>
-                        <h1 className='uppercase text-2xl font-bold text-[#374836] sm:text-3xl md:text-5xl md:leading-14 lg:text-4xl lg:leading-10 xl:text-5xl xl:leading-14 2xl:text-[55px]'>Cultivating <span className='text-[#146A3A]'>farmers</span> <br /> legecy </h1>
+                        <h1 className='uppercase text-2xl font-bold text-[#374836] sm:text-3xl md:text-5xl md:leading-14 lg:text-4xl lg:leading-10 xl:text-5xl xl:leading-14 2xl:text-[55px]'>Cultivating <span className='text-[#146A3A]'>farmers</span> <br /> legacy </h1>
                         <p className='text-[#7F9080] text-sm md:text-base lg:text-sm xl:text-base'>Revolutionizing agriculture through innovation, technology, and collaboration for a sustainable and prosperous farming community.</p>
                         <div className='w-full h-auto grid grid-cols-1 md:grid-cols-2 gap-6 my-6'>
                             <div className='w-full h-auto flex flex-col lg:gap-2 2xl:gap-4'>

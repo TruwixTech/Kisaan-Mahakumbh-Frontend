@@ -87,7 +87,7 @@ function HeroSection() {
             backgroundRepeat: "no-repeat",
           }}
         ></div>
-        <div className="overflow-hidden w-full z-10">
+        <div className="overflow-hidden w-full z-10 pt-20">
           <div
             className="flex transition-transform duration-1000 ease-in-out"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -151,7 +151,7 @@ function HeroSection() {
             ))}
           </div>
         </div>
-        <div className="flex justify-end items-center gap-4 relative z-10 pr-8 mt-7 xl:pr-14">
+        <div className="flex justify-end items-center gap-4 relative z-10 pr-8 xl:pr-14">
           {data.map((_, index) => (
             <div
               key={index}
