@@ -4,6 +4,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
+const Backend_URL = 'https://kisaan-mahakumbh-backend.vercel.app'
+
 const Role = ["VISITOR", "SPONSOR", "ENTREPRENEUR", "VOLUNTEER", "DELEGATE", "USER"];
 
 const Admin = () => {
@@ -31,14 +33,14 @@ const Admin = () => {
         const lowerCaseCategory = selectedCategory.toLowerCase();
         let res;
         if (lowerCaseCategory === "user") {
-          res = await axios.post("http://localhost:8080/api/v1/user/list", {}, {
+          res = await axios.post(`${Backend_URL}/api/v1/user/list`, {}, {
             headers: {
               Authorization: `Bearer ${token}`,
               "Content-Type": "application/json",
             },
           });
         } else {
-          res = await axios.post("http://localhost:8080/api/v1/user/list", { filters: { role: lowerCaseCategory } }, {
+          res = await axios.post(`${Backend_URL}/api/v1/user/list`, { filters: { role: lowerCaseCategory } }, {
             headers: {
               Authorization: `Bearer ${token}`,
               "Content-Type": "application/json",
@@ -58,7 +60,7 @@ const Admin = () => {
       {/* Navbar */}
       <nav className="bg-blue-600 text-white py-4 px-6 flex justify-between items-center shadow-lg">
         <h1 className="text-lg font-bold">Welcome Admin</h1>
-        <button onClick={handleSignOut} className="bg-red-500 px-4 py-2 rounded-lg hover:bg-red-600">Sign Out</button>
+        <button onClick={handleSignOut} className="bg-red-500 px-4 py-2 rounded-lg hover:bg-red-600 cursor-pointer">Sign Out</button>
       </nav>
       
       <div className="flex flex-grow p-4">
@@ -84,7 +86,7 @@ const Admin = () => {
             <h2 className="text-xl font-semibold">{selectedCategory} Data</h2>
             <button
               onClick={handleDownload}
-              className="bg-green-500 text-white font-bold py-2 px-4 rounded-lg shadow-lg hover:bg-green-600"
+              className="bg-green-500 text-white font-bold py-2 px-4 rounded-lg shadow-lg hover:bg-green-600 cursor-pointer"
             >
               Download Excel
             </button>
