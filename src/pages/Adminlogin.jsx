@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 
 const Adminlogin = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const Backend_URL = "https://kisaan-mahakumbh-backend.vercel.app";
 
   const [formData, setFormData] = useState({
     email: "",
@@ -21,7 +22,7 @@ const Adminlogin = () => {
       console.log("hello");
       try {
         const response = await axios.post(
-          `http://localhost:8080/api/v1/admin/login`,
+          `${Backend_URL}/api/v1/admin/login`,
           {
             email: formData.email,
             password: formData.password,
