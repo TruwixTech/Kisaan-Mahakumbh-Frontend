@@ -33,9 +33,9 @@ const router = createBrowserRouter(
         <Route path="/termscondition/:id?" element={<Termscondition />} />
         <Route path="/refundspage/:id?" element={<Refundspage />} />
         <Route path="/privacy-policy/:id?" element={<PrivacyPolicy />} />
+      </Route>
         <Route path="/admin-login" element={<Adminlogin />} />
         <Route path="/admin" element={<Admin />} />
-      </Route>
     </>
   )
 )
