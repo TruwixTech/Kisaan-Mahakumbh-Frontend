@@ -4,6 +4,7 @@ import Hero from "../assets/Hero.jpg";
 import { FaHome } from "react-icons/fa";
 import Section1 from "../components/NewseventComponents/Section1";
 import Section2 from "../components/NewseventComponents/Section2";
+import Blogs from "../components/Blogs";
 function Newevent() {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,8 +32,9 @@ function Newevent() {
         <Header />
       </div>
       <div className="w-full h-auto flex flex-col bg-[#e7e7e7]">
+        <Blogs/>
         <div>
-          <h1 className="font-[Roboto] w-full h-auto flex flex-col px-5 md:px-10 lg:px-20 pt-16 sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 bg-[#e7e7e7] md:gap-2   text-[30px]  md:text-[75.48px] items-center">
+          <h1 className="font-[Roboto] w-full h-auto flex flex-col px-5 md:px-10 lg:px-20 pt-10 sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 bg-[#e7e7e7] md:gap-2 text-[30px]  md:text-[75.48px] items-center">
             News About Event
           </h1>
           <div className="w-full h-auto flex items-center justify-center mt-1">
@@ -46,7 +48,6 @@ function Newevent() {
             </span>
           </div>
         </div>
-
         <Section1 />
         <Section2 />
       </div>
