@@ -4,19 +4,27 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const Backend_URL = 'https://kisaan-mahakumbh-backend.vercel.app'
+const Backend_URL = "https://kisaan-mahakumbh-backend.vercel.app";
 
-const Role = ["VISITOR", "SPONSOR", "ENTREPRENEUR", "VOLUNTEER", "DELEGATE", "USER"];
+const Role = [
+  "VISITOR",
+  "SPONSOR",
+  "ENTREPRENEUR",
+  "VOLUNTEER",
+  "DELEGATE",
+  "USER",
+];
 
 const Admin = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("VISITOR");
   const token = localStorage.getItem("token");
+  console.log(token);
 
   const handleSignOut = () => {
     localStorage.removeItem("token");
-    toast.success("Sign out Successfully!")
+    toast.success("Sign out Successfully!");
     navigate("/admin-login"); // Redirect to login page
   };
 
@@ -28,24 +36,36 @@ const Admin = () => {
   };
 
   useEffect(() => {
+    if (token === null) {
+      navigate("/admin-login");
+    }
+
     const fetchData = async () => {
       try {
         const lowerCaseCategory = selectedCategory.toLowerCase();
         let res;
         if (lowerCaseCategory === "user") {
-          res = await axios.post(`${Backend_URL}/api/v1/user/list`, {}, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          });
+          res = await axios.post(
+            `${Backend_URL}/api/v1/user/list`,
+            {},
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+            }
+          );
         } else {
-          res = await axios.post(`${Backend_URL}/api/v1/user/list`, { filters: { role: lowerCaseCategory } }, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          });
+          res = await axios.post(
+            `${Backend_URL}/api/v1/user/list`,
+            { filters: { role: lowerCaseCategory } },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+            }
+          );
         }
         setData(res.data.data.userList);
       } catch (error) {
@@ -60,9 +80,14 @@ const Admin = () => {
       {/* Navbar */}
       <nav className="bg-blue-600 text-white py-4 px-6 flex justify-between items-center shadow-lg">
         <h1 className="text-lg font-bold">Welcome Admin</h1>
-        <button onClick={handleSignOut} className="bg-red-500 px-4 py-2 rounded-lg hover:bg-red-600 cursor-pointer">Sign Out</button>
+        <button
+          onClick={handleSignOut}
+          className="bg-red-500 px-4 py-2 rounded-lg hover:bg-red-600 cursor-pointer"
+        >
+          Sign Out
+        </button>
       </nav>
-      
+
       <div className="flex flex-grow p-4">
         {/* Sidebar */}
         <div className="w-1/6 bg-white p-4 shadow-lg rounded-lg">
@@ -71,7 +96,11 @@ const Admin = () => {
             {Role.map((category) => (
               <li
                 key={category}
-                className={`cursor-pointer p-2 rounded-md mb-2 ${selectedCategory === category ? "bg-blue-500 text-white" : "hover:bg-gray-200"}`}
+                className={`cursor-pointer p-2 rounded-md mb-2 ${
+                  selectedCategory === category
+                    ? "bg-blue-500 text-white"
+                    : "hover:bg-gray-200"
+                }`}
                 onClick={() => setSelectedCategory(category)}
               >
                 {category}
@@ -116,12 +145,18 @@ const Admin = () => {
                   <td className="border p-2">{item.phone}</td>
                   <td className="border p-2">{item.designation}</td>
                   <td className="border p-2">{item.role}</td>
-                  <td className="border p-2">{item.industry === "custom" ? item.customIndustry : item.industry}</td>
+                  <td className="border p-2">
+                    {item.industry === "custom"
+                      ? item.customIndustry
+                      : item.industry}
+                  </td>
                   <td className="border p-2">{item.companyName}</td>
                   <td className="border p-2">{item.companyType}</td>
                   <td className="border p-2">{item.sponsorshipType}</td>
                   <td className="border p-2">{item.stallSize}</td>
-                  <td className="border p-2">{item.address + ", " + item.city}</td>
+                  <td className="border p-2">
+                    {item.address + ", " + item.city}
+                  </td>
                 </tr>
               ))}
             </tbody>
