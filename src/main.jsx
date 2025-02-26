@@ -17,6 +17,7 @@ import Refundspage from './pages/Refundspage.jsx'
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 import Admin from './pages/Admin.jsx'
 import Adminlogin from './pages/Adminlogin.jsx'
+import SingleBlog from './components/SingleBlog.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,6 +31,7 @@ const router = createBrowserRouter(
         <Route path="/about/:id?" element={<About />} />
         <Route path="/news/:id?" element={<Newevent />} />
         <Route path="/event/:id?" element={<Event />} />
+        <Route path="/blog/:title" element={<SingleBlog />} />
         <Route path="/termscondition/:id?" element={<Termscondition />} />
         <Route path="/refundspage/:id?" element={<Refundspage />} />
         <Route path="/privacy-policy/:id?" element={<PrivacyPolicy />} />
