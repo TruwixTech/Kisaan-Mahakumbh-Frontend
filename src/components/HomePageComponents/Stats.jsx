@@ -36,22 +36,22 @@ const StatsSection = () => {
   }, []);
 
   return (
-    <section ref={ref} className="py-20 bg-[#C99F4D]">
+    <section ref={ref} className="pt-20 pb-5 bg-[#01210f]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 20 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl font-extrabold text-gray-900 sm:text-5xl md:text-6xl relative"
+            className="text-4xl font-extrabold flex flex-col gap-2 text-gray-900 relative"
           >
-            <span className="bg-clip-text font-[Roboto] font-bold text-transparent bg-gradient-to-r from-green-600 to-[#01210f]">
+            <span className="text-white font-[Roboto] font-bold text-xl lg:text-3xl">
+              | Highlights |
+            </span>
+            <span className="text-white font-[Roboto] font-bold text-3xl lg:text-5xl 2xl:text-6xl">
               Event Highlights
             </span>
           </motion.h2>
-          <p className="mt-4 max-w-2xl text-xl text-gray-600 mx-auto font-[Roboto]">
-            Celebrating innovation and sustainability through numbers
-          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
@@ -61,17 +61,17 @@ const StatsSection = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: visible ? 1 : 0, scale: visible ? 1 : 0.8 }}
               transition={{ delay: index * 0.1, type: "spring", stiffness: 100 }}
-              className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 group relative overflow-hidden"
+              className="bg-[#d9d9d9] rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 group relative overflow-hidden"
             >
               <div className={`absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-300 ${stat.color}`} />
               <div className="flex flex-col items-center">
-                <div className={`mb-4 p-4 rounded-full bg-gradient-to-br ${stat.color} text-white text-3xl`}>
+                <div className={`mb-4 p-4 rounded-full bg-gradient-to-br bg-[#146a3a] text-white text-3xl`}>
                   {stat.icon}
                 </div>
                 <h3 className="text-3xl font-bold text-gray-900 mb-2">
                   {visible ? <AnimatedCounter end={stat.value} /> : "0"}+
                 </h3>
-                <p className="text-gray-600 font-medium text-lg font-[Roboto]">{stat.label}</p>
+                <p className="text-gray-600 font-medium text-lg font-[Roboto] md:text-2xl">{stat.label}</p>
               </div>
             </motion.div>
           ))}
