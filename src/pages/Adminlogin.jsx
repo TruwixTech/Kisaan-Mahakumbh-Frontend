@@ -19,7 +19,6 @@ const Adminlogin = () => {
 
   const handleSubmit = async () => {
     if (validateData()) {
-      console.log("hello");
       try {
         const response = await axios.post(
           `${Backend_URL}/api/v1/admin/login`,
