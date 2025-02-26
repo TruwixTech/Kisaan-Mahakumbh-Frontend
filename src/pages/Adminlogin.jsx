@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Adminlogin = () => {
+
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -16,7 +17,9 @@ const Adminlogin = () => {
 
 
   const handleSubmit = async() => {
-    try {
+    if(validateData()){
+      console.log("hello")
+      try {
         const response = await axios.post(`http://localhost:8080/api/v1/admin/login`,{
             email: formData.email,
             password: formData.password
@@ -25,9 +28,28 @@ const Adminlogin = () => {
         localStorage.setItem("token", response.data.data.admin.token)
         navigate('/admin')
     } catch (error) {
+      toast.error("Invailid Credentials!")
         console.log("Error: ", error)
     }
+    }
   };
+
+  const validateData = ()=>{
+    if(!formData.email && !formData.password){
+      toast.error("Email and Password is a required field.")
+      return false
+    }else if(!formData.email){
+      toast.error("Email and Password is a required field.")
+      return false
+    }else if(formData.email.length <6){
+      toast.error("Please enter vailid email.")
+      return false
+    }else if(!formData.password){
+      toast.error("Password is a required field.")
+      return false
+    }
+    return true
+  }
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
@@ -57,7 +79,7 @@ const Adminlogin = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-lg transition-all duration-300"
+            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-lg transition-all duration-300 cursor-pointer"
             onClick={handleSubmit}
           >
             Sign In
