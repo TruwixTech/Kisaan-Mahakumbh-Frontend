@@ -15,6 +15,8 @@ import { ToastContainer } from "react-toastify";
 import Termscondition from './pages/Termscondition.jsx'
 import Refundspage from './pages/Refundspage.jsx'
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
+import Admin from './pages/Admin.jsx'
+import Adminlogin from './pages/Adminlogin.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,6 +33,8 @@ const router = createBrowserRouter(
         <Route path="/termscondition/:id?" element={<Termscondition />} />
         <Route path="/refundspage/:id?" element={<Refundspage />} />
         <Route path="/privacy-policy/:id?" element={<PrivacyPolicy />} />
+        <Route path="/admin-login" element={<Adminlogin />} />
+        <Route path="/admin" element={<Admin />} />
       </Route>
     </>
   )
