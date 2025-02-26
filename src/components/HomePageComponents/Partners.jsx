@@ -20,6 +20,18 @@ function Partners() {
             subtitle: 'Mathadhipati, kaneri math'
         },
         {
+            id: 4,
+            img: Partner4,
+            title: 'Swami Amritanand',
+            subtitle: 'Krishnayan Gaushala, Haridwar'
+        },
+        {
+            id: 9,
+            img: Partner9,
+            title: 'Padma Bhushan Shri Ram Bahadur Rai',
+            subtitle: 'Renowned Journalist, President of  IGNCA'
+        },
+        {
             id: 2,
             img: Partner2,
             title: 'Dr. B. R. Kamboj',
@@ -32,15 +44,21 @@ function Partners() {
             subtitle: '(Former Principal Scientist ICAR-IARI, New Delhi)'
         },
         {
-            id: 4,
-            img: Partner4,
-            title: 'Swami Amritanand',
-            subtitle: 'Krishnayan Gaushala, Haridwar'
+            id: 11,
+            img: Partner11,
+            title: 'Dr. Krishan Bir Chaudhary',
+            subtitle: 'Bhartiya Krishak Samaj, President'
+        },
+        {
+            id: 10,
+            img: Partner10,
+            title: 'Mansukh Bhai Patel',
+            subtitle: 'Founder, Sagar King'
         },
         {
             id: 5,
             img: Partner1,
-            title: 'SP Single',
+            title: 'SP Singla',
             subtitle: 'Ex- GM GAIL'
         },
         // {
@@ -60,24 +78,6 @@ function Partners() {
             img: Partner8,
             title: 'Rajesh kumar',
             subtitle: 'Industrialist & Social Thinker'
-        },
-        {
-            id: 9,
-            img: Partner9,
-            title: 'Padma Bhushan Shri Ram Bahadur Rai',
-            subtitle: 'Renowned Journalist, President of  IGNCA'
-        },
-        {
-            id: 10,
-            img: Partner10,
-            title: 'Mansukh Bhai Patel',
-            subtitle: 'Founder, Sagar King'
-        },
-        {
-            id: 11,
-            img: Partner11,
-            title: 'Dr. Krishan Bir Chaudhary',
-            subtitle: 'Bhartiya Krishak Samaj, President'
         },
     ]
    
