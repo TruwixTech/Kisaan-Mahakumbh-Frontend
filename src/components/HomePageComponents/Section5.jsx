@@ -47,7 +47,7 @@ const AgritechHighlight = () => {
       {/* Content Section */}
       <div className="w-full lg:w-1/2">
         <p className="text-gray-500 text-xl font-bold text-center md:text-left">
-          | Event Highlight |
+          | Highlight |
         </p>
         <h2 className="text-3xl md:text-5xl lg:text-4xl xl:text-4xl font-bold text-[#374836] mt-2 leading-tight text-center md:text-left">
           PIONEERING THE <br /> FUTURE OF{" "}

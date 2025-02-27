@@ -123,7 +123,7 @@ const ContactComponent = () => {
     <div>
       <div className="grid md:grid-cols-2 gap-8 font-[Roboto]">
         {/* Left Section - Contact Details */}
-        <div className="space-y-6 mt-8">
+        <div className="space-y-6 mt-8 flex flex-col gap-1 lg:gap-2">
           <h3 className="text-[#374836] text-2xl font-bold xl:text-3xl mb-1">
             | Contact us |
           </h3>
