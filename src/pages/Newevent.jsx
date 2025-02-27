@@ -32,7 +32,6 @@ function Newevent() {
         <Header />
       </div>
       <div className="w-full h-auto flex flex-col bg-[#e7e7e7]">
-        <Blogs/>
         <div>
           <h1 className="font-[Roboto] w-full h-auto flex flex-col px-5 md:px-10 lg:px-20 pt-10 sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 bg-[#e7e7e7] md:gap-2 text-[30px]  md:text-[75.48px] items-center">
             News About Event
@@ -49,6 +48,7 @@ function Newevent() {
           </div>
         </div>
         <Section1 />
+        <Blogs/>
         <Section2 />
       </div>
     </>

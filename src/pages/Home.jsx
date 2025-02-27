@@ -25,7 +25,7 @@ function Home() {
       <AgritechHighlight />
       <HeroesSection />
       <Section6 />
-      <div className='md:pt-10 md:px-10 lg:px-20 px-5  py-8 bg-[#e7e7e7]'>
+      <div className='md:pt-10 md:px-10 lg:px-20 px-5  py-8 bg-[#e7e7e7] pb-20'>
         <ContactComponent />
       </div>
     </>
