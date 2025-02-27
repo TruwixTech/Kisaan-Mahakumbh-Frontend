@@ -4,7 +4,7 @@ const HeroesSection = () => {
   return (
     <div className="bg-[#e7e7e7] py-10 px-5 md:px-10 lg:px-20 font-[Roboto]">
       {/* Header Section */}
-      <div className="text-center">
+      <div className="text-center flex flex-col gap-1 lg:gap-2">
         <p className="text-[#374836] text-2xl font-semibold">| Heroes |</p>
         <h2 className="text-5xl font-bold text-[#374836]">OUR GREEN HEROES</h2>
       </div>

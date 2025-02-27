@@ -5,7 +5,7 @@ import { FaHome } from "react-icons/fa";
 function Event() {
   const sessions = [
     {
-      theme: "Theme1",
+      theme: "Theme 1",
       time: "12:00 - 1:30",
       title: "SUSTAINABILITY AND CLIMATE RESILIENCE",
       details: [
@@ -27,7 +27,7 @@ function Event() {
       ],
     },
     {
-      theme: "Theme2",
+      theme: "Theme 2",
       time: "1:30 - 2:30",
       title: "Technology and Innovation in Agriculture",
       details: [
@@ -45,7 +45,7 @@ function Event() {
       ],
     },
     {
-      theme: "Theme3",
+      theme: "Theme 3",
       time: "4:00 - 5:30",
       title: "Agro Businesses & Startups",
       details: [
@@ -66,7 +66,7 @@ function Event() {
 
   const sessions2 = [
     {
-      theme: "Theme4",
+      theme: "Theme 4",
       time: "10:00 - 11:30",
       title: "Agriculture Economics & Cooperatives",
       details: [
@@ -88,7 +88,7 @@ function Event() {
       ],
     },
     {
-      theme: "Theme5",
+      theme: "Theme 5",
       time: "11:30 - 01:00",
       title: "Farmer & Consumer Ecosystem",
       details: [
@@ -114,7 +114,7 @@ function Event() {
       ],
     },
     {
-      theme: "Theme6",
+      theme: "Theme 6",
       time: "02:00 - 03:30",
       title: "Marketing and Value Addition of Agri Produce",
       details: [
@@ -142,7 +142,7 @@ function Event() {
   }, []);
 
   return (
-    <div>
+    <div className="">
       <div
         className="relative z-40"
         style={{
@@ -164,7 +164,7 @@ function Event() {
         <Header />
       </div>
 
-      <div className="w-full h-auto flex flex-col bg-[#e7e7e7] px-2 md:px-12 lg:px-12    ">
+      <div className="w-full h-auto flex flex-col bg-[#e7e7e7] px-2 md:px-12 lg:px-12 pb-5 xl:pb-10 ">
         <div>
           <h1 className="font-[Roboto] w-full h-auto flex flex-col px-5 md:px-10 lg:px-20 pt-10 sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 bg-[#e7e7e7] md:gap-2 text-[30px]  md:text-[75.48px] items-center">
             Event
