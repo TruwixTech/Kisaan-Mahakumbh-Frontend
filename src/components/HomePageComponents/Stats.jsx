@@ -48,7 +48,7 @@ const StatsSection = () => {
             <span className="text-white font-[Roboto] font-bold text-xl lg:text-3xl">
               | Highlights |
             </span>
-            <span className="text-white font-[Roboto] font-bold text-3xl lg:text-5xl 2xl:text-6xl">
+            <span className="text-white font-[Roboto] font-bold text-3xl lg:text-5xl 2xl:text-6xl uppercase">
               Event Highlights
             </span>
           </motion.h2>
