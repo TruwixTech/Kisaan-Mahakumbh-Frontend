@@ -4,6 +4,7 @@ import Donation from "./components/Donation";
 import RegisterPopup from "./components/RegisterPopup";
 import RegisterNow from "./components/RegisterNow";
 import ScrollToTop from "./components/ScrollToTop";
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <ScrollToTop />
         <Donation />
         <RegisterNow />
+        <Analytics />
         <RegisterPopup />
         <Footer />
       </div>
