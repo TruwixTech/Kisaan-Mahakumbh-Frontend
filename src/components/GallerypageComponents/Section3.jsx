@@ -12,7 +12,7 @@ function Section3() {
       image: "https://res.cloudinary.com/dsxne7kta/video/upload/f_auto:video,q_auto/vtjbr56brunxsg4apn4m",
     },
     {
-      image: "https://player.cloudinary.com/embed/?public_id=oq7lprkwgktlxdquwget&cloud_name=dj0xlbz42&profile=cld-default",
+      image: "https://res.cloudinary.com/dj0xlbz42/video/upload/v1740744529/oq7lprkwgktlxdquwget.mp4",
     },
   ];
 
