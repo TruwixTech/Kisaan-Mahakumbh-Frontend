@@ -9,7 +9,11 @@ import { FaInstagram } from "react-icons/fa6";
 function Footer() {
   return (
     <div className="w-full h-auto flex flex-col bg-[#01210f]">
-      <a href="https://wa.link/7vl2u8" className="whatsapp-float" target="_blank">
+      <a
+        href="https://wa.link/7vl2u8"
+        className="whatsapp-float"
+        target="_blank"
+      >
         <img
           src="https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/kgtfjtgqkaian3inh1sz"
           alt="WhatsApp"
@@ -71,6 +75,16 @@ function Footer() {
                   <Link to="/gallery">Gallery</Link>
                   <Link to="/contact-us">Contact</Link>
                   <Link to="/sponsers">Sponsorship</Link>
+                  <Link
+                    onClick={() =>
+                      window.open(
+                        "/KisanKumbhbrochure.pdf",
+                        "_blank"
+                      )
+                    }
+                  >
+                    Brochure
+                  </Link>
                 </div>
               </div>
               {/* <div className="w-auto h-auto flex flex-col gap-6">
