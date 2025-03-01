@@ -35,12 +35,14 @@ function Section1() {
       </div>
       <div className='flex flex-col px-5 sm:flex-row gap-4 justify-center md:mt-20 my-10 w-full md:px-10 lg:px-20 md:gap-10'>
         {/* Left Side - Large Box */}
-        <div className='w-full md:w-[628px] h-[420px] my-auto bg-[#8a8a8a] rounded-3xl lg:w-1/2 lg:h-[600px]'></div>
+        <img src='https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/neqspcapyyx4ak652wht' className='w-full md:w-[628px] h-[420px] my-auto bg-[#8a8a8a] rounded-3xl lg:w-1/2 lg:h-[600px]'/>
+        
+        
 
         {/* Right Side - Two Stacked Boxes */}
         <div className='flex flex-col gap-5 w-full md:w-auto lg:w-1/2 lg:gap-8'>
-          <div className='w-full md:w-[300px] h-[250px] bg-[#8a8a8a] rounded-3xl lg:w-full lg:h-[370px]'></div>
-          <div className='w-full md:w-[300px] h-[150px] bg-[#8a8a8a] rounded-3xl lg:w-full lg:h-[200px]'></div>
+          <img src='https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/invr4zgl7k0bbbyoftzt' className='w-full object-cover md:w-[300px] h-[250px] bg-[#8a8a8a] rounded-3xl lg:w-full lg:h-[370px]'/>
+          <img src='https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/kfaluohehgtdt2ou62vv' className='w-full object-cover object-top md:w-[300px] h-[150px] bg-[#8a8a8a] rounded-3xl lg:w-full lg:h-[200px]'/>
         </div>
       </div>
 
