@@ -45,7 +45,7 @@ function Footer() {
         </div>
         <div className="w-full h-auto flex flex-col bg-[#01210f] py-6 px-5 gap-8 lg:w-1/2 xl:w-[40%] lg:py-10 lg:px-10 xl:pr-20">
           <div className="w-full h-auto flex flex-col gap-6">
-            <div className="w-full p-1 flex justify-between bg-[#D9D9D9] rounded-full">
+            {/* <div className="w-full p-1 flex justify-between bg-[#D9D9D9] rounded-full">
               <input
                 type="email"
                 placeholder="Enter Email id"
@@ -54,7 +54,7 @@ function Footer() {
               <button className="bg-[#01210F] text-white rounded-full p-2 px-9">
                 Submit
               </button>
-            </div>
+            </div> */}
             <div className="w-full h-auto flex flex-wrap justify-around">
               <div className="w-auto h-auto flex flex-col gap-6">
                 <h1 className="text-white font-bold">Quick Links</h1>
