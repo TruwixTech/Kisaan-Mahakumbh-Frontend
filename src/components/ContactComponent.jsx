@@ -141,6 +141,12 @@ const ContactComponent = () => {
               </span>{" "}
               kisankumbh@gmail.com
             </p>
+            <p className="text-[#8c959f] flex gap-4 items-center">
+              <span>
+                <img src={mailicon} alt="" />
+              </span>{" "}
+              info@kisankumbh.in
+            </p>
           </div>
 
           <div>
