@@ -4,7 +4,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const Backend_URL = "https://kisaan-mahakumbh-backend.vercel.app";
+// const Backend_URL = "https://kisaan-mahakumbh-backend.vercel.app";
+const Backend_URL = "http://localhost:8080";
 
 const Role = [
   "VISITOR",
@@ -20,7 +21,6 @@ const Admin = () => {
   const [data, setData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("VISITOR");
   const token = localStorage.getItem("token");
-  console.log(token);
 
   const handleSignOut = () => {
     localStorage.removeItem("token");
