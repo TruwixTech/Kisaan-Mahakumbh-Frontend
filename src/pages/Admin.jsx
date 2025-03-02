@@ -20,7 +20,6 @@ const Admin = () => {
   const [data, setData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("VISITOR");
   const token = localStorage.getItem("token");
-  console.log(token);
 
   const handleSignOut = () => {
     localStorage.removeItem("token");
