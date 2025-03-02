@@ -532,8 +532,8 @@ const UserRegistrationForm = () => {
             className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
             required
           >
-            <option value="" disabled>
-              Select User Type
+            <option value="user" disabled>
+              Select Role
             </option>
             <option value="sponsor">Sponsor</option>
             <option value="visitor">Visitor</option>
