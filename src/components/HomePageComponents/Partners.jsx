@@ -41,7 +41,7 @@ function Partners() {
             id: 3,
             img: Partner3,
             title: 'Dr Navindu Gupta',
-            subtitle: '(Executive Director (R & D) SPS Bio-Chem Private Limited)'
+            subtitle: 'Executive Director (R & D) SPS Bio-Chem Private Limited'
         },
         {
             id: 11,
