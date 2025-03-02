@@ -41,7 +41,7 @@ function Partners() {
             id: 3,
             img: Partner3,
             title: 'Dr Navindu Gupta',
-            subtitle: '(Former Principal Scientist ICAR-IARI, New Delhi)'
+            subtitle: '(Executive Director (R & D) SPS Bio-Chem Private Limited)'
         },
         {
             id: 11,
@@ -59,7 +59,7 @@ function Partners() {
             id: 5,
             img: Partner1,
             title: 'SP Singla',
-            subtitle: 'Ex- GM GAIL'
+            subtitle: 'Vice President (Technical) SPS Bio-Chem Private Limited'
         },
         // {
         //     id: 6,
