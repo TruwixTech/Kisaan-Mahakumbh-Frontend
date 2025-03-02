@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 
 const Backend_URL = "https://kisaan-mahakumbh-backend.vercel.app";
 
+
 const Role = [
   "VISITOR",
   "SPONSOR",
@@ -67,6 +68,7 @@ const Admin = () => {
           );
         }
         setData(res.data.data.userList);
+        console.log("data is: ", data)
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -128,12 +130,14 @@ const Admin = () => {
                 <th className="border p-2">Phone</th>
                 <th className="border p-2">Designation</th>
                 <th className="border p-2">Role</th>
+                
                 <th className="border p-2">Industry</th>
                 <th className="border p-2">Company</th>
                 <th className="border p-2">Company Type</th>
-                <th className="border p-2">Sponsorship Type</th>
-                <th className="border p-2">Stall Size</th>
+                {selectedCategory.toLowerCase()==="user" || selectedCategory.toLowerCase()==="sponsor" ? <th className="border p-2">Sponsorship Type</th> : ""}
+                {selectedCategory.toLowerCase() ==="entrepreneur" || selectedCategory.toLowerCase() ==="user"? <th className="border p-2">Stall Size</th> :""}
                 <th className="border p-2">Address</th>
+                {selectedCategory.toLowerCase() ==="entrepreneur" || selectedCategory.toLowerCase() ==="user" ? <th className="border p-2">Payment Status</th> :""}
               </tr>
             </thead>
             <tbody>
@@ -151,11 +155,12 @@ const Admin = () => {
                   </td>
                   <td className="border p-2">{item.companyName}</td>
                   <td className="border p-2">{item.companyType}</td>
-                  <td className="border p-2">{item.sponsorshipType}</td>
-                  <td className="border p-2">{item.stallSize}</td>
+                  {selectedCategory.toLowerCase()==="user" || item.role === "sponsor" ? <td className="border p-2">{item.sponsorshipType}</td> : ""}
+                  {item.role === "entrepreneur" || selectedCategory.toLowerCase()==="user" ? <td className="border p-2">{item.stallSize}</td> :""}
                   <td className="border p-2">
                     {item.address + ", " + item.city}
                   </td>
+                  {item.role === "entrepreneur" || selectedCategory.toLowerCase()==="user" ? <td className="border p-2">{item.paymentStatus}</td> :""}
                 </tr>
               ))}
             </tbody>
