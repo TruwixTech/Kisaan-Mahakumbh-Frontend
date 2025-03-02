@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-
+import img3 from '../../assets/post/37.png'
 import { FaChevronRight } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
 
@@ -92,7 +92,7 @@ function Section2() {
         {/* Video Section */}
         <div className="w-full md:w-1/2 h-auto flex justify-center items-center">
           <img
-            src="https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/pnnmibmlwdtjznzhjrm9"
+            src={img3}
             className="bg-[#8a8a8a] w-[646px] h-[431px] rounded-4xl"
           />
         </div>
