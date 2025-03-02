@@ -203,7 +203,7 @@ const UserRegistrationForm = () => {
 
     let price = 0;
     if (formData.stallSize === "2x3") {
-      price = 1;
+      price = 30000;
     } else if (formData.stallSize === "3x4") {
       price = 50000;
     } else {
@@ -844,7 +844,7 @@ const UserRegistrationForm = () => {
   );
   const renderPaymentStep = () => {
     const getTotalAmount = () => {
-      if (formData.stallSize === "2x3") return 1;
+      if (formData.stallSize === "2x3") return 30000;
       if (formData.stallSize === "3x4" || formData.stallSize === "custom")
         return 50000;
       return 0; // Default case (optional)
