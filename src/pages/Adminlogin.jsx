@@ -14,7 +14,6 @@ const Adminlogin = () => {
   const navigate = useNavigate();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    // console.log("password: ", formData.password)
   };
 
   const handleSubmit = async () => {
