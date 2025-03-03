@@ -29,7 +29,7 @@ const UserRegistrationForm = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-
+  const [loading, setLoading] = useState(false);
   // console.log(location.state);
 
   const { id } = useParams();
@@ -175,6 +175,7 @@ const UserRegistrationForm = () => {
         }
       );
       toast.success("Ticket Sent successfully to your email !");
+      navigate("/");
       setFormData({
         name: "",
         email: "",
@@ -191,7 +192,7 @@ const UserRegistrationForm = () => {
         sponsorshipType: "",
         customStallSize: "",
       });
-      navigate("/");
+      setLoading(false);
     } catch (error) {
       console.log("Error generating ticket", error);
     }
@@ -252,6 +253,7 @@ const UserRegistrationForm = () => {
 
   const handleSubmitRegistrationForm = async () => {
     try {
+      setLoading(true);
       toast.dismiss();
       const response = await axios.post(`${backend}/auth/signup`, formData);
       toast.success("Registration successful!");
@@ -268,6 +270,7 @@ const UserRegistrationForm = () => {
         handlePayment(token);
       }
     } catch (error) {
+      setLoading(false);
       toast.error(error.response?.data?.data?.message || "Failed to register");
       console.error(
         "Error registering:",
@@ -834,9 +837,14 @@ const UserRegistrationForm = () => {
         ) : (
           <button
             className="w-1/2 bg-[#01210f] text-white cursor-pointer px-6 py-3 rounded-full hover:bg-[#01210f]"
+            disabled={loading}
             onClick={handleSubmitRegistrationForm}
           >
-            Submit
+            {
+              loading
+                ? 'Submitting...'
+                : 'Submit'
+            }
           </button>
         )}
       </div>
