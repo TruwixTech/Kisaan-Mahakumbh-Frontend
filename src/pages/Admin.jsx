@@ -137,6 +137,7 @@ const Admin = () => {
                 {selectedCategory.toLowerCase()==="user" || selectedCategory.toLowerCase()==="sponsor" ? <th className="border p-2">Sponsorship Type</th> : ""}
                 {selectedCategory.toLowerCase() ==="entrepreneur" || selectedCategory.toLowerCase() ==="user"? <th className="border p-2">Stall Size</th> :""}
                 <th className="border p-2">Address</th>
+                {selectedCategory.toLowerCase() ==="entrepreneur" || selectedCategory.toLowerCase() ==="user" ? <th className="border p-2">Payment Amount</th> :""}
                 {selectedCategory.toLowerCase() ==="entrepreneur" || selectedCategory.toLowerCase() ==="user" ? <th className="border p-2">Payment Status</th> :""}
               </tr>
             </thead>
@@ -160,6 +161,7 @@ const Admin = () => {
                   <td className="border p-2">
                     {item.address + ", " + item.city}
                   </td>
+                  {item.role === "entrepreneur" || selectedCategory.toLowerCase()==="user"  ? <td className="border p-2">{item.paymentAmount === 0 ? "NA" : item.paymentAmount}</td> : "" }
                   {item.role === "entrepreneur" || selectedCategory.toLowerCase()==="user" ? <td className="border p-2">{item.paymentStatus}</td> :""}
                 </tr>
               ))}
