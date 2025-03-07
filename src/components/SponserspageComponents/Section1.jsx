@@ -10,6 +10,7 @@ import Sponser8 from '../../assets/sponsor8.png'
 import Sponser9 from '../../assets/sponsor9.png'
 import Sponser10 from '../../assets/sponsor10.png'
 import Sponser11 from '../../assets/sponsor11.jpeg'
+import Sponser12 from '../../assets/sponsor12.png'
 import Marquee from 'react-fast-marquee'
 
 function Section1() {
@@ -24,7 +25,8 @@ function Section1() {
         Sponser8,
         Sponser9,
         Sponser10,
-        Sponser11
+        Sponser11,
+        Sponser12
     ];
 
     return (

@@ -7,6 +7,73 @@ import { toast } from "react-toastify";
 
 const backend = "https://kisaan-mahakumbh-backend.vercel.app/api/v1";
 // const backend = 'http://localhost:8080/api/v1'
+const sponsorshipDetails = {
+  title_sponsor: {
+    price: "₹30,00,000",
+    benefits: [
+      "Naming rights",
+      "Prime branding",
+      "Keynote speech",
+      "Extensive media coverage",
+    ],
+  },
+  platinum_sponsor: {
+    price: "₹15,00,000",
+    benefits: [
+      "Social media promotion",
+      "Website branding",
+      "Event passes",
+    ],
+  },
+  gold_sponsor: {
+    price: "₹10,00,000",
+    benefits: ["Website & social media branding"],
+  },
+  silver_sponsor: {
+    price: "₹5,00,000",
+    benefits: ["On-site branding", "Logo on event materials"],
+  },
+  co_powered_by: {
+    price: "₹20,00,000",
+    benefits: [
+      "Logo on banners",
+      "Stall space",
+      "Branding on social media",
+    ],
+  },
+  shipping_partner: {
+    price: "₹12,00,000",
+    benefits: ["Exclusive logistics branding", "Logo on all shipping materials"],
+  },
+  marketing_partner: {
+    price: "₹8,00,000",
+    benefits: ["Co-branding in marketing campaigns", "Social media promotions"],
+  },
+  media_partner: {
+    price: "₹7,00,000",
+    benefits: ["Exclusive media branding", "Prime coverage"],
+  },
+  hotel_partner: {
+    price: "₹6,00,000",
+    benefits: ["Branding at official hotels", "Exposure among attendees"],
+  },
+  food_partner: {
+    price: "₹5,00,000",
+    benefits: ["Exclusive branding in food courts and menus"],
+  },
+  technology_partner: {
+    price: "₹10,00,000",
+    benefits: ["Branding in tech zones", "Digital marketing exposure"],
+  },
+  csr_partner: {
+    price: "₹5,00,000",
+    benefits: [
+      "Association with sustainability initiatives",
+      "Recognition in CSR activities",
+    ],
+  },
+};
+
 
 const UserRegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -30,6 +97,14 @@ const UserRegistrationForm = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [loading, setLoading] = useState(false);
+  const [selectedSponsorship, setSelectedSponsorship] = useState("");
+
+  const handleSponsorshipChange = (e) => {
+    const selectedValue = e.target.value;
+    setFormData({ ...formData, sponsorshipType: selectedValue });
+    setSelectedSponsorship(selectedValue); // Update state
+  };
+
   // console.log(location.state);
 
   const { id } = useParams();
@@ -697,9 +772,7 @@ const UserRegistrationForm = () => {
           <select
             name="sponsorshipType"
             value={formData.sponsorshipType}
-            onChange={(e) =>
-              setFormData({ ...formData, sponsorshipType: e.target.value })
-            }
+            onChange={handleSponsorshipChange}
             className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
             required
           >
@@ -719,6 +792,22 @@ const UserRegistrationForm = () => {
             <option value="technology_partner">Technology Partner</option>
             <option value="csr_partner">CSR Partner</option>
           </select>
+
+          {selectedSponsorship && sponsorshipDetails[selectedSponsorship] && (
+  <div className="mt-4 p-4 bg-gray-100 rounded-lg">
+    <h2 className="text-lg font-bold text-green-700">
+      {selectedSponsorship.replace(/_/g, " ").toUpperCase()}
+    </h2>
+    <p className="text-gray-600">Price: {sponsorshipDetails[selectedSponsorship].price}</p>
+    <ul className="list-disc ml-6 mt-2">
+      {sponsorshipDetails[selectedSponsorship].benefits.map((benefit, index) => (
+        <li key={index} className="text-gray-700">{benefit}</li>
+      ))}
+    </ul>
+  </div>
+)}
+
+
         </div>
       )}
 
