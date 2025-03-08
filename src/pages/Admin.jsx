@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 
 const Backend_URL = "https://kisaan-mahakumbh-backend.vercel.app";
 
-
 const Role = [
   "VISITOR",
   "SPONSOR",
@@ -20,6 +19,15 @@ const Admin = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("VISITOR");
+  const [roleLengths, setRoleLengths] = useState({
+    VISITOR: 0,
+    SPONSOR: 0,
+    ENTREPRENEUR: 0,
+    VOLUNTEER: 0,
+    DELEGATE: 0,
+    USER: 0,
+  });
+  const [loading, setLoading] = useState(false); // Loading state
   const token = localStorage.getItem("token");
 
   const handleSignOut = () => {
@@ -35,11 +43,51 @@ const Admin = () => {
     XLSX.writeFile(workbook, `${selectedCategory}.xlsx`);
   };
 
+  const fetchRoleLengths = async () => {
+    setLoading(true); // Start loading
+    try {
+      // Fetch all role lengths in parallel
+      const promises = Role.map(async (role) => {
+        const lowerCaseRole = role.toLowerCase();
+        const res = await axios.post(
+          `${Backend_URL}/api/v1/user/list`,
+          { filters: { role: lowerCaseRole } },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        return { role, length: res.data.data.userList.length };
+      });
+
+      // Wait for all promises to resolve
+      const results = await Promise.all(promises);
+
+      // Update role lengths state
+      const lengths = results.reduce((acc, { role, length }) => {
+        acc[role] = length;
+        return acc;
+      }, {});
+      setRoleLengths(lengths);
+    } catch (error) {
+      console.error("Error fetching role lengths:", error);
+      toast.error("Failed to fetch role lengths");
+    } finally {
+      setLoading(false); // Stop loading
+    }
+  };
+
   useEffect(() => {
     if (token === null) {
       navigate("/admin-login");
+    } else {
+      fetchRoleLengths(); // Fetch role lengths on component mount
     }
+  }, []);
 
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const lowerCaseCategory = selectedCategory.toLowerCase();
@@ -68,11 +116,12 @@ const Admin = () => {
           );
         }
         setData(res.data.data.userList);
-        console.log("data is: ", data)
       } catch (error) {
         console.error("Error fetching data:", error);
+        toast.error("Failed to fetch data");
       }
     };
+
     fetchData();
   }, [selectedCategory]);
 
@@ -81,6 +130,11 @@ const Admin = () => {
       {/* Navbar */}
       <nav className="bg-blue-600 text-white py-4 px-6 flex justify-between items-center shadow-lg">
         <h1 className="text-lg font-bold">Welcome Admin</h1>
+        <span>VISITORS: {roleLengths.VISITOR}</span>
+        <span>ENTREPRENEURS: {roleLengths.ENTREPRENEUR}</span>
+        <span>SPONSORS: {roleLengths.SPONSOR}</span>
+        <span>VOLUNTEERS: {roleLengths.VOLUNTEER}</span>
+        <span>DELEGATES: {roleLengths.DELEGATE}</span>
         <button
           onClick={handleSignOut}
           className="bg-red-500 px-4 py-2 rounded-lg hover:bg-red-600 cursor-pointer"
@@ -130,15 +184,35 @@ const Admin = () => {
                 <th className="border p-2">Phone</th>
                 <th className="border p-2">Designation</th>
                 <th className="border p-2">Role</th>
-                
+
                 <th className="border p-2">Industry</th>
                 <th className="border p-2">Company</th>
                 <th className="border p-2">Company Type</th>
-                {selectedCategory.toLowerCase()==="user" || selectedCategory.toLowerCase()==="sponsor" ? <th className="border p-2">Sponsorship Type</th> : ""}
-                {selectedCategory.toLowerCase() ==="entrepreneur" || selectedCategory.toLowerCase() ==="user"? <th className="border p-2">Stall Size</th> :""}
+                {selectedCategory.toLowerCase() === "user" ||
+                selectedCategory.toLowerCase() === "sponsor" ? (
+                  <th className="border p-2">Sponsorship Type</th>
+                ) : (
+                  ""
+                )}
+                {selectedCategory.toLowerCase() === "entrepreneur" ||
+                selectedCategory.toLowerCase() === "user" ? (
+                  <th className="border p-2">Stall Size</th>
+                ) : (
+                  ""
+                )}
                 <th className="border p-2">Address</th>
-                {selectedCategory.toLowerCase() ==="entrepreneur" || selectedCategory.toLowerCase() ==="user" ? <th className="border p-2">Payment Amount</th> :""}
-                {selectedCategory.toLowerCase() ==="entrepreneur" || selectedCategory.toLowerCase() ==="user" ? <th className="border p-2">Payment Status</th> :""}
+                {selectedCategory.toLowerCase() === "entrepreneur" ||
+                selectedCategory.toLowerCase() === "user" ? (
+                  <th className="border p-2">Payment Amount</th>
+                ) : (
+                  ""
+                )}
+                {selectedCategory.toLowerCase() === "entrepreneur" ||
+                selectedCategory.toLowerCase() === "user" ? (
+                  <th className="border p-2">Payment Status</th>
+                ) : (
+                  ""
+                )}
               </tr>
             </thead>
             <tbody>
@@ -156,13 +230,35 @@ const Admin = () => {
                   </td>
                   <td className="border p-2">{item.companyName}</td>
                   <td className="border p-2">{item.companyType}</td>
-                  {selectedCategory.toLowerCase()==="user" || item.role === "sponsor" ? <td className="border p-2">{item.sponsorshipType}</td> : ""}
-                  {item.role === "entrepreneur" || selectedCategory.toLowerCase()==="user" ? <td className="border p-2">{item.stallSize}</td> :""}
+                  {selectedCategory.toLowerCase() === "user" ||
+                  item.role === "sponsor" ? (
+                    <td className="border p-2">{item.sponsorshipType}</td>
+                  ) : (
+                    ""
+                  )}
+                  {item.role === "entrepreneur" ||
+                  selectedCategory.toLowerCase() === "user" ? (
+                    <td className="border p-2">{item.stallSize}</td>
+                  ) : (
+                    ""
+                  )}
                   <td className="border p-2">
                     {item.address + ", " + item.city}
                   </td>
-                  {item.role === "entrepreneur" || selectedCategory.toLowerCase()==="user"  ? <td className="border p-2">{item.paymentAmount === 0 ? "NA" : item.paymentAmount}</td> : "" }
-                  {item.role === "entrepreneur" || selectedCategory.toLowerCase()==="user" ? <td className="border p-2">{item.paymentStatus}</td> :""}
+                  {item.role === "entrepreneur" ||
+                  selectedCategory.toLowerCase() === "user" ? (
+                    <td className="border p-2">
+                      {item.paymentAmount === 0 ? "NA" : item.paymentAmount}
+                    </td>
+                  ) : (
+                    ""
+                  )}
+                  {item.role === "entrepreneur" ||
+                  selectedCategory.toLowerCase() === "user" ? (
+                    <td className="border p-2">{item.paymentStatus}</td>
+                  ) : (
+                    ""
+                  )}
                 </tr>
               ))}
             </tbody>
