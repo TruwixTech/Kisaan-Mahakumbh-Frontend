@@ -614,7 +614,7 @@ const UserRegistrationForm = () => {
             required
           >
             <option value="User" disabled>
-              Choose Type
+              Select a Role
             </option>
             <option value="sponsor">Sponsor</option>
             <option value="visitor">Visitor</option>
