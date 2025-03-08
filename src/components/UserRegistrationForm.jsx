@@ -19,11 +19,7 @@ const sponsorshipDetails = {
   },
   platinum_sponsor: {
     price: "₹15,00,000",
-    benefits: [
-      "Social media promotion",
-      "Website branding",
-      "Event passes",
-    ],
+    benefits: ["Social media promotion", "Website branding", "Event passes"],
   },
   gold_sponsor: {
     price: "₹10,00,000",
@@ -35,15 +31,14 @@ const sponsorshipDetails = {
   },
   co_powered_by: {
     price: "₹20,00,000",
-    benefits: [
-      "Logo on banners",
-      "Stall space",
-      "Branding on social media",
-    ],
+    benefits: ["Logo on banners", "Stall space", "Branding on social media"],
   },
   shipping_partner: {
     price: "₹12,00,000",
-    benefits: ["Exclusive logistics branding", "Logo on all shipping materials"],
+    benefits: [
+      "Exclusive logistics branding",
+      "Logo on all shipping materials",
+    ],
   },
   marketing_partner: {
     price: "₹8,00,000",
@@ -74,7 +69,6 @@ const sponsorshipDetails = {
   },
 };
 
-
 const UserRegistrationForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -91,7 +85,7 @@ const UserRegistrationForm = () => {
     customIndustry: "",
     sponsorshipType: "",
     stallSize: "",
-    customStallSize: ""
+    customStallSize: "",
   });
 
   const navigate = useNavigate();
@@ -362,7 +356,7 @@ const UserRegistrationForm = () => {
       toast.error("Please fix the following errors:\n\n" + errorMessages);
       return;
     }
-    setCurrentStep(2)
+    setCurrentStep(2);
   }
 
   // console.log(formData)
@@ -410,27 +404,30 @@ const UserRegistrationForm = () => {
     return (
       <div className="w-full flex justify-center">
         <div
-          className={`${formData.role === "entrepreneur"
-            ? "w-full md:w-full xl:w-[80%]"
-            : "w-full md:w-[50%]"
-            } flex flex-col md:flex-row gap-2 justify-between items-center mb-8`}
+          className={`${
+            formData.role === "entrepreneur"
+              ? "w-full md:w-full xl:w-[80%]"
+              : "w-full md:w-[50%]"
+          } flex flex-col md:flex-row gap-2 justify-between items-center mb-8`}
         >
           {/* Step 1 */}
           <div className="flex items-center">
             <div className="relative flex gap-4 items-center">
               <div
-                className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${currentStep >= 1
-                  ? "bg-black text-white"
-                  : "bg-gray-200 text-black border border-gray-600"
-                  }`}
+                className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${
+                  currentStep >= 1
+                    ? "bg-black text-white"
+                    : "bg-gray-200 text-black border border-gray-600"
+                }`}
               >
                 1
               </div>
               <span
-                className={`text-sm mt-2 h-8 ${currentStep >= 1
-                  ? "text-black font-medium"
-                  : "text-gray-500 font-semibold"
-                  }`}
+                className={`text-sm mt-2 h-8 ${
+                  currentStep >= 1
+                    ? "text-black font-medium"
+                    : "text-gray-500 font-semibold"
+                }`}
               >
                 Attendee Information
               </span>
@@ -439,26 +436,29 @@ const UserRegistrationForm = () => {
 
           {/* Stepper Line */}
           <div
-            className={`md:w-40 h-[3px] w-6 rotate-90 md:rotate-0 ${currentStep > 1 ? "bg-black" : "bg-gray-300"
-              }`}
+            className={`md:w-40 h-[3px] w-6 rotate-90 md:rotate-0 ${
+              currentStep > 1 ? "bg-black" : "bg-gray-300"
+            }`}
           ></div>
 
           {/* Step 2 */}
           <div className="flex items-center">
             <div className="relative flex gap-4 items-center">
               <div
-                className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${currentStep >= 2
-                  ? "bg-black text-white"
-                  : "bg-gray-200 text-black border border-gray-600"
-                  }`}
+                className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${
+                  currentStep >= 2
+                    ? "bg-black text-white"
+                    : "bg-gray-200 text-black border border-gray-600"
+                }`}
               >
                 2
               </div>
               <span
-                className={`text-sm mt-2 h-8 ${currentStep >= 2
-                  ? "text-black font-medium"
-                  : "text-gray-500 font-medium"
-                  }`}
+                className={`text-sm mt-2 h-8 ${
+                  currentStep >= 2
+                    ? "text-black font-medium"
+                    : "text-gray-500 font-medium"
+                }`}
               >
                 Preview
               </span>
@@ -469,26 +469,29 @@ const UserRegistrationForm = () => {
             <>
               {/* Stepper Line */}
               <div
-                className={`md:w-40 h-[3px] w-6 rotate-90 md:rotate-0 ${currentStep > 2 ? "bg-black" : "bg-gray-300"
-                  }`}
+                className={`md:w-40 h-[3px] w-6 rotate-90 md:rotate-0 ${
+                  currentStep > 2 ? "bg-black" : "bg-gray-300"
+                }`}
               ></div>
 
               {/* Step 3 */}
               <div className="flex items-center">
                 <div className="relative flex gap-4 items-center">
                   <div
-                    className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${currentStep >= 3
-                      ? "bg-gray-300 text-black"
-                      : "bg-gray-200 text-black border border-gray-600"
-                      }`}
+                    className={`w-8 h-8 flex items-center justify-center rounded-full font-medium ${
+                      currentStep >= 3
+                        ? "bg-gray-300 text-black"
+                        : "bg-gray-200 text-black border border-gray-600"
+                    }`}
                   >
                     3
                   </div>
                   <span
-                    className={`text-sm mt-2 h-8 ${currentStep >= 3
-                      ? "text-black font-medium"
-                      : "text-gray-500 font-medium"
-                      }`}
+                    className={`text-sm mt-2 h-8 ${
+                      currentStep >= 3
+                        ? "text-black font-medium"
+                        : "text-gray-500 font-medium"
+                    }`}
                   >
                     Payment
                   </span>
@@ -600,7 +603,7 @@ const UserRegistrationForm = () => {
       {/* Role Dropdown */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 mb-4">
         <div>
-          <label className="block text-base  font-bold text-gray-700 mb-1">
+          <label className="block text-base font-bold text-gray-700 mb-1">
             Role:
           </label>
           <select
@@ -610,8 +613,8 @@ const UserRegistrationForm = () => {
             className="w-full py-4 px-4 bg-[#f0eeee] rounded-[25px] focus:outline-none focus:ring-2 focus:ring-green-600"
             required
           >
-            <option value="user" disabled>
-              Select Role
+            <option value="User" disabled>
+              Choose Type
             </option>
             <option value="sponsor">Sponsor</option>
             <option value="visitor">Visitor</option>
@@ -794,20 +797,24 @@ const UserRegistrationForm = () => {
           </select>
 
           {selectedSponsorship && sponsorshipDetails[selectedSponsorship] && (
-  <div className="mt-4 p-4 bg-gray-100 rounded-lg">
-    <h2 className="text-lg font-bold text-green-700">
-      {selectedSponsorship.replace(/_/g, " ").toUpperCase()}
-    </h2>
-    <p className="text-gray-600">Price: {sponsorshipDetails[selectedSponsorship].price}</p>
-    <ul className="list-disc ml-6 mt-2">
-      {sponsorshipDetails[selectedSponsorship].benefits.map((benefit, index) => (
-        <li key={index} className="text-gray-700">{benefit}</li>
-      ))}
-    </ul>
-  </div>
-)}
-
-
+            <div className="mt-4 p-4 bg-gray-100 rounded-lg">
+              <h2 className="text-lg font-bold text-green-700">
+                {selectedSponsorship.replace(/_/g, " ").toUpperCase()}
+              </h2>
+              <p className="text-gray-600">
+                Price: {sponsorshipDetails[selectedSponsorship].price}
+              </p>
+              <ul className="list-disc ml-6 mt-2">
+                {sponsorshipDetails[selectedSponsorship].benefits.map(
+                  (benefit, index) => (
+                    <li key={index} className="text-gray-700">
+                      {benefit}
+                    </li>
+                  )
+                )}
+              </ul>
+            </div>
+          )}
         </div>
       )}
 
@@ -929,11 +936,7 @@ const UserRegistrationForm = () => {
             disabled={loading}
             onClick={handleSubmitRegistrationForm}
           >
-            {
-              loading
-                ? 'Submitting...'
-                : 'Submit'
-            }
+            {loading ? "Submitting..." : "Submit"}
           </button>
         )}
       </div>
