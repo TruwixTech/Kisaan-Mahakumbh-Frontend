@@ -18,6 +18,7 @@ const Role = [
 const Admin = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
+  const [allData, setAllData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("VISITOR");
   const [roleLengths, setRoleLengths] = useState({
     VISITOR: 0,
@@ -27,7 +28,11 @@ const Admin = () => {
     DELEGATE: 0,
     USER: 0,
   });
-  const [loading, setLoading] = useState(false); // Loading state
+  const [loading, setLoading] = useState(false);
+  const [pageNum, setPageNum] = useState(1);
+  const [pageSize] = useState(10);
+  const [totalPages, setTotalPages] = useState(1);
+  // const [loading, setLoading] = useState(false); // Loading state
   const token = localStorage.getItem("token");
 
   const handleSignOut = () => {
@@ -37,14 +42,18 @@ const Admin = () => {
   };
 
   const handleDownload = () => {
-    const worksheet = XLSX.utils.json_to_sheet(data);
+    if (allData.length <= 0) {
+      toast.warn("Data not exists!")
+      return
+    }
+    const filteredData = allData.map(({ _id, ...rest }) => rest);
+    const worksheet = XLSX.utils.json_to_sheet(filteredData);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, selectedCategory);
     XLSX.writeFile(workbook, `${selectedCategory}.xlsx`);
   };
 
   const fetchRoleLengths = async () => {
-    setLoading(true); // Start loading
     try {
       // Fetch all role lengths in parallel
       const promises = Role.map(async (role) => {
@@ -74,8 +83,6 @@ const Admin = () => {
     } catch (error) {
       console.error("Error fetching role lengths:", error);
       toast.error("Failed to fetch role lengths");
-    } finally {
-      setLoading(false); // Stop loading
     }
   };
 
@@ -87,42 +94,68 @@ const Admin = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const lowerCaseCategory = selectedCategory.toLowerCase();
-        let res;
-        if (lowerCaseCategory === "user") {
-          res = await axios.post(
-            `${Backend_URL}/api/v1/user/list`,
-            {},
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
-              },
-            }
-          );
-        } else {
-          res = await axios.post(
-            `${Backend_URL}/api/v1/user/list`,
-            { filters: { role: lowerCaseCategory } },
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
-              },
-            }
-          );
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.post(
+        `${Backend_URL}/api/v1/user/list`,
+        {
+          filters: selectedCategory !== "USER" ? { role: selectedCategory.toLowerCase() } : {},
+          pageNum,
+          pageSize,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
         }
-        setData(res.data.data.userList);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        toast.error("Failed to fetch data");
-      }
-    };
+      );
+      setData(res.data.data.userList);
+      setTotalPages(Math.ceil(res.data.data.userCount / pageSize));
+    } catch (error) {
+      toast.error("Failed to fetch data");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchData();
+  useEffect(() => {
+    if (token===null) {
+      navigate("/admin-login");
+    } else {
+      fetchData();
+    }
+  }, [selectedCategory, pageNum]);
+
+  const fetchAllData = async () => {
+    try {
+      const res = await axios.post(
+        `${Backend_URL}/api/v1/user/list`,
+        {
+          filters: selectedCategory !== "USER" ? { role: selectedCategory.toLowerCase() } : {},
+          pageNum: 1,
+          pageSize: 10000000
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      setAllData(res.data.data.userList)
+      console.log("all data : ", res.data.data.userList)
+    } catch (error) {
+      toast.error("Failed to fetch data");
+    }
+  };
+  useEffect(() => {
+    if (token===null) {
+      navigate("/admin-login");
+    } else {
+      fetchAllData();
+    }
   }, [selectedCategory]);
 
   return (
@@ -151,12 +184,12 @@ const Admin = () => {
             {Role.map((category) => (
               <li
                 key={category}
-                className={`cursor-pointer p-2 rounded-md mb-2 ${
-                  selectedCategory === category
-                    ? "bg-blue-500 text-white"
-                    : "hover:bg-gray-200"
-                }`}
-                onClick={() => setSelectedCategory(category)}
+                className={`cursor-pointer p-2 rounded-md mb-2 ${selectedCategory === category ? "bg-blue-500 text-white" : "hover:bg-gray-200"
+                  }`}
+                onClick={() => {
+                  setSelectedCategory(category);
+                  setPageNum(1);
+                }}
               >
                 {category}
               </li>
@@ -176,93 +209,161 @@ const Admin = () => {
             </button>
           </div>
 
-          <table className="w-full border-collapse border border-gray-200">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="border p-2">Name</th>
-                <th className="border p-2">Email</th>
-                <th className="border p-2">Phone</th>
-                <th className="border p-2">Designation</th>
-                <th className="border p-2">Role</th>
+          {loading ? (
+            <p className="text-center text-lg">Loading...</p>
+          ) : (
+            <>
+              <table className="w-full border-collapse border border-gray-200">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="border p-2">Name</th>
+                    <th className="border p-2">Email</th>
+                    <th className="border p-2">Phone</th>
+                    <th className="border p-2">Designation</th>
+                    <th className="border p-2">Role</th>
 
-                <th className="border p-2">Industry</th>
-                <th className="border p-2">Company</th>
-                <th className="border p-2">Company Type</th>
-                {selectedCategory.toLowerCase() === "user" ||
-                selectedCategory.toLowerCase() === "sponsor" ? (
-                  <th className="border p-2">Sponsorship Type</th>
-                ) : (
-                  ""
+                    <th className="border p-2">Industry</th>
+                    <th className="border p-2">Company</th>
+                    <th className="border p-2">Company Type</th>
+                    {selectedCategory.toLowerCase() === "user" ||
+                      selectedCategory.toLowerCase() === "sponsor" ? (
+                      <th className="border p-2">Sponsorship Type</th>
+                    ) : (
+                      ""
+                    )}
+                    {selectedCategory.toLowerCase() === "entrepreneur" ||
+                      selectedCategory.toLowerCase() === "user" ? (
+                      <th className="border p-2">Stall Size</th>
+                    ) : (
+                      ""
+                    )}
+                    <th className="border p-2">Address</th>
+                    {selectedCategory.toLowerCase() === "entrepreneur" ||
+                      selectedCategory.toLowerCase() === "user" ? (
+                      <th className="border p-2">Payment Amount</th>
+                    ) : (
+                      ""
+                    )}
+                    {selectedCategory.toLowerCase() === "entrepreneur" ||
+                      selectedCategory.toLowerCase() === "user" ? (
+                      <th className="border p-2">Payment Status</th>
+                    ) : (
+                      ""
+                    )}
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.map((item, index) => (
+                    <tr key={index} className="text-center border-t">
+                      <td className="border p-2">{item.name}</td>
+                      <td className="border p-2">{item.email}</td>
+                      <td className="border p-2">{item.phone}</td>
+                      <td className="border p-2">{item.designation}</td>
+                      <td className="border p-2">{item.role}</td>
+                      <td className="border p-2">
+                        {item.industry === "custom"
+                          ? item.customIndustry
+                          : item.industry}
+                      </td>
+                      <td className="border p-2">{item.companyName}</td>
+                      <td className="border p-2">{item.companyType}</td>
+                      {selectedCategory.toLowerCase() === "user" ||
+                        item.role === "sponsor" ? (
+                        <td className="border p-2">{item.sponsorshipType}</td>
+                      ) : (
+                        ""
+                      )}
+                      {item.role === "entrepreneur" ||
+                        selectedCategory.toLowerCase() === "user" ? (
+                        <td className="border p-2">{item.stallSize}</td>
+                      ) : (
+                        ""
+                      )}
+                      <td className="border p-2">
+                        {item.address + ", " + item.city}
+                      </td>
+                      {item.role === "entrepreneur" ||
+                        selectedCategory.toLowerCase() === "user" ? (
+                        <td className="border p-2">
+                          {item.paymentAmount === 0 ? "NA" : item.paymentAmount}
+                        </td>
+                      ) : (
+                        ""
+                      )}
+                      {item.role === "entrepreneur" ||
+                        selectedCategory.toLowerCase() === "user" ? (
+                        <td className="border p-2">{item.paymentStatus}</td>
+                      ) : (
+                        ""
+                      )}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+
+
+
+              <div className="flex justify-center items-center mt-4 space-x-2">
+                {totalPages > 1 && (
+                  <>
+                    {/* Previous Button */}
+                    <button
+                      onClick={() => setPageNum(prev => Math.max(prev - 1, 1))}
+                      disabled={pageNum === 1}
+                      className={`px-4 py-2 text-lg rounded-lg ${pageNum === 1 ? "bg-gray-500 text-white cursor-not-allowed" : "bg-gray-300 hover:bg-gray-400"}`}
+                    >
+                      Previous
+                    </button>
+
+                    <button
+                      onClick={() => setPageNum(1)}
+                      className={`px-4 py-2 text-lg rounded-lg ${pageNum === 1 ? "bg-blue-500 text-white" : "bg-gray-300 hover:bg-gray-400"}`}
+                    >
+                      1
+                    </button>
+
+                    {pageNum > 4 && <span>...</span>}
+
+                    {[...Array(5)].map((_, i) => {
+                      const page = pageNum - 2 + i;
+                      return (
+                        page > 1 && page < totalPages && (
+                          <button
+                            key={page}
+                            onClick={() => setPageNum(page)}
+                            className={`px-4 py-2 text-lg rounded-lg ${pageNum === page ? "bg-blue-500 text-white" : "bg-gray-300 hover:bg-gray-400"}`}
+                          >
+                            {page}
+                          </button>
+                        )
+                      );
+                    })}
+
+                    {pageNum < totalPages - 3 && <span>...</span>}
+
+                    <button
+                      onClick={() => setPageNum(totalPages)}
+                      className={`px-4 py-2 text-lg rounded-lg ${pageNum === totalPages ? "bg-blue-500 text-white" : "bg-gray-300 hover:bg-gray-400"}`}
+                    >
+                      {totalPages}
+                    </button>
+
+                    {/* Next Button */}
+                    <button
+                      onClick={() => setPageNum(prev => Math.min(prev + 1, totalPages))}
+                      disabled={pageNum === totalPages}
+                      className={`px-4 py-2 text-lg rounded-lg ${pageNum === totalPages ? "bg-gray-500 text-white cursor-not-allowed" : "bg-gray-300 hover:bg-gray-400"}`}
+                    >
+                      Next
+                    </button>
+                  </>
                 )}
-                {selectedCategory.toLowerCase() === "entrepreneur" ||
-                selectedCategory.toLowerCase() === "user" ? (
-                  <th className="border p-2">Stall Size</th>
-                ) : (
-                  ""
-                )}
-                <th className="border p-2">Address</th>
-                {selectedCategory.toLowerCase() === "entrepreneur" ||
-                selectedCategory.toLowerCase() === "user" ? (
-                  <th className="border p-2">Payment Amount</th>
-                ) : (
-                  ""
-                )}
-                {selectedCategory.toLowerCase() === "entrepreneur" ||
-                selectedCategory.toLowerCase() === "user" ? (
-                  <th className="border p-2">Payment Status</th>
-                ) : (
-                  ""
-                )}
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((item, index) => (
-                <tr key={index} className="text-center border-t">
-                  <td className="border p-2">{item.name}</td>
-                  <td className="border p-2">{item.email}</td>
-                  <td className="border p-2">{item.phone}</td>
-                  <td className="border p-2">{item.designation}</td>
-                  <td className="border p-2">{item.role}</td>
-                  <td className="border p-2">
-                    {item.industry === "custom"
-                      ? item.customIndustry
-                      : item.industry}
-                  </td>
-                  <td className="border p-2">{item.companyName}</td>
-                  <td className="border p-2">{item.companyType}</td>
-                  {selectedCategory.toLowerCase() === "user" ||
-                  item.role === "sponsor" ? (
-                    <td className="border p-2">{item.sponsorshipType}</td>
-                  ) : (
-                    ""
-                  )}
-                  {item.role === "entrepreneur" ||
-                  selectedCategory.toLowerCase() === "user" ? (
-                    <td className="border p-2">{item.stallSize}</td>
-                  ) : (
-                    ""
-                  )}
-                  <td className="border p-2">
-                    {item.address + ", " + item.city}
-                  </td>
-                  {item.role === "entrepreneur" ||
-                  selectedCategory.toLowerCase() === "user" ? (
-                    <td className="border p-2">
-                      {item.paymentAmount === 0 ? "NA" : item.paymentAmount}
-                    </td>
-                  ) : (
-                    ""
-                  )}
-                  {item.role === "entrepreneur" ||
-                  selectedCategory.toLowerCase() === "user" ? (
-                    <td className="border p-2">{item.paymentStatus}</td>
-                  ) : (
-                    ""
-                  )}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+              </div>
+
+
+            </>
+          )}
         </div>
       </div>
     </div>
