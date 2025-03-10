@@ -59,7 +59,6 @@ const Admin = () => {
             },
           }
         );
-        console.log(role, res.data.data.userCount);
         return { role, length: res.data.data.userCount };
       });
 
