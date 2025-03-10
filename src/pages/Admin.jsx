@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Backend_URL = "https://kisaan-mahakumbh-backend.vercel.app";
+// const Backend_URL = "http://localhost:8080";
 
 const Role = [
   "VISITOR",
@@ -18,123 +19,97 @@ const Role = [
 const Admin = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
+  const [allData, setAllData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("VISITOR");
-  const [roleLengths, setRoleLengths] = useState({
-    VISITOR: 0,
-    SPONSOR: 0,
-    ENTREPRENEUR: 0,
-    VOLUNTEER: 0,
-    DELEGATE: 0,
-    USER: 0,
-  });
-  const [loading, setLoading] = useState(false); // Loading state
+  const [loading, setLoading] = useState(false);
+  const [pageNum, setPageNum] = useState(1);
+  const [pageSize] = useState(10);
+  const [totalPages, setTotalPages] = useState(1);
+
   const token = localStorage.getItem("token");
 
   const handleSignOut = () => {
     localStorage.removeItem("token");
     toast.success("Sign out Successfully!");
-    navigate("/admin-login"); // Redirect to login page
+    navigate("/admin-login");
   };
 
   const handleDownload = () => {
-    const worksheet = XLSX.utils.json_to_sheet(data);
+    const worksheet = XLSX.utils.json_to_sheet(allData);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, selectedCategory);
     XLSX.writeFile(workbook, `${selectedCategory}.xlsx`);
   };
 
-  const fetchRoleLengths = async () => {
-    setLoading(true); // Start loading
+  const fetchData = async () => {
+    setLoading(true);
     try {
-      // Fetch all role lengths in parallel
-      const promises = Role.map(async (role) => {
-        const lowerCaseRole = role.toLowerCase();
-        const res = await axios.post(
-          `${Backend_URL}/api/v1/user/list`,
-          { filters: { role: lowerCaseRole } },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        return { role, length: res.data.data.userCount };
-      });
-
-      // Wait for all promises to resolve
-      const results = await Promise.all(promises);
-
-      // Update role lengths state
-      const lengths = results.reduce((acc, { role, length }) => {
-        acc[role] = length;
-        return acc;
-      }, {});
-      setRoleLengths(lengths);
+      const res = await axios.post(
+        `${Backend_URL}/api/v1/user/list`,
+        {
+          filters: selectedCategory !== "USER" ? { role: selectedCategory.toLowerCase() } : {},
+          pageNum,
+          pageSize,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      setData(res.data.data.userList);
+      setTotalPages(Math.ceil(res.data.data.userCount / pageSize));
     } catch (error) {
-      console.error("Error fetching role lengths:", error);
-      toast.error("Failed to fetch role lengths");
+      toast.error("Failed to fetch data");
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    if (token === null) {
+    if (!token) {
       navigate("/admin-login");
     } else {
-      fetchRoleLengths(); // Fetch role lengths on component mount
+      fetchData();
     }
-  }, []);
+  }, [selectedCategory, pageNum]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const lowerCaseCategory = selectedCategory.toLowerCase();
-        let res;
-        if (lowerCaseCategory === "user") {
-          res = await axios.post(
-            `${Backend_URL}/api/v1/user/list`,
-            {},
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
-              },
-            }
-          );
-        } else {
-          res = await axios.post(
-            `${Backend_URL}/api/v1/user/list`,
-            { filters: { role: lowerCaseCategory } },
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
-              },
-            }
-          );
+  const fetchAllData = async () => {
+    try {
+      const res = await axios.post(
+        `${Backend_URL}/api/v1/user/list`,
+        {
+          filters: selectedCategory !== "USER" ? { role: selectedCategory.toLowerCase() } : {},
+          pageNum:1,
+          pageSize:10000000
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
         }
-        setData(res.data.data.userList);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        toast.error("Failed to fetch data");
-      }
-    };
-
-    fetchData();
+      );
+      setAllData(res.data.data.userList)
+      console.log("all data : ",res.data.data.userList)
+    } catch (error) {
+      toast.error("Failed to fetch data");
+    }
+  };
+  useEffect(() => {
+    if (!token) {
+      navigate("/admin-login");
+    } else {
+      fetchAllData();
+    }
   }, [selectedCategory]);
+
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
-      {/* Navbar */}
       <nav className="bg-blue-600 text-white py-4 px-6 flex justify-between items-center shadow-lg">
         <h1 className="text-lg font-bold">Welcome Admin</h1>
-        <span>VISITORS: {roleLengths.VISITOR}</span>
-        <span>ENTREPRENEURS: {roleLengths.ENTREPRENEUR}</span>
-        <span>SPONSORS: {roleLengths.SPONSOR}</span>
-        <span>VOLUNTEERS: {roleLengths.VOLUNTEER}</span>
-        <span>DELEGATES: {roleLengths.DELEGATE}</span>
         <button
           onClick={handleSignOut}
           className="bg-red-500 px-4 py-2 rounded-lg hover:bg-red-600 cursor-pointer"
@@ -144,19 +119,18 @@ const Admin = () => {
       </nav>
 
       <div className="flex flex-grow p-4">
-        {/* Sidebar */}
         <div className="w-1/6 bg-white p-4 shadow-lg rounded-lg">
           <h2 className="text-lg font-bold mb-4">Role</h2>
           <ul>
             {Role.map((category) => (
               <li
                 key={category}
-                className={`cursor-pointer p-2 rounded-md mb-2 ${
-                  selectedCategory === category
-                    ? "bg-blue-500 text-white"
-                    : "hover:bg-gray-200"
-                }`}
-                onClick={() => setSelectedCategory(category)}
+                className={`cursor-pointer p-2 rounded-md mb-2 ${selectedCategory === category ? "bg-blue-500 text-white" : "hover:bg-gray-200"
+                  }`}
+                onClick={() => {
+                  setSelectedCategory(category);
+                  setPageNum(1);
+                }}
               >
                 {category}
               </li>
@@ -164,7 +138,6 @@ const Admin = () => {
           </ul>
         </div>
 
-        {/* Data Table */}
         <div className="flex-1 bg-white p-6 mx-4 rounded-lg shadow-lg relative">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-semibold">{selectedCategory} Data</h2>
@@ -176,7 +149,11 @@ const Admin = () => {
             </button>
           </div>
 
-          <table className="w-full border-collapse border border-gray-200">
+          {loading ? (
+            <p className="text-center text-lg">Loading...</p>
+          ) : (
+            <>
+              <table className="w-full border-collapse border border-gray-200">
             <thead>
               <tr className="bg-gray-100">
                 <th className="border p-2">Name</th>
@@ -263,6 +240,28 @@ const Admin = () => {
               ))}
             </tbody>
           </table>
+          <div className="flex justify-center items-center mt-4 space-x-2">
+                <button onClick={() => setPageNum(1)} className="px-4 py-2 text-lg rounded-lg bg-gray-300 hover:bg-gray-400">1</button>
+                {pageNum > 4 && <span>...</span>}
+                {[...Array(5)].map((_, i) => {
+                  const page = pageNum - 2 + i;
+                  return (
+                    page > 1 && page < totalPages && (
+                      <button
+                        key={page}
+                        onClick={() => setPageNum(page)}
+                        className={`px-4 py-2 text-lg rounded-lg ${pageNum === page ? "bg-blue-500 text-white" : "bg-gray-300 hover:bg-gray-400"}`}
+                      >
+                        {page}
+                      </button>
+                    )
+                  );
+                })}
+                {pageNum < totalPages - 4 && <span>...</span>}
+                <button onClick={() => setPageNum(totalPages)} className="px-4 py-2 text-lg rounded-lg bg-gray-300 hover:bg-gray-400">{totalPages}</button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
@@ -270,3 +269,10 @@ const Admin = () => {
 };
 
 export default Admin;
+
+
+
+{/* <td className="border p-2">{item.companyName}</td>
+                  <td className="border p-2">{item.companyType}</td>
+                 
+                </tr> */}
