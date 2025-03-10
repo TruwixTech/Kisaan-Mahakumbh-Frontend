@@ -59,7 +59,7 @@ const Admin = () => {
             },
           }
         );
-        return { role, length: res.data.data.userList.length };
+        return { role, length: res.data.data.userCount };
       });
 
       // Wait for all promises to resolve
