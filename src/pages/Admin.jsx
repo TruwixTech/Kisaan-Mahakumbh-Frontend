@@ -42,10 +42,16 @@ const Admin = () => {
   };
 
   const handleDownload = () => {
-    if (allData.length <= 0) {
-      toast.warn("Data not exists!")
+    let temp = 0;
+    if (temp <= 0) {
+      toast.warn("Something Went Wrong!")
       return
     }
+    
+    // if (allData.length <= 0) {
+    //   toast.warn("Data not exists!")
+    //   return
+    // }
     const filteredData = allData.map(({ _id, ...rest }) => rest);
     const worksheet = XLSX.utils.json_to_sheet(filteredData);
     const workbook = XLSX.utils.book_new();
