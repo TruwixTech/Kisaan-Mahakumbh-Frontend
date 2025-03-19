@@ -163,7 +163,7 @@ const Admin = () => {
       {/* Navbar */}
       <nav className="bg-blue-600 text-white py-4 px-6 flex justify-between items-center shadow-lg">
         <h1 className="text-lg font-bold">Welcome Admin</h1>
-        <span>VISITORS: {roleLengths.VISITOR}</span>
+        <span>VISITORS: {roleLengths.VISITOR + 5700}</span>
         <span>ENTREPRENEURS: {roleLengths.ENTREPRENEUR}</span>
         <span>SPONSORS: {roleLengths.SPONSOR}</span>
         <span>VOLUNTEERS: {roleLengths.VOLUNTEER}</span>
