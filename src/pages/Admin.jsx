@@ -44,7 +44,7 @@ const Admin = () => {
   const handleDownload = () => {
     let temp = 0;
     if (temp <= 0) {
-      toast.warn("Something Went Wrong!")
+      toast.warn("Data Download Limit Exceeded!")
       return
     }
     
