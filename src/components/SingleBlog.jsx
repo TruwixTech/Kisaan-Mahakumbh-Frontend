@@ -17,8 +17,7 @@ const blogdata = [
       "Organic farming, which avoids synthetic pesticides and fertilizers, is gaining popularity due to its environmental and health benefits. By using compost, crop rotation, and biological pest control, organic farmers promote soil health and biodiversity. Consumers increasingly prefer organic products, leading to higher demand and better market prices.",
     description4:
       "Additionally, vertical farming is emerging as a sustainable solution for food production. This method involves growing crops in stacked layers within controlled environments, saving space and using less water. With these advancements, farmers can boost productivity while ensuring environmental sustainability.",
-    image:
-      "https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/bj7fyluxmeb7alfbxtkc",
+    image: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/jzd2ls2yg4fb4ysevc8s",
   },
   {
     id: 2,
@@ -33,8 +32,7 @@ const blogdata = [
       "To improve irrigation facilities, the Pradhan Mantri Krishi Sinchayee Yojana (PMKSY) was launched. This scheme promotes efficient water usage through micro-irrigation techniques such as drip and sprinkler systems. The goal is to ensure that every farm has access to water, increasing overall agricultural output.",
     description4:
       "Apart from these, various state governments also offer subsidies on seeds, fertilizers, and agricultural equipment to reduce the financial burden on farmers. By leveraging these schemes, farmers can improve their income and adopt better farming practices.",
-    image:
-      "https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/s0nk7ssfugo6g2pn3bis",
+image: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/q8ooxqfgfoseeypdjwop",
   },
   {
     id: 3,
@@ -49,8 +47,8 @@ const blogdata = [
       "Another inspiring story is that of Dharampal Singh, a farmer from Haryana, who adopted precision farming techniques using drones and soil testing. By analyzing soil health and applying fertilizers accordingly, he has improved crop yields while reducing input costs. His story showcases the power of technology in modern agriculture.",
     description4:
       "These success stories prove that innovation, sustainability, and smart decision-making can transform the lives of farmers, ensuring profitability and environmental conservation.",
-    image:
-      "https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/ekl7e5d3uodiwngyg3py",
+image: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/guoomcols5auu99q2ait",
+
   },
   {
     id: 4,
@@ -65,8 +63,7 @@ const blogdata = [
       "Integrated Pest Management (IPM) is another sustainable approach that reduces reliance on chemical pesticides. It combines biological control methods, such as introducing beneficial insects, with mechanical and cultural pest control techniques. This minimizes the environmental impact of pesticides while keeping crops healthy.",
     description4:
       "Composting and organic fertilizers play a crucial role in sustainable agriculture. By recycling farm waste into nutrient-rich compost, farmers can improve soil structure and fertility naturally. Adopting these practices ensures that agriculture remains productive and environmentally responsible for future generations.",
-    image:
-      "https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/sjvngmpafaqclcxfjqyo",
+image: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/oyoxmrkdpoiljxrgphzf",
   },
   {
     id: 5,
@@ -81,8 +78,8 @@ const blogdata = [
       "Technology has also transformed agricultural marketing. With the rise of e-NAM (Electronic National Agriculture Market), farmers can sell their produce directly to buyers across India, ensuring better price realization. This platform eliminates middlemen, providing fair compensation to farmers.",
     description4:
       "Climate change and unpredictable weather patterns affect crop production and pricing. For instance, unseasonal rains or droughts can reduce supply, leading to price hikes. Farmers must stay updated with weather forecasts and adopt risk management strategies to navigate these challenges. By analyzing market trends and leveraging digital platforms, farmers can optimize their production and maximize profits.",
-    image:
-      "https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/eknk9totspjalle4a4bx",
+    
+image: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/bkwshd6e7tuhzsxezzch",
   },
   {
     id: 6,
@@ -97,8 +94,8 @@ const blogdata = [
       "Artificial Intelligence (AI) is also transforming agriculture. AI-powered tools analyze vast amounts of data to predict weather patterns, recommend optimal planting times, and detect pest infestations. This allows farmers to take proactive measures and improve productivity.",
     description4:
       "Blockchain technology is being used to improve supply chain transparency. It ensures that farmers get fair prices and prevents fraud in agricultural transactions. With these technological advancements, farming is becoming smarter and more sustainable.",
-    image:
-      "https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/b0paiccwwxnci8ae6krs",
+    
+image: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/wad73kjdtsrqpfkbdvao",
   },
   {
     id: 7,
@@ -113,8 +110,8 @@ const blogdata = [
       "Adding organic matter such as compost, manure, and green cover crops improves soil structure and fertility. Organic matter increases water retention, making soil more resilient to drought.",
     description4:
       "Avoiding excessive chemical fertilizers and pesticides is crucial. Overuse of chemicals can degrade soil quality and kill beneficial microbes. Instead, adopting organic fertilizers and bio-pesticides promotes soil biodiversity and long-term productivity. By implementing these soil management practices, farmers can ensure sustainable and high-yield farming.",
-    image:
-      "https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/fytqsozsyq37bhmxpbln",
+    
+image: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/fulwnbq5vkkpkojtpi6o",
   },
   {
     id: 8,
@@ -129,8 +126,8 @@ const blogdata = [
       "Farmers can also adopt rainwater harvesting, which involves collecting and storing rainwater for use during dry seasons. This method is particularly useful in arid and semi-arid regions where rainfall is unpredictable. Additionally, mulching—the practice of covering soil with organic or plastic materials—helps retain soil moisture, reduces evaporation, and prevents weed growth.",
     description4:
       "Governments and agricultural organizations are encouraging the use of smart irrigation systems that utilize weather data and soil sensors to optimize water usage. By adopting these conservation techniques, farmers can maintain productivity while preserving this precious resource for future generations.",
-    image:
-      "https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/chfzlpojfg0ujqqzbfr1",
+    
+image: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/c7ud9q1nn910xyptobf2",
   },
   {
     id: 9,
@@ -145,8 +142,7 @@ const blogdata = [
       "Farmers can also use organic pesticides made from neem, garlic, and chili extracts as eco-friendly alternatives to chemical pesticides. These natural solutions help control pests while avoiding the harmful effects of synthetic chemicals on soil health and beneficial insects.",
     description4:
       "Regular crop monitoring and early detection are crucial in managing plant diseases. Diseases such as fungal infections, bacterial blights, and viral pathogens can spread rapidly if not controlled in time. Using disease-resistant crop varieties and maintaining proper field hygiene can significantly reduce disease outbreaks. By adopting sustainable pest and disease management strategies, farmers can protect their crops while promoting environmental health and food safety.",
-    image:
-      "https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/dwlfougxin3pzhopeztj",
+image: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/yehobyce5g6j3qjtlzw1",
   },
   {
     id: 10,
@@ -161,8 +157,7 @@ const blogdata = [
       "For fruits and vegetables, cold storage plays a crucial role in extending shelf life. Temperature-controlled storage facilities slow down the ripening process and prevent spoilage. Many farmers are now investing in low-cost, solar-powered cold storage units to preserve their produce and reduce post-harvest losses.",
     description4:
       "Packaging is another important factor in maintaining produce quality. Properly designed ventilated crates, biodegradable packaging, and vacuum-sealed containers help prevent bruising and contamination during transportation. Additionally, modern supply chain management systems, such as blockchain technology, help track and monitor produce from farm to market, ensuring transparency and fair pricing. By implementing efficient post-harvest techniques, farmers can enhance the marketability of their produce, increase their earnings, and reduce food wastage, contributing to a more sustainable agricultural system.",
-    image:
-      "https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/yg5jtgqgcmunygbfu5ow",
+    image: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/jzd2ls2yg4fb4ysevc8s",
   },
 ];
 
