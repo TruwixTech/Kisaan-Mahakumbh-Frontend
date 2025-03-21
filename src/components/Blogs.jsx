@@ -10,7 +10,7 @@ const blogdata = [
       timeAgo: "Just now",
       description:
         "Exploring modern methods such as precision agriculture, and organic farming to enhance crop yield and sustainability.",
-      image: "https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/bj7fyluxmeb7alfbxtkc",
+      image: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/jzd2ls2yg4fb4ysevc8s",
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ const blogdata = [
       timeAgo: "1 day ago",
       description:
         "A comprehensive guide to various government initiatives and subsidies available to support farmers in India.",
-      image: "https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/s0nk7ssfugo6g2pn3bis",
+      image: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/q8ooxqfgfoseeypdjwop",
     },
     {
       id: 3,
@@ -28,7 +28,7 @@ const blogdata = [
       timeAgo: "2 days ago",
       description:
         "Highlighting the journeys of farmers who have adopted innovative practices and achieved remarkable success.",
-      image: "https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/ekl7e5d3uodiwngyg3py",
+      image: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/guoomcols5auu99q2ait",
     },
     {
       id: 4,
@@ -37,7 +37,7 @@ const blogdata = [
       timeAgo: "3 days ago",
       description:
         "Discussing eco-friendly farming methods that conserve resources and promote environmental health.",
-      image: "https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/sjvngmpafaqclcxfjqyo",
+      image: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/oyoxmrkdpoiljxrgphzf",
     },
     {
       id: 5,
@@ -46,7 +46,7 @@ const blogdata = [
       timeAgo: "4 days ago",
       description:
         "Analyzing current market trends, crop prices, and providing insights to help farmers make informed decisions.",
-      image: "https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/eknk9totspjalle4a4bx",
+      image: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/bkwshd6e7tuhzsxezzch",
     },
     {
       id: 6,
@@ -55,7 +55,7 @@ const blogdata = [
       timeAgo: "5 days ago",
       description:
         "Examining how advancements like drones, IoT, and AI are revolutionizing farming practices.",
-      image: "https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/b0paiccwwxnci8ae6krs",
+      image: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/wad73kjdtsrqpfkbdvao",
     },
     {
       id: 7,
@@ -64,7 +64,7 @@ const blogdata = [
       timeAgo: "6 days ago",
       description:
         "Tips and techniques for maintaining soil health to ensure long-term agricultural productivity.",
-      image: "https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/fytqsozsyq37bhmxpbln",
+      image: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/fulwnbq5vkkpkojtpi6o",
     },
     {
       id: 8,
@@ -73,7 +73,7 @@ const blogdata = [
       timeAgo: "1 week ago",
       description:
         "Strategies for efficient water use, including drip irrigation and rainwater harvesting.",
-      image: "https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/chfzlpojfg0ujqqzbfr1",
+      image: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/c7ud9q1nn910xyptobf2",
     },
     {
       id: 9,
@@ -82,7 +82,7 @@ const blogdata = [
       timeAgo: "1 week ago",
       description:
         "Identifying common crop pests and diseases, and effective ways to manage them.",
-      image: "https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/dwlfougxin3pzhopeztj",
+      image: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/yehobyce5g6j3qjtlzw1",
     },
     // {
     //   id: 10,
