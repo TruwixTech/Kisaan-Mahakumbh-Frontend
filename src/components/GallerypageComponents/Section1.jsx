@@ -45,7 +45,7 @@ function Section1() {
         {/* Right Side - Two Stacked Boxes */}
         <div className='flex flex-col gap-5 w-full md:w-auto lg:w-1/2 lg:gap-8'>
           <img src={img2} className='w-full object-cover md:w-[300px] h-[250px] bg-[#8a8a8a] rounded-3xl lg:w-full lg:h-[370px]'/>
-          <img src='https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/kfaluohehgtdt2ou62vv' className='w-full object-cover object-top md:w-[300px] h-[150px] bg-[#8a8a8a] rounded-3xl lg:w-full lg:h-[200px]'/>
+          <img src='https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/yehobyce5g6j3qjtlzw1' className='w-full object-cover md:w-[300px] h-[150px] bg-[#8a8a8a] rounded-3xl lg:w-full lg:h-[200px] object-center'/>
         </div>
       </div>
 

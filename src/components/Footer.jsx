@@ -5,19 +5,18 @@ import { Link } from "react-router-dom";
 import { FaFacebookF } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
+import { FaWhatsapp } from "react-icons/fa";
 
 function Footer() {
   return (
     <div className="w-full h-auto flex flex-col bg-[#01210f]">
       <a
         href="https://wa.link/7vl2u8"
-        className="whatsapp-float"
+        className="whatsapp-float fixed bottom-5 right-5 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300"
         target="_blank"
+        rel="noopener noreferrer"
       >
-        <img
-          src="https://res.cloudinary.com/dsxne7kta/image/upload/f_auto,q_auto/kgtfjtgqkaian3inh1sz"
-          alt="WhatsApp"
-        />
+        <FaWhatsapp className="w-8 h-8" />
       </a>
       <div className="w-full h-auto flex flex-col lg:flex-row xl:justify-between">
         <div className="w-full h-auto flex flex-col sm:flex-row lg:w-1/2">
