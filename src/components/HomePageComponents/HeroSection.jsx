@@ -67,7 +67,7 @@ function HeroSection() {
           playsInline
         >
           <source
-            src="https://res.cloudinary.com/dsxne7kta/video/upload/f_auto:video,q_auto/kcnb7cdpqh3jt6juigaf"
+            src="https://res.cloudinary.com/daqtq6xns/video/upload/f_auto:video,q_auto/j9nnt3gqjnbupat8ff09"
             type="video/mp4"
           />
           Your browser does not support the video tag.

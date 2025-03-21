@@ -1,18 +1,68 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
+
+function LazyVideo({ src, poster, className }) {
+  const videoRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries, observerInstance) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observerInstance.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => {
+      if (videoRef.current) {
+        observer.unobserve(videoRef.current);
+      }
+    };
+  }, []);
+
+  return (
+    <video
+      ref={videoRef}
+      src={isVisible ? src : undefined}
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      poster={poster}
+      className={className}
+    >
+      Your browser does not support the video tag.
+    </video>
+  );
+}
 
 function Section3() {
   const cards = [
     {
-      image: "https://res.cloudinary.com/dsxne7kta/video/upload/f_auto:video,q_auto/eojgcyuadnvsbnhsf0cv",
+      image: "https://res.cloudinary.com/daqtq6xns/video/upload/f_auto:video,q_auto/nmmnqfyhgdmd4y2oshrp",
+      // Optionally, add a poster URL if available:
+      poster: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/nmmnqfyhgdmd4y2oshrp.jpg"
     },
     {
-      image: "https://res.cloudinary.com/dsxne7kta/video/upload/f_auto:video,q_auto/jvkla6aalt3rmqwmysba",
+      image: "https://res.cloudinary.com/daqtq6xns/video/upload/f_auto:video,q_auto/zblmhimfzk9ioglk85we",
+      poster: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/zblmhimfzk9ioglk85we.jpg"
     },
     {
-      image: "https://res.cloudinary.com/dsxne7kta/video/upload/f_auto:video,q_auto/vtjbr56brunxsg4apn4m",
+      image: "https://res.cloudinary.com/daqtq6xns/video/upload/f_auto:video,q_auto/o0bkqpegppztgitqipof",
+      poster: "https://res.cloudinary.com/daqtq6xns/image/upload/f_auto,q_auto/o0bkqpegppztgitqipof.jpg"
     },
     {
       image: "https://res.cloudinary.com/dj0xlbz42/video/upload/v1740744529/oq7lprkwgktlxdquwget.mp4",
+      poster: "https://res.cloudinary.com/dj0xlbz42/image/upload/v1740744529/oq7lprkwgktlxdquwget.jpg"
     },
   ];
 
@@ -32,19 +82,13 @@ function Section3() {
         {cards.map((card, index) => (
           <div
             key={index}
-            className="bg-[#7a7a7a]  rounded-4xl overflow-hidden w-full md:w-[300px] h-[513.15px] "
+            className="bg-[#7a7a7a] rounded-4xl overflow-hidden w-full md:w-[300px] h-[513.15px]"
           >
-            <video
+            <LazyVideo
               src={card.image}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full rounded-lg shadow-lg "
-            >
-              Your browser does not support the video tag.
-            </video>
-            {/* <img src={card.image} alt={`Card ${index + 1}`} className='w-[280px] h-[513.15px] ' /> */}
+              poster={card.poster}
+              className="w-full rounded-lg shadow-lg"
+            />
           </div>
         ))}
       </div>
