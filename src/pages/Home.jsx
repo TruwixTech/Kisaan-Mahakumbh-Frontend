@@ -9,6 +9,7 @@ import Section6 from "../components/HomePageComponents/Section6";
 import ContactComponent from "../components/ContactComponent";
 import Exhibition from "../components/HomePageComponents/Exhibition";
 import Stats from "../components/HomePageComponents/Stats";
+import OurPolicy from "../components/HomePageComponents/OurPolicy";
 
 function Home() {
   useEffect(() => {
@@ -20,6 +21,7 @@ function Home() {
       <AboutEvent />
       <Stats />
       <Exhibition />
+      <OurPolicy />
       <Partners />
       <Section4 />
       <AgritechHighlight />
