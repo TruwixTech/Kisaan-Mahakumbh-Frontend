@@ -34,7 +34,7 @@ function OurPolicy() {
 
     return (
         <div className='w-full h-auto flex flex-col px-5 md:px-10 lg:px-20  gap-3 bg-[#e7e7e7] py-10  lg:pb-20 xl:pb-16 lg:gap-6 font-[Roboto]'>
-            <h1 className='text-[#374836] font-semibold text-lg text-center md:text-xl'>|  Partners and Patrons  |</h1>
+            <h1 className='text-[#374836] font-semibold text-lg text-center md:text-xl'>|  Policy Makers  |</h1>
             <h1 className='uppercase text-[#374836] font-bold text-2xl text-center sm:text-3xl lg:text-4xl 2xl:text-5xl'>Our Policy Makers</h1>
             <div className='w-full h-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6 justify-center items-center'>
                 {data.map((item, index) => (
