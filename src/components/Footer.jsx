@@ -11,7 +11,7 @@ function Footer() {
   return (
     <div className="w-full h-auto flex flex-col bg-[#01210f]">
       <a
-        href="https://wa.link/7vl2u8"
+        href="https://api.whatsapp.com/send?phone=919911146567&text=Hi%2C%20I%20am%20interested%20in%20Kisan%20Kumbh%20event%20%F0%9F%92%AB"
         className="whatsapp-float fixed bottom-5 right-5 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300"
         target="_blank"
         rel="noopener noreferrer"
