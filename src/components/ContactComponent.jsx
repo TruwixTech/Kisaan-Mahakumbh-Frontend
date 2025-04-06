@@ -157,7 +157,7 @@ const ContactComponent = () => {
               <span>
                 <img src={phone} alt="" />
               </span>{" "}
-              9911182095
+              9911146567
             </p>
           </div>
 
