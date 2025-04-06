@@ -5,135 +5,292 @@ import { FaHome } from "react-icons/fa";
 function Event() {
   const sessions = [
     {
-      theme: "Theme 1",
-      time: "12:00 - 1:30",
-      title: "SUSTAINABILITY AND CLIMATE RESILIENCE",
+      theme: "Agenda 1",
+      time: "09:00 AM - 10:30 AM",
+      title: "Sustainability and Climate Resilience (Technical Session 1)",
       details: [
-        { topic: "AI-Based/IOT in Agriculture", speaker: "Dr.S.D. Gorantiwar" },
-        { topic: "UAV – Role of Space Technology", speaker: "" },
         {
-          topic: "Organic Certification and Standards",
+          topic: "Prof. B R Kamboj (Vice-Chancellor, CCSHAU, Haryana) - Chair",
+          speaker: "",
+        },
+        {
+          topic: "JC Majjumdar Ji - Moderator",
           speaker: "Dr.S K Sharma",
         },
         {
+          topic: "Shreya - Anchor",
+          speaker: "",
+        },
+      ],
+    },
+    {
+      theme: "Agenda 2",
+      time: "10:30 AM - 10:40 AM",
+      title: "Cultural Performance by Ayana Dance Academy",
+      details: [],
+    },
+    {
+      theme: "Agenda 3",
+      time: "10:40 AM - 10:50 AM",
+      title: "Commencement of Kisan Kumbh 2025-Agri Conclave",
+      details: [],
+    },
+    {
+      theme: "Agenda 4",
+      time: "10:50 AM - 10:55 AM",
+      title: "Inviting Guests on the Dais",
+      details: [],
+    },
+    {
+      theme: "Agenda 4",
+      time: "10:55 AM - 11:00 AM",
+      title: "Lamp Lightning by Guest & Saraswati Vandana",
+      details: [],
+    },
+    {
+      theme: "Agenda 4",
+      time: "11:00 AM - 11:10 AM",
+      title: "Introduction of All Guests (1 min each)",
+      details: [],
+    },
+    {
+      theme: "Agenda 5",
+      time: "11:10 AM - 11:15 AM",
+      title: "Agri wisdom",
+      details: [
+        {
+          topic: "Mr. RajeshKumar (Industrialist & Social Thinker)",
+          speaker: "",
+        },
+      ],
+    },
+    {
+      time: "11:15 AM - 11:30 AM",
+      title: "Soil Stories",
+      details: [
+        {
+          topic: "Prof. V K Vijay (National Coordinator, UBA & IIT Delhi)",
+          speaker: "",
+        },
+      ],
+    },
+    {
+      time: "11:30 AM - 11:45 AM",
+      title: "Farm Stories",
+      details: [
+        { topic: "Dr. Khader Vali (Millet Man of India)", speaker: "" },
+      ],
+    },
+    {
+      time: "11:45 AM - 12:00 PM",
+      title: "Sowing Ideas",
+      details: [
+        {
           topic:
-            "Awareness is Defense (Consumer Awareness in Agriculture) and Climate-Smart Agriculture & Sustainable Practices",
+            "Dr. Krishan Bir Chaudhary (Bhartiya Krishak Samaj, President)",
           speaker: "",
-        },
-        {
-          topic: "Water Conservation & Efficient Irrigation Systems",
-          speaker: "Prof. P K Singh/ Prof Vivek",
         },
       ],
     },
     {
-      theme: "Theme 2",
-      time: "1:30 - 2:30",
-      title: "Technology and Innovation in Agriculture",
+      time: "12:00 PM - 12:15 PM",
+      title: "Visionary Talk",
       details: [
         {
-          topic: "Machinery for Small & Marginal Farmers",
-          speaker: "Dr. P.K. Sahoo",
+          topic: "Shri Acharya Devvrat Ji (Hon’ble Governor of Gujarat)",
+          speaker: "",
         },
-        {
-          topic: "Drones, Satellite & GIS for Farming",
-          speaker: "Dr. Suparn Pathak",
-        },
-        { topic: "Ayurveda & Homeopathy in Agriculture", speaker: "" },
-        { topic: "Blockchain & AI in Supply Chain Management", speaker: "" },
-        { topic: "Vertical Farming & Hydroponics Innovations", speaker: "" },
       ],
     },
     {
-      theme: "Theme 3",
-      time: "4:00 - 5:30",
-      title: "Agro Businesses & Startups",
+      time: "12:15 PM - 12:45 PM",
+      title: "Visionary Talk",
       details: [
-        { topic: "Policy Reforms for Agri-Startups", speaker: "" },
         {
-          topic: "Investment & Business Opportunities in Agriculture",
-          speaker: "",
-        },
-        { topic: "Farm-to-Market Innovations", speaker: "" },
-        { topic: "Role of Agri-Incubators & Mentorship Programs", speaker: "" },
-        {
-          topic: "Export-Oriented Agribusinesses & Global Market Access",
+          topic:
+            "Pujyashri Adrushya Kadsiddheshwar Swamiji (Mathadhipati, Kaneri Math)",
           speaker: "",
         },
       ],
+    },
+    {
+      time: "12:45 PM - 01:05 PM",
+      title: "Book Launch",
+      details: [
+        {
+          topic:
+            "Mr. Ramveer Shreshth (Author Naye Bharat Ke Kisan) in Presence of Nitin Gadkari Ji & Shivraj Singh Chouhan Ji",
+          speaker: "",
+        },
+      ],
+    },
+    {
+      time: "01:05 PM - 01:40 PM",
+      title: "Visionary Talk",
+      details: [
+        {
+          topic:
+            "Shri Nitin Gadkari Ji (Hon’ble Minister of Road Transport & Highways of India)",
+          speaker: "",
+        },
+      ],
+    },
+    {
+      time: "01:45 PM - 02:35 PM",
+      title: "Lunch",
+      details: [],
+    },
+    {
+      time: "02:40 PM - 03:20 PM",
+      title: "Workshop (HIL)",
+      details: [
+        {
+          topic:
+            "“Use and Promotion of Bio-Pesticides” – By Dr. Rajendra Thapar",
+          speaker: "",
+        },
+      ],
+    },
+    {
+      time: "03:20 PM - 03:35 PM",
+      title: "Farmtech Session - Dhanuka",
+      details: [{ topic: "By Dr. R G Agarwal – Chairman", speaker: "" }],
+    },
+    {
+      time: "03:35 PM - 05:15 PM",
+      title: "Models of Agri Startups (Technical Session 2)",
+      details: [
+        { topic: "Mr. Varun Shroff (Industrialist) – Chair", speaker: "" },
+        { topic: "Yella Sama Reddy – Moderator", speaker: "" },
+        { topic: "Shreya – Anchor", speaker: "" },
+      ],
+    },
+    {
+      time: "05:15 PM - 05:45 PM",
+      title: "Tea Break",
+      details: [],
+    },
+    {
+      time: "05:45 PM - 07:00 PM",
+      title: "Technology & Innovation in Agriculture (Technical Session 3)",
+      details: [
+        { topic: "IIT Ropar – Chair", speaker: "" },
+        { topic: "Dr. Kavya Doshora, IITD – Moderator", speaker: "" },
+        { topic: "Shreya – Anchor", speaker: "" },
+      ],
+    },
+    {
+      time: "07:00 PM - 07:05 PM",
+      title: "Introduction of Jagtar & Team",
+      details: [],
+    },
+    {
+      time: "07:05 PM - 07:25 PM",
+      title: "Cultural Event : Musical Evening by Jagtar & Team",
+      details: [],
+    },
+    {
+      time: "07:30 PM",
+      title: "Closing of Day 1 (Announcement of Dinner)",
+      details: [],
     },
   ];
 
   const sessions2 = [
     {
-      theme: "Theme 4",
-      time: "10:00 - 11:30",
-      title: "Agriculture Economics & Cooperatives",
+      time: "09:00 AM - 10:00 AM",
+      title: "Introductory Session",
       details: [
-        { topic: "Agriculture Economics & Market Linkages", speaker: "" },
         {
-          topic: "Strengthening Farmer Producer Organizations (FPOs)",
-          speaker: "",
-        },
-        { topic: "Role of Cooperatives in Agri-Business", speaker: "" },
-        {
-          topic:
-            "Global Market Expansion for Agri Products and Digital Trading Platforms & E-Mandis",
-          speaker: "",
-        },
-        {
-          topic: "Agri-Financing & Credit Accessibility for Farmers",
+          topic: "Informal farmers and Green Heroes Get Together",
           speaker: "",
         },
       ],
     },
     {
-      theme: "Theme 5",
-      time: "11:30 - 01:00",
-      title: "Farmer & Consumer Ecosystem",
+      time: "10:00 AM - 11:30 AM",
+      title: "Technical Session 1 - Agri-Processing and Value Addition",
+      details: [
+        { topic: "Dr. KML Pathak – Chair", speaker: "" },
+        { topic: "Mr. Abhishek Dhama (Green Hero) – Moderator", speaker: "" },
+      ],
+    },
+    {
+      time: "11:30 AM - 01:00 PM",
+      title: "Technical Session 2 - Farm Residue Waste and Wealth",
+      details: [
+        { topic: "Dr. Anil Dixit – Chair", speaker: "" },
+        { topic: "Mr. Kamaljeet Hayer (Green Hero) – Moderator", speaker: "" },
+        { topic: "Shreya – Anchor", speaker: "" },
+      ],
+    },
+    {
+      time: "01:00 PM - 02:00 PM",
+      title: "Lunch",
+      details: [],
+    },
+    {
+      time: "02:00 PM - 03:30 PM",
+      title: "Technical Session 3 - Samvad on 'Naye Bharat ke Kisan'",
+      details: [
+        { topic: "Narendra Thakur Ji – Chair", speaker: "" },
+        {
+          topic: "Shri Omendra Dutt (Kheti Virasat Mission) – Moderator",
+          speaker: "",
+        },
+        { topic: "Shreya – Anchor", speaker: "" },
+      ],
+    },
+    {
+      time: "03:30 PM - 03:40 PM",
+      title: "Valedictory Session Starts",
+      details: [],
+    },
+    {
+      time: "03:40 PM - 03:45 PM",
+      title: "Lamp Lightning by Guest",
+      details: [],
+    },
+    {
+      time: "03:45 PM - 04:00 PM",
+      title: "Honouring of All Guests",
+      details: [],
+    },
+    {
+      time: "04:00 PM - 04:05 PM",
+      title: "Agri Wisdom",
       details: [
         {
-          topic: "Farmer's Family – Connecting Farmers & Consumers",
-          speaker: "",
-        },
-        { topic: "Dialogue with Experts & Model Farmers", speaker: "" },
-        {
-          topic:
-            "Voice of Consumers in Agri-Supply Chain and Consumer Awareness & Food Safety Standards",
-          speaker: "",
-        },
-        {
-          topic:
-            "Rural-Urban Agriculture Linkages (Village & City Coordination)",
-          speaker: "",
-        },
-        {
-          topic: "Traditional Knowledge & Indigenous Farming Practices",
+          topic: "Mr. Rajesh Kumar (Industrialist & Social Thinker)",
           speaker: "",
         },
       ],
     },
     {
-      theme: "Theme 6",
-      time: "02:00 - 03:30",
-      title: "Marketing and Value Addition of Agri Produce",
+      time: "04:05 PM - 04:10 PM",
+      title: "Soil Stories",
+      details: [{ topic: "Mr. Vivek (IIT Delhi)", speaker: "" }],
+    },
+    {
+      time: "04:10 PM - 04:25 PM",
+      title: "Farm Stories",
+      details: [{ topic: "Mr. Ram Bahadur Rai (Sr. Journalist)", speaker: "" }],
+    },
+    {
+      time: "04:25 PM - 04:45 PM",
+      title: "Visionary Talk",
       details: [
         {
           topic:
-            "Innovative Marketing Strategies for Agricultural Products and Government Policies and Schemes for Agri-Marketing",
-          speaker: "",
-        },
-        { topic: "Agri-Processing and Value Addition", speaker: "" },
-        { topic: "Supply Chain Management and Logistics", speaker: "" },
-        {
-          topic: "Role of Cooperatives and FPOs in Agri-Marketing",
-          speaker: "",
-        },
-        {
-          topic: "Export Potential of Indian Agricultural Products",
+            "Shri Shyam Singh ji (Hon’ble Minister of Agriculture of Haryana)",
           speaker: "",
         },
       ],
+    },
+    {
+      time: "04:55 PM",
+      title: "Tea Break",
+      details: [],
     },
   ];
 
@@ -180,52 +337,57 @@ function Event() {
         <div className="w-full flex  flex-col md:py-8 py-3 px-2 md:px-0">
           <h1 className="text-[#374836] text-xl md:text-[36px]"> | Events |</h1>
           <span className="text-[#374836] text-3xl md:text-[52px] font-[Roboto]">
-            Day 1: Theme of farmer
+            Day 1: 09th April 2025
           </span>
         </div>
 
-        <div className="w-full h-auto flex flex-col mb-6">
+        {/* <div className="w-full h-auto flex flex-col mb-6">
           <p className="md:text-lg font-bold">
             {" "}
             🕙 10:00 AM - 12:00 PM: Inaugural Session Topic: Role of Agriculture
             in a 5 Trillion Dollar Economy
           </p>
-        </div>
+        </div> */}
 
-        <div className=" w-full h-auto p-2 md:p-6 bg-white rounded-3xl mb-7 ">
+        <div className="w-full h-auto p-2 md:p-6 bg-white rounded-3xl mb-7">
           {sessions.map((session, index) => (
-            <div key={index} className="px-2 md:px-12 lg:px-12 ">
-              <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-3 md:mb-6 font-[Roboto] flex flex-col justify-center items-center lg:justify-start md:items-start ">
-                {session.theme}
-              </h1>
-              {/* First session */}
+            <div key={index} className="w-full">
+              <div className="w-full px-0 md:px-6 lg:px-10">
+                {/* Session Block */}
+                <div className="w-full mb-6 flex flex-col items-center lg:flex-row lg:items-start gap-5">
+                  {/* Time */}
+                  <div className="w-full flex justify-center lg:justify-start md:w-[35%]">
+                    <p className="text-2xl md:text-3xl font-semibold text-gray-700">
+                      {session.time}
+                    </p>
+                  </div>
 
-              <div className="w-full mb-6 flex flex-col items-center lg:flex-row lg:items-start  gap-5">
-                <div className="w-full flex justify-center lg:justify-start md:w-[30%] lg:w-[20%]">
-                  <p className="text-2xl md:text-3xl xl:text-4xl font-semibold text-gray-700 ">
-                    {session.time}
-                  </p>
-                </div>
-                <div className="lg:hidden block border-b-2  w-full  mx-10 border-gray-800"></div>
-                <div className="lg:block hidden border-r-2 lg:h-[300px] mx-10 border-gray-800"></div>
-                <div className="w-full md:w-[70%] flex  flex-col gap-5">
-                  <h2 className="md:text-4xl text-2xl font-bold text-gray-900 items-center font-[Roboto] ">
-                    {session.title}
-                  </h2>
-                  <div className="mt-2 text-gray-600">
-                    {session.details.map((detail, i) => (
-                      <div
-                        key={i}
-                        className=" w-full flex flex-col lg:flex-row gap-4  justify-center lg:justify-start"
-                      >
-                        <span className=" w-full md:w-[70%] text-[20px] font-[Roboto]  ">
-                          {detail.topic}
-                        </span>
-                        {/* <div className='flex gap-5'>
-                          <span className=" w-full text-gray-400 text-[20px] font-[Roboto]">{detail.speaker}</span>
-                        </div> */}
+                  {/* Horizontal border on mobile */}
+                  <div className="lg:hidden block border-b-2 w-full mx-10 border-gray-800"></div>
+
+                  {/* Flex row for vertical line and content */}
+                  <div className="w-full flex lg:flex-row gap-5">
+                    {/* Vertical Line */}
+                    <div className="hidden lg:block border-r-2 border-gray-800 mx-5" />
+
+                    {/* Content */}
+                    <div className="w-full flex flex-col gap-5">
+                      <h2 className="md:text-4xl text-2xl font-bold text-gray-900 font-[Roboto]">
+                        {session.title}
+                      </h2>
+                      <div className="mt-2 text-gray-600">
+                        {session.details.map((detail, i) => (
+                          <div
+                            key={i}
+                            className="w-full flex flex-col lg:flex-row gap-4 justify-center lg:justify-start"
+                          >
+                            <span className="w-full text-[20px] font-[Roboto] font-semibold">
+                              {detail.topic}
+                            </span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -237,56 +399,62 @@ function Event() {
 
         <div className="w-full flex  flex-col md:py-8 py-3 px-2 md:px-0">
           <span className="text-[#374836] text-3xl md:text-[52px] font-[Roboto]">
-            Day 2: Theme of farmer
+            Day 2: 10th April 2025
           </span>
         </div>
 
-        <div className=" w-full h-auto p-2 md:p-6 bg-white rounded-3xl ">
-          {sessions2.map((session2, index) => (
-            <div key={index} className="   px-2 md:px-12 lg:px-12 ">
-              <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-6 font-[Roboto] flex flex-col justify-center items-center lg:justify-start md:items-start ">
-                {session2.theme}
-              </h1>
-              {/* First session */}
+        <div className="w-full h-auto p-2 md:p-6 bg-white rounded-3xl mb-7">
+          {sessions2.map((session, index) => (
+            <div key={index} className="w-full">
+              <div className="w-full px-0 md:px-6 lg:px-10">
+                {/* Session Block */}
+                <div className="w-full mb-6 flex flex-col items-center lg:flex-row lg:items-start gap-5">
+                  {/* Time */}
+                  <div className="w-full flex justify-center lg:justify-start md:w-[35%]">
+                    <p className="text-2xl md:text-3xl font-semibold text-gray-700">
+                      {session.time}
+                    </p>
+                  </div>
 
-              <div className="w-full mb-3 md:mb-6 flex flex-col items-center lg:flex-row lg:items-start  gap-5">
-                <div className="w-full flex justify-center lg:justify-start md:w-[30%] lg:w-[20%]">
-                  <p className="text-2xl md:text-3xl xl:text-4xl font-semibold text-gray-700 ">
-                    {session2.time}
-                  </p>
-                </div>
-                <div className="lg:hidden block border-b-2  w-full  mx-10 border-gray-800"></div>
-                <div className="lg:block hidden border-r-2 lg:h-[300px] mx-10 border-gray-800"></div>
-                <div className="w-full md:w-[70%] flex  flex-col gap-5">
-                  <h2 className="md:text-4xl text-2xl font-bold text-gray-900 items-center font-[Roboto] ">
-                    {session2.title}
-                  </h2>
-                  <div className="mt-2 text-gray-600">
-                    {session2.details.map((detail, i) => (
-                      <div
-                        key={i}
-                        className=" w-full flex flex-col lg:flex-row gap-4  justify-center lg:justify-start"
-                      >
-                        <span className=" w-full md:w-[70%] text-[20px] font-[Roboto]  ">
-                          {detail.topic}
-                        </span>
-                        {/* <div className='flex gap-5'>
-                          <span className=" w-full text-gray-400 text-[20px] font-[Roboto]">{detail.speaker}</span>
-                        </div> */}
+                  {/* Horizontal border on mobile */}
+                  <div className="lg:hidden block border-b-2 w-full mx-10 border-gray-800"></div>
+
+                  {/* Flex row for vertical line and content */}
+                  <div className="w-full flex lg:flex-row gap-5">
+                    {/* Vertical Line */}
+                    <div className="hidden lg:block border-r-2 border-gray-800 mx-5" />
+
+                    {/* Content */}
+                    <div className="w-full flex flex-col gap-5">
+                      <h2 className="md:text-4xl text-2xl font-bold text-gray-900 font-[Roboto]">
+                        {session.title}
+                      </h2>
+                      <div className="mt-2 text-gray-600">
+                        {session.details.map((detail, i) => (
+                          <div
+                            key={i}
+                            className="w-full flex flex-col lg:flex-row gap-4 justify-center lg:justify-start"
+                          >
+                            <span className="w-full text-[20px] font-[Roboto] font-semibold">
+                              {detail.topic}
+                            </span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
+{/* 
         <div className="w-full h-auto flex flex-col my-6">
           <p className="md:text-lg font-bold">
             🕞 03:30 PM - 05:30 PM: Valedictory Session Topic: Cooperative
             Practices in Agriculture
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   );
